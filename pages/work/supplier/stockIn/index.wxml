@@ -1,0 +1,32 @@
+<!--pages/work/supplier/stockIn/index.wxml-->
+<view>
+	<view class="search">
+		<image src="/static/images/icon_search.png"></image>
+		<input placeholder="快速搜索"confirm-type="search" data-key="searchValue" bindinput="inputToChange" value="{{searchValue}}" bindconfirm="searchConfirm"></input>
+	</view>
+	<block wx:for='{{sectionList}}' wx:key='date' wx:for-item='section'>
+		<view class="text-28-black title_line" style="width:auto;margin:0 30rpx;">{{section.date}}</view>
+		<block wx:for='{{section.list}}' wx:for-item='record' wx:key='id'>
+    <view class="row bor-bom-5" style="padding: 10rpx 30rpx;">
+			<view style="flex:1;">
+				
+				<view class="text-28-black">{{record.title||''}}</view>
+				<view class="text-24-black" style="margin:6rpx 0;">备注：{{record.remark||''}}</view>
+
+				<view class="text-24-black status">状态：{{record.statusName||''}}</view>
+			</view>
+      <view>
+      <block wx:if="{{record.status=='RKZT01'}}">
+        	<view class="btn-green-s" bindtap="clickToDetail" data-id="{{record.id}}">审核</view>
+        </block>
+        <block wx:elif="{{record.status=='RKZT02'}}">
+        	<view class="btn-green-s" bindtap="clickToDetail" data-id="{{record.id}}">完工</view>
+        </block>
+        <!-- <block wx:else>
+        <view class="btn-green-s disable">已审核</view>
+        </block>-->
+      </view>
+      </view>
+		</block>
+	</block>
+</view>

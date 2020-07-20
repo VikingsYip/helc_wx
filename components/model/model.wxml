@@ -1,0 +1,21 @@
+<!--components/model/model.wxml-->
+<view hidden='{{!visiable}}' style='z-index:200'>
+  <view class="mask" bindtap='_toggleShow' style="background-color:{{ bgc }}"></view>
+  <view class="modal block_border">
+    <view wx:if="{{title}}">
+        <view class="model_top">
+          <view class="modal_title">{{title}}</view>
+        </view>
+    </view>
+    <view class="modal_body">
+      <slot name="body"></slot>
+    </view>
+    <view class="modal_footer_0" wx:if='{{styleType == 0}}'>
+      <button bindtap='_handleConfirm' style="width:100%" class='button_submit'>{{confirmBtnText}}</button>
+    </view>
+    <view class="modal_footer_1" wx:if='{{styleType == 1}}'>
+      <button bindtap='_toggleShow' style="flex:1" class='button_cancel'>返回</button>
+      <button bindtap='_handleConfirm' style="flex:1" class='button_submit_1'>{{confirmBtnText}}</button>
+    </view>
+  </view>
+</view>

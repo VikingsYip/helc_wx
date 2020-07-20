@@ -1,0 +1,20 @@
+<!--pages/work/supplier/stockIn/index.wxml-->
+<view>
+	<!-- <view class="search">
+		<image src="/static/images/icon_search.png"></image>
+		<input placeholder="快速搜索"confirm-type="search" data-key="searchValue" bindinput="inputToChange" value="{{searchValue}}" bindconfirm="searchConfirm"></input>
+	</view> -->
+		<block wx:for='{{records}}' wx:for-item='record' wx:key='id'>
+    <view class="row bor-bom-5" style="padding: 10rpx 30rpx;" bind:tap="clickToDetail" data-id="{{record.id}}">
+		    <view>
+            <image src="{{record.coverImgPath}}" style="width: 20vw;height: 20vw;"></image> 
+        </view>
+				<view style="flex:1;margin-left:3vw;">
+				<view class="text-30 bold">{{record.name||''}}</view>
+				<view class="text-24-black" style="margin:6rpx 0;">所在分类：{{record.typeName||''}}</view>
+       	<view class="text-24-black" style="margin:6rpx 0;">价格：{{record.costPrice||''}}</view>
+        <view class="text-24-black" style="margin:6rpx 0;">库存：{{record.stockNum||''}}</view>
+				 </view>
+</view>
+	</block>
+</view>

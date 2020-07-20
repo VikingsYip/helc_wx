@@ -1,0 +1,199 @@
+<!--pages/work/orderDetail/index.wxml-->
+<view class="con">
+  <view class="row bor-bom-5 padding10">
+    <view class="text-28-black text_width">名称</view>
+    <view class="text-28-black text_content">{{detail.title}}</view>
+  </view>
+  <view class="row bor-bom-5 padding10">
+    <view class="text-28-black text_width">申领人</view>
+    <view class="text-28-black text_content">{{detail.userName}}</view>
+  </view>
+  <view class="row bor-bom-5 padding10">
+    <view class="text-28-black text_width">电话号码</view>
+    <view class="text-28-black text_content">{{detail.userMobile}}</view>
+  </view>
+  <view class="row bor-bom-5 padding10">
+    <view class="text-28-black text_width">收货地址</view>
+    <view class="text-28-black text_content">{{detail.userAddr}}</view>
+  </view>
+  <view class="row bor-bom-5 padding10">
+    <view class="text-28-black text_width">申领备注</view>
+    <view class="text-28-black text_content">{{detail.remark}}</view>
+  </view>
+  <!-- <block wx:if="{{detail.logisticsType && detail.deliveryImg}}">
+      <view class="row  bor-bom-5 padding10">
+        <view class="text-28-black text_width">物流类型</view>
+        <view class="text-28-black text_content">{{detail.logisticsType==2?"快递":"物流"}}</view>
+      </view>
+      <view class="row  bor-bom-5 padding10">
+        <view class="text-28-black text_width">发货图片</view>
+        <view class="row wrap">
+          <block wx:for='{{detail.deliveryImg}}' wx:for-item='item' wx:for-index='index' wx:key='item'>
+            <image class="order_image" src="{{item}}"></image>
+          </block>
+        </view>
+      </view>
+  </block> -->
+
+  <block wx:for='{{detail.applyDtls}}' wx:for-item='item' wx:for-index='index' wx:key='item.id'>
+  <view class="row bor-bom-5 padding10">
+    <view class="text-28-black text_width">类别</view>
+    <view class="text-28-black isSet" wx:if="{{item.isSet==1}}">
+          套餐
+    </view>
+    <view class="text-28-black isSet" wx:if="{{item.isSet==0}}">
+          单品
+    </view>
+    <view class="text-28-black text_content"><text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;{{item.typeName}}</text></view>
+  </view>
+  <block wx:for='{{item.dtl}}' wx:for-item='dtlItem' wx:for-index='index' wx:key='dtlItem.id'>
+    <view class="row  bor-bom-5 padding10">
+    <image class="title_image" src="{{dtlItem.coverImgPath}}"></image>
+    <view class="column text_content">
+      <view class="text-28-black" style="font-weight:blod">{{dtlItem.name}}</view>
+      <view class="text-24-gray" style="margin:10rpx 0">申领数量:{{dtlItem.applyNum}}</view>
+    </view>
+  </view>
+  </block>
+		
+	</block>
+		
+
+  <block wx-if="{{ detail.applyRemark}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">分公司管理员备注</view>
+      <view class="text-28-black text_content">{{detail.applyRemark}}</view>
+    </view>
+  </block>
+  <block wx-if="{{ detail.applyRemark02}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">总公司管理员备注</view>
+      <view class="text-28-black text_content">{{detail.applyRemark02}}</view>
+    </view>
+  </block>
+  <block wx-if="{{ detail.applyRemark03}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">总公司领导备注</view>
+      <view class="text-28-black text_content">{{detail.applyRemark03}}</view>
+    </view>
+  </block>
+
+  <block wx-if="{{ detail.deliveryRemark}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">供应商</view>
+      <view class="text-28-black text_content">{{detail.deliveryRemark}}</view>
+    </view>
+  </block>
+
+  <block wx-if="{{ detail.rejectReason}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">供应商</view>
+      <view class="text-28-black text_content">{{detail.rejectReason}}</view>
+    </view>
+  </block>
+
+  <block wx-if="{{ detail.deliveryImg}}">
+    <view class="row  bor-bom-5 padding10">
+      <view class="text-28-black text_width">发货图片</view>
+      <view class="row wrap">
+        <block wx:for='{{detail.deliveryImg}}' wx:for-item='item' wx:for-index='index' wx:key='item'>
+          <image class="order_image" src="{{item}}"></image>
+        </block>
+      </view>
+    </view>
+  </block>
+
+
+
+  <block wx-if="{{ detail.feedback}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">收货反馈</view>
+      <view class="text-28-black text_content">{{detail.feedback}}</view>
+    </view>
+  </block>
+
+  <block wx-if="{{ detail.appendix}}">
+    <view class="row  bor-bom-5 padding10">
+      <view class="text-28-black text_width">反馈图片</view>
+      <view class="row wrap">
+        <block wx:for='{{detail.appendix}}' wx:for-item='item' wx:for-index='index' wx:key='item'>
+          <image class="order_image" src="{{item}}"></image>
+        </block>
+      </view>
+    </view>
+  </block>
+
+
+  <block wx:if="{{logArr.length != 0}}">
+    <view class="text-30-black blod padding10">
+      操作日志
+    </view>
+    <block wx:for='{{logArr}}' wx:for-item='item' wx:for-index='index' wx:key='item.id'>
+      <view class="text-28-gray padding10">
+        {{item.organizationName}}  {{item.userName}}
+      </view>
+      <view class="text-28-gray bor-bom-5 padding10">
+        备注：{{item.remark}}
+      </view>
+    </block>
+    <block wx:if="{{flag && state == 'SL010101'}}">
+      <view class="text-30-black blod padding10">
+        撤回备注
+      </view>
+      <textarea class="content" style="height:80px;width: 96%;" value="{{remark||''}}" bindinput="inputToChange" data-key="remark"></textarea>
+    </block>
+  </block>
+  <view>
+  </view>
+
+  <block wx:if="{{flag}}">
+    <block wx:if="{{ state == 'SL010106' }}">
+      <view class="row" style='width:690rpx'>
+        <view class="text-24-gray text_width">反馈备注</view>
+        <textarea class="remark_input" value="{{detail.feedback||''}}" placeholder="请输入备注" bindinput="inputToChange"
+          data-key="feedback"></textarea>
+      </view>
+      <view class="column row_line">
+        <view class="text-28-gray" style="width:690rpx">上传收货图片</view>
+        <view class="row wrap" style="margin:10rpx 0;flex-warp:warp;">
+          <image class="img" src="/static/images/icon_add_image.png" bindtap="clickToUploadImage"></image>
+          <view wx:for="{{imageArr}}" wx:for-index="index" wx:for-item="item">
+            <image class="img" src="{{item}}" bindtap="clickToReviewImage" data-index="{{index}}"></image>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <view wx:if="{{state}}">
+      <!-- <block wx:if="{{ state == 'SL010104' }}">
+         <button class="button-cancel" style="width:690rpx;margin-top:30rpx;" bindtap="clickToAgain">重新提交</button>
+
+      </block> -->
+      <!-- <block wx:if="{{ state == 'SL010102' }}">
+         <button class="button-cancel" style="width:690rpx;margin-top:30rpx;" bindtap="clickToAgain">重新提交</button>
+
+      </block> -->
+
+      <block wx:if="{{ state == 'SL010101' }}">
+        <button class="button-cancel" style="width:690rpx;margin-top:30rpx;" bindtap="clickToDelete">撤回</button>
+        <button class="button-submit" style="width:690rpx;margin-top:30rpx;" bindtap="clickToBack">返回</button>
+      </block>
+      <block wx:elif="{{ state == 'SL010106' }}">
+        <button class="button-submit" style="width:690rpx;margin-top:30rpx;" bindtap="clickToReceipt">收货</button>
+      </block>
+      <!-- <block wx:elif="{{ state == 'SL010107' }}">
+        <button class="button-submit" style="width:690rpx;margin-top:30rpx;"
+          bindtap="clickToReceiptFeedback">反馈</button>
+      </block> -->
+    </view>
+  </block>
+</view>
+
+
+<sfmodel confirmBtnText='关闭' icon="success" visiable='{{successShow}}' bind:confirm="successConfirm">
+  <view slot='body' class="column column-center">
+    <view style="text-align:center;padding:20rpx 0;">
+      {{title}}
+    </view>
+  </view>
+</sfmodel>

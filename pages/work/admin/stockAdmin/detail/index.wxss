@@ -1,0 +1,6 @@
+/* pages/work/admin/stockAdmin/detail/index.wxss */
+
+.imgBtn{
+  width: 50rpx;
+  height: 50rpx;
+}

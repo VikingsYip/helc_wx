@@ -1,0 +1,14 @@
+<!--pages/work/admin/organizationquota/index.wxml-->
+<view class="con">
+   <block wx:for="{{list}}" wx:key="id" wx:item="item">
+      <view class="row row-between row_line bor-bom-5">
+        <view class="row text-34">
+            {{item.corporateName}}
+        </view>
+        <view class="row" style="margin-left:20rpx">
+          <view class="btn-green-s" bindtap="clickToChange" data-id="{{item.id}}">修改</view>
+        </view>
+      </view>
+   </block>
+</view>
+

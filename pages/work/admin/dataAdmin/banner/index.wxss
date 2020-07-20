@@ -1,0 +1,5 @@
+image{
+  width: 380rpx;
+  height: 180rpx;
+  background-color: #dcdcdc;
+}

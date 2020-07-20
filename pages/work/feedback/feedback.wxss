@@ -1,0 +1,33 @@
+/* pages/work/feedback/feedback.wxss */
+
+.des{
+  border: #dcdcdc 1px solid;
+  padding: 6rpx;
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  color: #666;
+  height: 380rpx;
+  width: 690rpx;
+  box-sizing: border-box;
+}
+
+.photo{
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 30rpx;
+}
+
+.submit{
+  width: 690rpx;
+  height: 80rpx;
+  background-color: #00CC33;
+  color: white;
+  font-size: 30rpx;
+  margin-top: 50rpx;
+}
+
+.img{
+  width: 20vw;
+  height: 20vw;
+  margin-right: 2vw;
+}

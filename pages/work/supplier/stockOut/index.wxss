@@ -1,0 +1,8 @@
+/* pages/work/supplier/stockOut/index.wxss */
+.title_line{
+  font-weight: bold;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-bottom: solid #00CC33 6rpx;
+  width: 690rpx;
+}

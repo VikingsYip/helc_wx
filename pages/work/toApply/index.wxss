@@ -1,0 +1,91 @@
+/* pages/work/toApply/index.wxss */
+
+.border_b{
+  border-bottom: solid #dcdcdc 5rpx;
+}
+
+.text_warn{
+  color: blue;
+  border-bottom: blue solid 1px;
+  font-size: 24rpx;
+}
+
+.bottom_b{
+  height: 80rpx;
+  position: absolute;
+  bottom: 30rpx;
+  left: 30rpx;
+}
+
+.itemName{
+  color: tomato;
+  font-size: 28rpx;
+}
+
+.button_sub{
+  background-color: #E52B0B;
+  color: white;
+  font-size: 32rpx;
+  font-weight: bold;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 6rpx;
+}
+
+.button_add{
+  background-color: #00FFA5;
+  color: white;
+  font-size: 28rpx;
+  font-weight: bold;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 6rpx;
+}
+
+.text_count{
+  border: solid #dcdcdc 1rpx;
+  padding: 6rpx 30rpx;
+  margin: 0 20rpx;
+}
+
+.numInp{
+margin: 0 20rpx;
+width: 120rpx;
+text-align: center;
+border: solid #dcdcdc 1rpx;
+}
+
+.category{
+  padding: 20rpx 6rpx;
+  text-align: center;
+  color: gray;
+}
+
+.checked{
+  background-color: white;
+  color: black;
+}
+
+.liname{
+  flex: 1;
+}
+
+.linum{
+  flex: 1;
+}
+
+.liset{
+  flex: 1;
+}
+
+.liprice{
+  flex: 1;
+}
+
+label{
+  display: block;
+}
+
+.red{
+  color:red;
+}

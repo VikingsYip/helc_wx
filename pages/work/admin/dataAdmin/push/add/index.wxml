@@ -1,0 +1,74 @@
+<!--pages/work/admin/dataAdmin/push/add/index.wxml-->
+<view class="column column-center" style="width:750rpx">
+  <view class="title">宣传品信息</view>
+  <view class="row row_line">
+    <view class="name">宣传品名称</view>
+    <input class="content" value="{{detail.name||''}}" bindinput="inputToChange" data-key="detail.name"></input>
+  </view>
+  <view class="row row_line">
+    <view class="name">所属类别</view>
+    <picker range="{{lbList}}" data-key="detail.typeName" bindchange="bindPickerChange">
+      <input class="content" placeholder="请选择" disabled="{{true}}" value="{{detail.typeName||''}}"></input>
+    </picker>
+  </view>
+  <!-- <view class="row row_line">
+    <view class="name">是否套餐</view>
+    <picker range="{{isTCList}}" data-key="detail.isTC" bindchange="bindPickerChange">
+      <input class="content" placeholder="请选择" disabled="{{true}}" value="{{detail.isTC}}"></input>
+    </picker>
+  </view> -->
+  <view class="row row_line">
+    <view class="name">供应商审核</view>
+    <picker range="{{gysList}}" data-key="detail.verifySupplierName" bindchange="bindPickerChange">
+      <input class="content" placeholder="请选择" disabled="{{true}}" value="{{detail.verifySupplierName}}"></input>
+    </picker>
+  </view>
+ <view class="row row_line">
+    <view class="name">是否套餐</view>
+    <picker range="{{isTCList}}" data-key="detail.isSet" bindchange="bindPickerChange">
+      <input class="content" placeholder="请选择" disabled="{{true}}" value="{{isTCList[detail.isSet] || '否'}}"></input>
+    </picker>
+  </view>
+  <view class="row row_line">
+    <view class="name">成本价格</view>
+    <input class="content" type="digit" value="{{detail.costPrice}}" bindinput="inputToChange" data-key="detail.costPrice"></input>
+  </view>
+  <view class="row row_line">
+    <view class="name">库存预警</view>
+    <input class="content" type="number" value="{{detail.warningNum}}" bindinput="inputToChange" data-key="detail.warningNum"></input>
+  </view>
+  <view class="row row_line">
+    <view class="name">库存数量</view>
+    <input class="content" type="number" value="{{detail.stockNum}}" bindinput="inputToChange" data-key="detail.stockNum"></input>
+  </view>
+  <!-- <view class="row row_line">
+    <view class="name">最大申领数量</view>
+    <input class="content" type="number" value="{{detail.maxApplyNum||''}}" bindinput="inputToChange" data-key="detail.maxApplyNum"></input>
+  </view> -->
+  <view class="row row_line">
+    <view class="name">最新版本号</view>
+    <input class="content" value="{{detail.latestVersion}}" bindinput="inputToChange" data-key="detail.latestVersion"></input>
+  </view>
+  <view class="row row_line">
+    <view class="name">上传封面</view>
+    <view class="row row_sub">
+      <image src="/static/images/icon_add_image.png" bindtap="clickToUploadImage"></image>
+      <image src="{{detail.coverImgPath||''}}" bindtap="clickToReviewImage"></image>
+    </view>
+  </view>
+  <view class="row row_line">
+    <view class="name">详细介绍</view>
+    <textarea class="content" style="height:160rpx;font-size:24rpx" value="{{detail.introduction}}" bindinput="inputToChange" data-key="detail.introduction"></textarea>
+  </view>
+  <button class="button-submit" style="width:690rpx;margin:30rpx 0" bindtap="clickToSave">保存宣传品</button>
+</view>
+
+
+<sfmodel confirmBtnText='关闭' icon="success" visiable='{{successShow}}' bind:confirm="successConfirm">
+  <view slot='body' class="column column-center">
+      <view style="text-align:center;padding:20rpx 0;">
+         保存成功
+      </view>
+  </view>
+</sfmodel>
+

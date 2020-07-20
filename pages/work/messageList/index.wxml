@@ -1,0 +1,9 @@
+<!--pages/work/messageList/index.wxml-->
+<view class="column" style="padding:30rpx">
+  <block wx:for='{{records}}' wx:key='id'>
+    <view class="block" bindtap="clickToMessageDetail" data-id="{{item.id}}">
+      <view class="text-30">{{item.title}}</view>
+      <view class="text-28-gray line2" style="padding-top:1vw;">{{item.content}}</view>
+    </view>
+  </block>
+</view>

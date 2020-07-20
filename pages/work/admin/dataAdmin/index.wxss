@@ -1,0 +1,19 @@
+/* pages/work/admin/dataAdmin/index.wxss */
+.row_line{
+  width:690rpx;
+  margin-top: 16rpx;
+  height:160rpx;
+  border-radius: 16rpx;
+}
+
+image{
+  width: 100rpx;
+  height: 100rpx;
+  margin: 0 60rpx 0 30rpx;
+}
+
+text{
+  font-size: 36rpx;
+  font-weight: 400;
+  color: white;
+}

@@ -1,0 +1,41 @@
+<!--pages/work/receiveDetail/index.wxml-->
+<view class="column column-center">
+	<view class="row row_line">
+		<view class="text-28-black text_width">标题</view>
+		<view class="text-28-black text_content">广州分公司宣传品申领(20190908)</view>
+	</view>
+	<view class="row row_line">
+		<view class="text-28-black text_width">申领人</view>
+		<view class="text-28-black text_content">林芊雅（广州分公司）</view>
+	</view>
+	<view class="row row_line">
+		<view class="text-28-black text_width">申领备注</view>
+		<view class="text-28-black text_content">库存告急，只支持3天，请领导审批</view>
+	</view>
+	<view class="row row_line">
+		<view class="text-28-black text_width">发货单号</view>
+		<view class="row wrap">
+			<block wx:for='{{[1,1,1,1]}}'>
+				<image class="order_image"></image>
+			</block>
+		</view>
+	</view>
+	<block wx:for='{{[1,1,1,1]}}'>
+		<view class="row row_line">
+			<image class="title_image"></image>
+			<view class="column text_content">
+				<view class="text-28-black" style="font-weight:blod">工程服务手册</view>
+				<view class="text-24-gray" style="margin:10rpx 0">申领数量</view>
+				<view class="text-28-black">100</view>
+			</view>
+		</view>
+	</block>
+	<view style='width:690rpx'>
+		<view class="text-24-gray" style="margin-top:12rpx">上传附件</view>
+    <view class="row wrap"></view>
+		<block wx:for='{{[1,1,1]}}'>
+			<image class="order_image" style="margin-top:12rpx"></image>
+		</block>
+	</view>
+  <button class="button-submit" style="width:690rpx;margin-top:20rpx" bindtap="clickToSubmit">确认收货/反馈</button>
+</view>

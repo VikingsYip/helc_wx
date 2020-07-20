@@ -1,0 +1,89 @@
+/* components/model/model.wxss */
+.block_border{
+  border: solid #dcdcdc 4rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  /* padding: 30rpx; */
+  box-sizing: border-box;
+}
+
+.mask{
+  position: fixed;
+  top:0;
+  right: 0;
+  bottom:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background: rgba(0,0,0,0.3);
+  z-index:99;
+}
+
+.modal{
+  position: fixed;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 100;
+  width: 90vw;
+  background: #fff;
+}
+
+.model_top{
+  display: flex;
+  width: 100%;
+  height: 80rpx;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal_body{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.modal_footer_0{
+  width: 100%;
+  margin-top: 50rpx;
+}
+.modal_footer_1{
+  width: 100%;
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.modal_title{
+  font-size: 28rpx;
+  font-weight: bold;
+  color: tomato;
+}
+
+.button_submit{
+  height: 80rpx;
+  background-color: #00CC33;
+  color: white;
+  font-size: 30rpx;
+}
+
+.button_submit_1{
+  height: 80rpx;
+  background-color: #fff;
+  color: #00CC33;
+  font-size: 30rpx;
+}
+
+.button_cancel{
+  height: 80rpx;
+  background-color: #fff;
+  color: #999;
+  font-size: 30rpx;
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "额度管理",
+  "usingComponents": {
+    "model":"/components/model/model"
+  }
+}

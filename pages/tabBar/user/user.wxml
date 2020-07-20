@@ -1,0 +1,36 @@
+<!--pages/tabBar/user/user.wxml-->
+<view class="con">
+  <view style="postion:relative;text-align: center;">
+    <image src="{{userInfo.workingImgPath||''}}" mode="aspectFill" bindtap="clickToPreview"></image>
+     <view>
+        <view id="messageBtn" bindtap="message">
+            消息订阅
+        </view>
+     </view>
+  </view>
+  <view class="row line">
+    <view class="text-28-black name">姓名</view>
+    <view class="text-28-black content">{{userInfo.userName||''}}</view>
+  </view>
+  <view class="row line">
+    <view class="text-28-black name">所属机构</view>
+    <view class="text-28-black content">{{userInfo.organizationName||''}}</view>
+  </view>
+  <view class="row line">
+    <view class="text-28-black name">角色</view>
+    <view class="text-28-black content">{{userType[userInfo.roleId]}}</view>
+  </view>
+  <view class="row line">
+    <view class="text-28-black name">工号</view>
+    <view class="text-28-black content">{{userInfo.jobNum||''}}</view>
+  </view>
+  <view class="row line">
+    <view class="text-28-black name">手机号码</view>
+    <view class="text-28-black content">{{userInfo.telephoneNum||''}}</view>
+  </view>
+  <view class="row line">
+    <view class="text-28-black name">默认收货地址</view>
+    <view class="text-28-black content">{{userInfo.recipientAddr||''}}</view>
+  </view>
+    <button class="button-submit" style="width:690rpx;margin-top:20rpx" bindtap="toEdit">修改信息</button>
+</view>

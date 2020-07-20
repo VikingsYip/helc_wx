@@ -1,0 +1,16 @@
+/* pages/work/admin/dataAdmin/ads/index.wxss */
+.row_line{
+  width:690rpx;
+  padding: 10rpx 0;
+}
+
+.top{
+  background-color: #F46C6C;
+  color: white;
+  font-size: 20rpx;
+  line-height: 30rpx;
+  width: 60rpx;
+  height: 30rpx;
+  border-radius: 15rpx;
+  text-align: center;
+}

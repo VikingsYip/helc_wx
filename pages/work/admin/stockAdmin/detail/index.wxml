@@ -1,0 +1,50 @@
+<!--pages/work/admin/stockAdmin/detail/index.wxml-->
+
+<view class="row bor-bom-5" style="padding:50rpx 50rpx 0;">
+   <image src="{{detail.coverImgPath}}" style="width: 30vw;height: 30vw;"></image>
+   <view style="margin-left:30rpx;"> 
+     <view class="text-30">{{detail.name}} </view>
+        <view class="text-28-gray">{{detail.latestVersion}} </view>
+          <view class="text-28">库存数量: {{detail.stockNum}} </view>
+            <view class="text-28">预警数量: {{detail.warningNum}} </view>
+   </view>
+</view>
+
+<view>
+   <view class="row button-submit" style="margin:50rpx 50rpx 0;justify-content:center;" data-type="ruku" bindtap="modelShow">
+      <image src="/static/images/ruku.png" class="imgBtn"></image>
+      <text>发起入库</text>
+    </view>
+     <view class="row button-cancel" style="margin:50rpx 50rpx 0;justify-content:center;" data-type="diaopei" bindtap="modelShow">
+      <image src="/static/images/diaopei.png" class="imgBtn"></image>
+      <text>库存调配</text>
+    </view>
+</view>
+
+
+
+<newmodel title='{{title}}' styleType="1" bind:confirm="funConfirm" confirmBtnText='提交' visiable='{{funVisiable}}'>
+  <view slot='body'>
+      <view style="padding:0 30rpx;">
+       <view class="text-30">{{detail.name}} </view>
+       <view class="text-28-gray">{{detail.latestVersion}} </view>
+       <view class="row column-center" style="padding: 20rpx 0;">
+           <view class=".btn-red-s" bindtap="reduceNum">-</view>
+           <view style="width:100rpx;" class="textCenter">{{ num }}</view>
+           <view class=".btn-green-s" bindtap="addNum">+</view>
+       </view>
+       <view class="text-28-gray padding10">
+          添加备注：
+       </view>
+       <textarea class="content" style="height:80px;" value="{{remark||''}}" bindinput="inputToChange" data-key="remark"></textarea>
+    </view>
+  </view>
+</newmodel>
+
+<sfmodel confirmBtnText='关闭' icon="success" visiable='{{successVisiable}}' bind:confirm="successConfirm">
+  <view slot='body' class="column column-center">
+      <view style="text-align:center;padding:20rpx 0;">
+         操作成功
+      </view>
+  </view>
+</sfmodel>

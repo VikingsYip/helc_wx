@@ -1,0 +1,53 @@
+<!--pages/work/receive/index.wxml-->
+
+	<view class="search">
+		<image src="/static/images/icon_search.png"></image>
+		<input placeholder="快速搜索" confirm-type="search" data-key="searchValue" bindinput="inputToChange" value="{{searchValue}}" bindconfirm="searchConfirm"></input>
+	</view>
+  <view class="con">
+	<block wx:for='{{timeArr}}' wx:for-index='index' wx:key='item' wx:for-item='item'>
+		<view class="text-28-black title_line">{{item}}</view>
+		<block wx:for='{{timeObj[item].arr}}' wx:for-index='index2' wx:key='item2.id' wx:for-item='item2'>
+			<view class="row bor-bom-5" style="padding: 10rpx 0;">
+      <view style="flex:1;" bindtap="clickToDetail2" data-id="{{item2.id}}">
+				<view style="margin-top:10rpx">
+					<view class="text-28-black">{{item2.title}}</view>
+					<!-- <view class="text-28-black" style="margin-left:12rpx">{{item2.createUserName}}</view> -->
+					<!-- <view class="text-24-hint">{{item2.createTime}}</view> -->
+				</view>
+				<view class="text-24-gray" style="margin:6rpx 0">申领备注：{{item2.remark}}</view>
+
+		     	
+	<block wx-if="{{ item2.applyRemark}}">
+             	<view class="text-24-gray" style="margin:6rpx 0">分公司管理员备注：{{item2.applyRemark||''}}</view>
+          </block>
+          <block wx-if="{{ item2.applyRemark02}}">
+             	<view class="text-24-gray" style="margin:6rpx 0">总公司管理员备注：{{item2.applyRemark02||''}}</view>
+          </block>
+          <block wx-if="{{ item2.applyRemark03}}">
+             	<view class="text-24-gray" style="margin:6rpx 0">总公司领导备注：{{item2.applyRemark03||''}}</view>
+          </block>
+
+          <block wx-if="{{ item2.rejectReason}}">
+             	<view class="text-24-gray" style="margin:6rpx 0">供应商备注：{{item2.rejectReason||''}}</view>
+          </block>
+          <block wx-if="{{ item2.deliveryRemark}}">
+             	<view class="text-24-gray" style="margin:6rpx 0">供应商备注：{{item2.deliveryRemark||''}}</view>
+          </block>
+         <block wx-if="{{ item2.feedback}}">
+             	<view class="text-24-gray" style="margin:6rpx 0">收货反馈：{{item2.feedback||''}}</view>
+          </block>
+				<view class="text-24-black status">状态：{{item2.statusName}}</view>
+			</view>
+      <view>
+        <block wx:if="{{item2.status=='SL010106'}}">
+        	<view class="btn-green-s" bindtap="clickToDetail" data-id="{{item2.id}}">收货</view>
+        </block>
+        <!-- <block wx:elif="{{item2.status=='SL010107'}}">
+        	<view class="btn-green-s" bindtap="clickToDetail" data-id="{{item2.id}}">反馈</view>
+        </block> -->
+      </view>
+      </view>
+		</block>
+	</block>
+</view>

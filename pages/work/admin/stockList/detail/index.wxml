@@ -1,0 +1,38 @@
+<!--pages/work/admin/stockList/detail/index.wxml-->
+<view class="column column-center">
+	<view class="row row_line">
+		<view class="text-28-black text_width">标题</view>
+		<view class="text-28-black text_content">{{detail.title||''}}</view>
+	</view>
+	<view class="row row_line">
+		<view class="text-28-black text_width">申领人</view>
+		<view class="text-28-black text_content">{{detail.createUserName||''}}({{detail.organizationName||''}})</view>
+	</view>
+	<view class="row row_line">
+		<view class="text-28-black text_width">申请时间</view>
+		<view class="text-28-black text_content">{{detail.createTime||''}}</view>
+	</view>
+	<block wx:for='{{[1]}}'>
+		<view class="row row_line">
+			<image class="title_image" src="{{detail.coverImgPath}}"></image>
+			<view class="column text_content">
+				<view class="text-28-black" style="font-weight:blod">{{detail.brochureName||''}}</view>
+				<view class="text-24-gray" style="margin:10rpx 0">申请数量</view>
+				<view class="text-28-black">{{detail.warehousingNum||0}}</view>
+			</view>
+		</view>
+	</block>
+  <view class="row row_line">
+		<view class="text-28-black text_width">备注</view>
+		<view class="text-28-black text_content">{{detail.remark||''}}</view>
+	</view>
+  <button wx:if='{{(detail.status||"") == "RKZT01"}}' class="button-submit" style="width:690rpx;margin:20rpx" bindtap="clickToSubmit">撤回</button>
+</view>
+
+<sfmodel confirmBtnText='关闭' icon="success" visiable='{{successvisiable}}' bind:confirm="successConfirm">
+  <view slot='body' class="column column-center">
+      <view style="text-align:center;padding:20rpx 0;">
+         操作成功
+      </view>
+  </view>
+</sfmodel>

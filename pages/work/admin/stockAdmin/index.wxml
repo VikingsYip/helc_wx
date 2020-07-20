@@ -1,0 +1,58 @@
+<!--pages/work/admin/stockAdmin/index.wxml-->
+<!-- <view class="row border_b" style="margin:0 30rpx;padding:10rpx 0">
+	<view class="text-24-black" style="margin:0 50rpx">姓名</view>
+	<view class="text-24-black">{{userInfo.userName||''}}</view>
+</view>
+<view class="row border_b" style="margin:0rpx 30rpx;padding:10rpx 0">
+	<view class="text-24-black" style="margin:0 50rpx">单位</view>
+	<view class="text-24-black">{{userInfo.organizationName||''}}</view>
+</view> -->
+<view id="wran" class="row" style="width:690rpx;margin:10rpx 30rpx">
+	<!-- <view style="flex:1"></view>
+	<icon type="warn" size="20" bindtap="clickToShowWarn"></icon>
+	<view class="text_warn" bindtap="clickToShowWarn">每个申领单只能选择一种宣传品</view> -->
+</view>
+
+	<view class="row" style="padding: 0 30rpx 30rpx;width:750rpx" >
+
+	<scroll-view style="height:{{scrollHeight}}px;flex:1;background-color:#f0f0f0;border: 2px solid #f0f0f0;border-right: 0;border-left: 0;" scroll-y bindscrolltolower="scrollMoreL">
+		<view>
+			<block wx:for='{{categoryList}}' wx:for-index='lIndex' wx:key='id' wx:for-item='category'>
+				<view class="category text-28 line2 {{lIndex == categoryIndex ? 'checked' : ''}}"  bindtap="clickToChangeCategory" data-index="{{lIndex}}">
+					<!-- <view style="width:6rpx;height:24rpx;margin-right:8rpx;{{lIndex == categoryIndex ? 'background-color:red' : ''}}"></view> -->
+          {{category.name||''}}
+				</view>
+			</block>
+		</view>
+	</scroll-view>
+
+
+<scroll-view scroll-y style="height:{{scrollHeight}}px;flex:2;margin-left:20rpx" bindscrolltolower="scrollMoreR">
+     <block wx:for='{{categoryList[categoryIndex].arr}}' wx:for-item='record' wx:for-index='rIndex' wx:key='id'>
+
+			<view class="row" style="padding:0 0 10rpx 0" bindtap="clickToDetail" data-index="{{rIndex}}">
+
+				<image style="width:130rpx;height:180rpx;background-color:#dcdcdc;margin-right:16rpx" 
+        src="{{record.coverImgPath}}"></image>
+
+				<view style="flex:1;">
+					
+          <view class="text-28-black line1">{{record.name || ''}}</view>
+					<view class="text-24-hint line1">{{record.latestVersion || ""}}</view>
+          <view class="text-24-hint">库存数量：{{record.stockNum || ''}}</view>
+					<view class="text-24-hint {{record.red ? 'textRed' : ''}}">预警数量: {{record.warningNum || ""}}</view>
+       <block wx-if="{{record.wayNum != 0}}">
+          <block wx-if="{{record.wayNum > 0}}">
+       <view class="text-28 yellow">入库: {{record.warningNum}}</view>
+       </block> 
+       <block wx-if="{{record.wayNum < 0}}">
+       <view class="text-28 yellow">调配: {{record.warningNum}}</view>
+       </block> 
+       </block>   
+			</view>
+</view>
+		</block>
+	</scroll-view>
+
+<view id="bottom" />
+</view>

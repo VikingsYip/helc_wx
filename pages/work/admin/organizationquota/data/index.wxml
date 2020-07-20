@@ -1,0 +1,51 @@
+
+
+<view class="row" style="padding: 0 30rpx 30rpx;width:750rpx">
+	<scroll-view style="height:{{scrollHeight}}px;flex:1;background-color:#f0f0f0;border: 2px solid #f0f0f0;border-right: 0;border-left: 0;" scroll-y bindscrolltolower="scrollMoreL">
+		<view>
+			<block wx:for='{{categoryList}}' wx:for-index='lIndex' wx:key='id' wx:for-item='category'>
+				<view class="category text-28 line2 {{lIndex == categoryIndex ? 'checked' : ''}} {{category.hasAgain ? 'red' : ''}}" bindtap="clickToChangeCategory" data-index="{{lIndex}}">
+					<!-- <view style="width:6rpx;height:24rpx;margin-right:8rpx;{{lIndex == categoryIndex ? 'background-color:red' : ''}}"></view> -->
+          {{category.name||''}}
+				</view>
+			</block>
+		</view>
+	</scroll-view>
+
+
+<scroll-view scroll-y style="height:{{scrollHeight}}px;flex:2;margin-left:20rpx" bindscrolltolower="scrollMoreR">
+     <block wx:for='{{categoryList[categoryIndex].arr}}' wx:for-item='record' wx:for-index='rIndex' wx:key='id'>
+
+			<view class="row" style="padding:0 0 10rpx 0" bindtap="clickToDetail" data-index="{{rIndex}}">
+
+				<image style="width:130rpx;height:180rpx;background-color:#dcdcdc;margin-right:16rpx" 
+        src="{{record.coverImgPath}}"></image>
+
+				<view class="column column-between" style="flex:1;height:180rpx">
+					
+          <view class="text-28-black line1 {{record.hasAgain ? 'red' : ''}}"><text wx:if="{{record.isSet==1}}" class="isSet">[套餐]</text>
+          {{record.name || ''}}
+          </view>
+					<view class="text-24-hint">{{record.latestVersion || ""}}</view>
+					<view class="text-24-gray">额度:{{record.organizationQuota[0].quotanum || 0}}</view>
+            <view class="btn-red-s" data-index="{{rIndex}}" catchtap="clickShow">修改</view>
+			</view>
+</view>
+		</block>
+	</scroll-view>
+</view>
+
+
+<model title='修改额度' styleType="1" bind:confirm="applyConfirm" confirmBtnText='确认提交' visiable='{{applyListVisiable}}'>
+  <view slot='body'>
+       <input class="text-24-black numInp" type="number"  value="{{nowObj.organizationQuota[0].quotanum}}" bindinput="inpNum"></input>
+  </view>
+</model>
+
+<sfmodel confirmBtnText='关闭' icon="success" visiable='{{successVisiable}}' bind:confirm="successConfirm">
+  <view slot='body' class="column column-center">
+      <view style="text-align:center;padding:20rpx 0;">
+         修改成功
+      </view>
+  </view>
+</sfmodel>

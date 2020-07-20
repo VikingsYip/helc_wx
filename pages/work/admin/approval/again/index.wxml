@@ -1,0 +1,105 @@
+<!--pages/work/admin/approval/detail/index.wxml-->
+<view class="con">
+	<view class="row row_line">
+		<view class="text-28-black text_width">标题</view>
+		<view class="text-28-black text_content">{{detail.title||''}}</view>
+	</view>
+	<view class="row row_line">
+		<view class="text-28-black text_width">申领人</view>
+		<view class="text-28-black text_content">{{detail.userName||''}}（{{detail.organizationName||''}}）</view>
+	</view>
+	<view class="row row_line">
+		<view class="text-28-black text_width">申领备注</view>
+		<view class="text-28-black text_content">{{detail.remark||''}}</view>
+	</view>
+  <checkbox-group bindchange="checkboxChange">
+	<block wx:for='{{detail.applyDtls||[]}}' wx:for-index="index" wx:for-item="item">
+		<view class="row row_line">
+			<image class="title_image" src="{{item.coverImgPath||''}}"></image>
+			<view class="column text_content">
+				<view class="text-28-black" style="font-weight:blod">{{item.name||''}}</view>
+				<view class="text-24-gray" style="margin:10rpx 0">库存{{item.stockNum||0}}</view>
+				
+        <!-- <view class="row">
+          <input class="count_input" placeholder="数量" value="{{item.applyNum||0}}"></input>
+        </view> -->
+
+        <view class="row">
+            <view class="row row-center button_sub" data-num="{{item.applyNum}}" data-index="{{index}}" bindtap="reduceNum">-</view>
+            <input class="text-24-black numInp" type="number" data-num="{{item.applyNum}}" value="{{item.applyNum}}" bindinput="inpNum" data-index="{{index}}"></input>
+            <view class="row row-center button_add" data-index="{{index}}" data-num="{{item.applyNum}}" bindtap="addNum">+</view>
+        </view>
+
+			</view>
+		</view>
+	</block>
+  </checkbox-group>
+  
+   <!-- <block wx-if="{{ detail.applyRemark}}">
+             	<view class="row bor-bom-5 padding10">
+		<view class="text-28-black text_width">管理员</view>
+		<view class="text-28-black text_content">{{detail.applyRemark}}</view>
+	</view>
+          </block>
+          <block wx-if="{{ detail.deliveryRemark}}">
+             <view class="row bor-bom-5 padding10">
+		<view class="text-28-black text_width">供应商</view>
+		<view class="text-28-black text_content">{{detail.deliveryRemark}}</view>
+	</view>
+          </block>
+          
+  <block wx-if="{{ detail.rejectReason}}">
+             	<view class="row bor-bom-5 padding10">
+		<view class="text-28-black text_width">供应商</view>
+		<view class="text-28-black text_content">{{detail.rejectReason}}</view>
+	</view>
+ </block>
+
+ <block wx-if="{{ detail.deliveryImg}}">
+             <view class="row  bor-bom-5 padding10">
+        <view class="text-28-black text_width">发货图片</view>
+        <view class="row wrap">
+          <block wx:for='{{detail.deliveryImg}}' wx:for-item='item' wx:for-index='index' wx:key='item'>
+            <image class="order_image" src="{{item}}"></image>
+          </block>
+        </view>
+      </view>
+ </block> 
+
+ 
+
+ <block wx-if="{{ detail.feedback}}">
+             	<view class="row bor-bom-5 padding10">
+		<view class="text-28-black text_width">收货反馈</view>
+		<view class="text-28-black text_content">{{detail.feedback}}</view>
+	</view>
+ </block>
+
+<block wx-if="{{ detail.appendix}}">
+          			    <view class="row  bor-bom-5 padding10">
+        <view class="text-28-black text_width">反馈图片</view>
+        <view class="row wrap">
+          <block wx:for='{{detail.appendix}}' wx:for-item='item' wx:for-index='index' wx:key='item'>
+            <image class="order_image" src="{{item}}"></image>
+          </block>
+        </view>
+      </view>
+ </block>-->
+
+	<view class="row" style='width:690rpx'>
+		<view class="text-24-gray text_width">备注</view>
+		<textarea class="remark_input" value="{{detail.applyRemark||''}}" placeholder="请输入备注" bindinput="inputToChange" data-key="applyRemark"></textarea>
+	</view>
+   
+   <button class="button-cancel" style="width:690rpx;margin-top:30rpx;" bindtap="clickToAgain">重新提交</button>
+
+</view>
+
+
+<sfmodel confirmBtnText='关闭' icon="success" visiable='{{successvisiable}}' bind:confirm="successConfirm">
+  <view slot='body' class="column column-center">
+      <view style="text-align:center;padding:20rpx 0;">
+         操作成功
+      </view>
+  </view>
+</sfmodel>

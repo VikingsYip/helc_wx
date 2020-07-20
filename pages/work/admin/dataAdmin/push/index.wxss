@@ -1,0 +1,22 @@
+/* pages/work/admin/dataAdmin/push/index.wxss */
+.content{
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+/* .category{
+  padding: 5rpx;
+} */
+
+.category{
+  padding: 20rpx 6rpx;
+  text-align: center;
+  color: gray;
+}
+
+.checked{
+  background-color: white;
+  color: black;
+}

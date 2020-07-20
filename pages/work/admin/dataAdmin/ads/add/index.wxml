@@ -1,0 +1,38 @@
+<!--pages/work/admin/dataAdmin/ads/add/index.wxml-->
+<view class="column column-center" style="width:750rpx">
+	<view class="row row_line">
+		<view class="name">公告标题</view>
+		<input class="content" value="{{detail.title}}" bindinput="inputToChange" data-key="detail.title" placeholder="请输入标题"></input>
+	</view>
+	<view class="row row_line">
+		<view class="name">是否置顶</view>
+		<picker range="{{['是','否']}}" bindchange="pickerToChange">
+			<input class="content" placeholder="请选择" disabled="{{true}}" value="{{(detail.isTop||0) == 1 ? '是' : '否'}}"></input>
+		</picker>
+	</view>
+	<view class="row row_line">
+		<view class="name">公告内容</view>
+		<textarea class="content" style="height:160rpx;font-size:24rpx" value="{{detail.content||''}}" bindinput="inputToChange" data-key="detail.content" placeholder="请输入内容"></textarea>
+	</view>
+	<view class="row row_line" style="margin:40rpx 0 0 0">
+		<view class="name">公告附件</view>
+		<view class="btn-green-s" style="margin-left:30rpx" bindtap="clickToUploadFile">上传附件</view>
+		<view style="flex:1"></view>
+	</view>
+	<block wx:for='{{detail.appendixs || []}}' wx:key='id' wx:for-item='append' wx:for-index='aIndex'>
+		<view class="row row_line">
+			<view class="text-24-gray">{{append.name||''}}</view>
+			<view class="btn-red-s" style="margin-left:30rpx" data-index="{{aIndex}}" bindtap="clickToDelete">删除</view>
+			<view style="flex:1"></view>
+		</view>
+	</block>
+	<button class="button-submit" style="width:690rpx;margin:50rpx 0 0 0" bindtap="clickToSave">保存公告</button>
+</view>
+
+<sfmodel confirmBtnText='关闭' icon="success" visiable='{{successShow}}' bind:confirm="successConfirm">
+  <view slot='body' class="column column-center">
+      <view style="text-align:center;padding:20rpx 0;">
+         保存成功
+      </view>
+  </view>
+</sfmodel>

@@ -1,0 +1,6 @@
+/* pages/work/messageList/index.wxss */
+.block{
+  margin-top: 10rpx;
+  border-bottom: solid #dcdcdc 5rpx;
+  padding-bottom: 10rpx;
+}

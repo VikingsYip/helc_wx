@@ -1,0 +1,263 @@
+<!--pages/work/toApply/index.wxml-->
+
+<view class="row border_b" style="margin:0 30rpx;padding:10rpx 0">
+  <view class="text-24-black" style="margin:0 50rpx">姓名</view>
+  <view class="text-24-black">{{userInfo.userName}}</view>
+</view>
+
+
+<view class="row border_b" style="margin:0rpx 30rpx;padding:10rpx 0">
+  <view class="text-24-black" style="margin:0 50rpx">单位</view>
+  <view class="text-24-black">{{userInfo.organizationName}}</view>
+</view>
+
+<view id="isTC" class="row text-30"
+  style="padding:20rpx;text-align:center;background: #f0f0f0;margin: 20rpx 20rpx 0 20rpx;">
+  <!-- <view style="flex:1;"></view> -->
+  <view style="flex:2;">
+    <view class="row">
+      <view style="flex:1;{{isTC==0 ? 'color:red': ''}};" bindtap="isTCHandle" data-key="0">单品</view>
+      <view style="flex:1;{{isTC==1 ? 'color:red': ''}};" bindtap="isTCHandle" data-key="1">套餐</view>
+    </view>
+  </view>
+</view>
+<view class="row" style="padding: 0 20rpx 20rpx;width:750rpx">
+  <scroll-view style="height:{{scrollHeight}}px;flex:1;background-color:#f0f0f0;" scroll-y
+    bindscrolltolower="scrollMoreL">
+    <view>
+      <block wx:for='{{categoryList}}' wx:for-index='lIndex' wx:key='id' wx:for-item='category'>
+        <block wx:if="{{category.isSet==isTC}}">
+          <view
+            class="category text-28 line2 {{lIndex == categoryIndex ? 'checked' : ''}} {{category.hasAgain ? 'red' : ''}}"
+            bindtap="clickToChangeCategory" data-index="{{lIndex}}">
+            <block wx:if="{{category.isSet==0}}">
+              单品
+            </block>
+            <block wx:if="{{category.isSet==1}}">
+              套餐{{lIndex+1}}
+            </block>
+            <!-- {{category.name||''}} -->
+          </view>
+        </block>
+      </block>
+    </view>
+  </scroll-view>
+
+  <scroll-view scroll-y style="height:{{scrollHeight}}px;flex:2;margin-left:20rpx;" bindscrolltolower="scrollMoreR2">
+
+    <block wx:if="{{isTC==1}}">
+      <view class="row" catchtap="catchtap" style="justify-content: center;margin:20rpx 0;">
+        <text style="margin-right:10rpx;">申请数量</text>
+        <view class="row row-center button_sub" data-num="{{categoryList[categoryIndex].num}}"
+          data-index="{{categoryIndex}}" catchtap="reduceCategoryList">-</view>
+        <input class="text-24-black numInp" type="number" value="{{categoryList[categoryIndex].num || 0}}"
+          bindinput="inpCategoryList" data-index="{{categoryIndex}}"></input>
+        <view class="row row-center button_add" data-num="{{categoryList[categoryIndex].num}}"
+          data-index="{{categoryIndex}}" catchtap="addCategoryList">+</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view style="margin:20rpx 0;"></view>
+    </block>
+
+    <block wx:for='{{categoryList[categoryIndex].arr}}' wx:for-item='record' wx:for-index='rIndex' wx:key='id'>
+
+      <block wx:if="{{isTC==1}}">
+        <block wx:if="{{record.isSet==1}}">
+          <view class="row" style="padding:0 0 10rpx 0" data-index="{{rIndex}}">
+            <image style="width:130rpx;height:180rpx;background-color:#dcdcdc;margin-right:16rpx"
+              src="{{record.coverImgPath}}" bindtap="clickToDetail"></image>
+            <view class="column column-between" style="flex:1;height:180rpx">
+              <view class="text-28-black line1 {{record.hasAgain ? 'red' : ''}}">
+                <!-- <text class="isSet">[套餐]</text> -->
+                {{record.name || ''}}
+              </view>
+              <view class="text-24-hint">{{record.latestVersion || ""}}</view>
+              <view class="text-24-gray">申领数量</view>
+              <view class="text-24-black">
+                {{record.detailcount}} * {{categoryList[categoryIndex].num}}
+              </view>
+            </view>
+          </view>
+        </block>
+      </block>
+
+      <block wx:else>
+        <block wx:if="{{record.isSet!=1 && record.isSet!=2}}">
+          <view class="row" style="padding:0 0 10rpx 0" data-index="{{rIndex}}">
+            <image style="width:130rpx;height:180rpx;background-color:#dcdcdc;margin-right:16rpx"
+              src="{{record.coverImgPath}}" bindtap="clickToDetail"></image>
+            <view class="column column-between" style="flex:1;height:180rpx">
+              <view class="text-28-black line1 {{record.hasAgain ? 'red' : ''}}">
+                {{record.name || ''}}
+              </view>
+              <view class="text-24-hint">{{record.latestVersion || ""}}</view>
+              <view class="text-24-gray">申领数量</view>
+              <view class="row" catchtap="catchtap">
+                <view class="row row-center button_sub" data-num="{{record.num}}" data-index="{{rIndex}}"
+                  catchtap="reduceNum">-</view>
+                <input class="text-24-black numInp" type="number" value="{{record.num}}" bindinput="inpNum"
+                  data-index="{{rIndex}}" data-maxapply="{{record.maxApplyNum}}"></input>
+                <view class="row row-center button_add" data-maxapply="{{record.maxApplyNum}}" data-num="{{record.num}}"
+                  data-index="{{rIndex}}" catchtap="addNum">+</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </block>
+
+
+    </block>
+  </scroll-view>
+</view>
+<block wx:if="{{againId}}">
+  <button id="bottom" class="button-cancel bottom_b" style="width:690rpx" bindtap="clickToApply">重新提交</button>
+</block>
+<block wx:else>
+  <button id="bottom" class="button-submit bottom_b" style="width:690rpx" bindtap="clickToApply">发起申领</button>
+</block>
+
+<model title='{{detail.name}}' confirmBtnText='关闭' visiable='{{detailShow}}'>
+  <view slot='body' style="width:100%;">
+    <view style="text-align:left;">
+      <view class="text-24-gray">最大申领数量:{{detail.maxApplyNum}}</view>
+      <view class="text-24-gray">单价:{{detail.costPrice}}</view>
+      <view class="text-24-gray">组织机构{{detail.verifySupplierName}}</view>
+      <view class="text-24-gray">分公司可用数：{{detail.stockNum}}</view>
+    </view>
+    <block wx:if="{{detail.isSet==1 && detail.data && detail.data.length!=0}}">
+      <view class="modal_title padding10" style="text-align:center;">套餐内容:</view>
+      <view style="text-align:left;">
+        <block wx:for="{{detail.data}}" wx:item="item" wx:key="id">
+          <view class="text-24-gray">{{item.detailname}}--{{item.detailcount}}件</view>
+        </block>
+      </view>
+    </block>
+  </view>
+</model>
+
+<model title='注意事项' confirmBtnText='我已知悉' visiable='{{warnShow}}'>
+  <view slot='body' class="column column-center">
+    <text class="text-24-black" style="text-align: left;">2019年9月19日日立出展"2019第21届中国国际工业博览会"New
+      2019年8月27日中国国家发展与改革委员会与日立在苏州共同举办"以数字经济和健康养老促进区域经济发展"经济技术交流会
+      2019年7月15日日立在成都举办“四川-日立创新交流会”拓展在华社会创新事业
+      2019年6月5日日立（中国）有限公司河北雄安分公司成立</text>
+  </view>
+</model>
+
+<newmodel title='申请信息确认' styleType="1" bind:confirm="applyConfirm" confirmBtnText='确认提交'
+  visiable='{{applyListVisiable}}'>
+  <view slot='body'>
+    <view class="bor-bom-5">
+      <view class="text-28-gray">申请人：{{userInfo.userName}}</view>
+      <view class="text-28-gray">时间：{{currentTime}}</view>
+      <scroll-view scroll-y="true" style="height:300rpx;">
+        <block wx:for='{{applyObj}}' wx:for-item='item' wx:for-index='index' wx:key='name'>
+          <view style="margin-top:10rpx;">
+            <block wx:for='{{item.arr}}' wx:for-item='item2' wx:for-index='index2' wx:key='id'>
+              <view class="text-28-gray row" style="margin:10rpx;">
+                <image style="width:65rpx;height:90rpx;background-color:#dcdcdc;margin-right:16rpx"
+                src="{{item2.coverImgPath}}" bindtap="clickToDetail"></image>
+                <view class="liname">{{item2.name}}</view>
+                <view class="liname">
+                  <block wx:if="{{item2.isSet==0}}">
+                    单品
+                  </block>
+                  <block wx:if="{{item2.isSet==1}}">
+                    套餐{{item2.setmeal+1}}
+                  </block>
+                </view>
+                <view class="linum">
+                  <block wx:if="{{item2.isSet==1}}">{{item2.num * item2.detailcount}}个</block>
+                  <block wx:else>{{item2.num}}个</block>
+                </view>
+                <view class="liprice">{{item2.costPrice}}元</view>
+              </view>
+            </block>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+
+    <view class="text-28-gray row" style="text-align:right;">
+      <view class="liname">总计：{{allNum}}个</view>
+      <view class="liname" style="text-align: center;">{{allPrice}}元</view>
+    </view>
+    
+    <view class="padding5 text-28-gray" style="display: flex;">
+      <text>备注：</text>
+      <textarea value="{{applyRemark}}" bindinput="inputToChange" class="content2" data-key="applyRemark"
+        style="height:120rpx;padding: 6rpx 10rpx;flex: 1;" placeholder="请填写备注"></textarea>
+    </view>
+
+    <block wx:if="{{isTC==1}}">
+      <view class="padding5 text-28-gray">
+        <view class="padding5 text-28-gray" style="display: flex;" bindtap="onHandleShowPopup">
+          <text style="flex：2">活动时间：</text>
+          <input class="content" style="flex：4;width:440rpx" value="{{eventTime}}" disabled></input>
+        </view>
+        <view class="padding5 text-28-gray" style="display: flex;"  bindtap="onHandleShowScale">
+          <text style="flex：2">活动规模：</text>
+          <input class="content" style="flex：4;width:440rpx" value="{{eventNumberPeople}}" disabled></input>
+        </view>
+        <view class="padding5 text-28-gray" style="display: flex;">
+          <text style="flex：2">活动地点：</text>
+          <input class="content" style="flex：4;width:440rpx" value="{{eventAddress}}" bindinput="inputToChange" data-key="eventAddress"></input>
+        </view>
+      </view>
+    </block>
+
+    <van-popup show="{{ showPopup }}" bindtap="onHandleClose" position="bottom" custom-style="height: 30%;">
+      <van-datetime-picker
+        type="date"
+        value="{{ eventTime }}"
+        min-date="{{ minDate }}"
+        bind:confirm="onInput"
+      />
+    </van-popup>
+
+    <van-popup show="{{ showScale }}" bindtap="onHandleClose" position="bottom" custom-style="height: 30%;">
+      <van-picker columns="{{ columns }}" bind:change="onChange" show-toolbar title="活动规模" bind:confirm="onInputScale" />
+    </van-popup>
+
+    <view class="padding5 text-28-gray" style="display:flex">
+      <text style="flex:3;display:flex;align-items: center;line-height:0">
+        是否使用默认地址：
+      </text>
+      <radio-group bindchange="radioChangeDefault" style="flex:3;display:flex">
+        <label wx:for="{{radioDefaultArr}}">
+          <radio class="radio" value="{{index}}" checked="{{item.checked}}">
+              <text>{{item.value}}</text>
+          </radio>
+        </label>
+      </radio-group>
+    </view>
+
+    <view class="padding5 text-28-gray" hover-class="none" hover-stop-propagation="false">
+      <input class="content" style="width: 96%;" bindinput="inputToChange" data-key="otherAddress" value="{{otherAddress}}"
+                placeholder="请输入地址"></input>
+    </view>
+
+    <view class="padding5 text-28-gray">
+      <radio-group bindchange="radioChange">
+        <label wx:for="{{radioArr}}">
+          <radio class="radio" value="{{index}}" checked="{{item.checked}}">
+              <text>{{item.value}}</text>
+          </radio>
+        </label>
+      </radio-group>
+    </view>
+    
+  </view>
+</newmodel>
+
+
+<sfmodel confirmBtnText='关闭' icon="success" visiable='{{successVisiable}}' bind:confirm="successConfirm">
+  <view slot='body' class="column column-center">
+    <view style="text-align:center;padding:20rpx 0;">
+      提交成功，待正式审核通过
+    </view>
+  </view>
+</sfmodel>
+
+<toast icon="fail" value="你所在的分公司已经超出了全年预算数量。如需继续申领，请与管理员联系！" visiable='{{toastVisiable}}'></toast>

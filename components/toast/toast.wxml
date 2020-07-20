@@ -1,0 +1,23 @@
+<!--components/model/model.wxml-->
+<view hidden='{{!visiable}}' style='z-index:200'>
+  <view class="mask" bindtap='_toggleShow' style="background-color:{{ bgc }}"></view>
+  
+  <view class="modal block_border" style="width:{{width}}">
+     <view wx:if="{{icon && value}}">
+       <view wx:if="{{icon == 'success'}}" class="row">
+          <image class="icon-png" src="/static/images/success.png"></image>
+          <view style="flex:1">{{value}}</view>
+       </view>
+       <view wx:if="{{icon == 'fail'}}" class="row">
+          <image class="icon-png" src="/static/images/fail.png"></image>
+          <view style="flex:1">{{value}}</view>
+       </view>
+    </view>
+    <view wx:else>
+        <view class="modal_body">
+          <slot name="body"></slot>
+       </view>
+    </view>
+  </view>
+
+</view>

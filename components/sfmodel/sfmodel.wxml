@@ -1,0 +1,15 @@
+<!--components/model/model.wxml-->
+<view hidden='{{!visiable}}' style='z-index:200'>
+  <view class="mask" bindtap='_toggleShow' style="background-color:{{ bgc }}"></view>
+  <view class="modal block_border">
+    <view style="text-align:center;padding-top:60rpx;">
+          <image src="/static/images/{{icon}}.png" class="icon-png"></image>
+      </view>
+    <view class="modal_body">
+      <slot name="body"></slot>
+    </view>
+    <view class="modal_footer_0">
+      <button bindtap='_handleConfirm' style="width:100%" class='button_submit'>{{confirmBtnText}}</button>
+    </view>
+  </view>
+</view>

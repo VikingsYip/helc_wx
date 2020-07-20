@@ -1,0 +1,212 @@
+<!--pages/work/admin/approval/detail/index.wxml-->
+<view class="con">
+  <view class="row row_line">
+    <view class="text-28-black text_width">标题</view>
+    <view class="text-28-black text_content">{{detail.title||''}}</view>
+  </view>
+  <view class="row row_line">
+    <view class="text-28-black text_width">申领人</view>
+    <view class="text-28-black text_content">{{detail.userName||''}}（{{detail.organizationName||''}}）</view>
+  </view>
+  <view class="row row_line">
+    <view class="text-28-black text_width">申领备注</view>
+    <view class="text-28-black text_content">{{detail.remark||''}}</view>
+  </view>
+  <checkbox-group bindchange="checkboxChange">
+    <block wx:for='{{detail.applyDtls||[]}}' wx:for-index="index" wx:for-item="item" wx:key="item.typeId">
+      <block wx:for='{{item.dtl||[]}}' wx:for-index="index2" wx:for-item="item2" wx:key="item2.id">
+        <view class="row row_line">
+          <image class="title_image" src="{{item2.coverImgPath||''}}"></image>
+          <view>
+            <view class="text-28-black" style="font-weight:blod">
+              {{item2.name||''}}
+            </view>
+            <view class="text-24-gray" style="margin:10rpx 0">库存{{item2.stockNum||0}}</view>
+            <view class="row">
+              <block wx:if="{{flag==3}}">
+                <view class="row row-center button_sub" data-num="{{item2.applyNum}}" data-index="{{index2}}"
+                  bindtap="reduceNum">-</view>
+                <input class="text-24-black numInp" type="number" data-num="{{item2.applyNum}}"
+                  value="{{item2.applyNum || 0}}" bindinput="inpNum" data-index="{{index2}}"></input>
+                <view class="row row-center button_add" data-index="{{index2}}" data-num="{{item2.applyNum}}"
+                  bindtap="addNum">+</view>
+              </block>
+              <block wx:else>
+                <input class="count_input" placeholder="数量" value="申领数量: {{item2.applyNum||0}}" disabled="true"></input>
+                <text class="button-cancel" style="height:40rpx;display:flex;padding:10rpx" bindtap='onHandlenNum'>修改</text>
+              </block>
+              <label class="checkbox" wx:if="{{flag}}">
+                <checkbox value="{{index}}" checked="{{item.checked}}" style="display:none;" />
+                <view class="row">
+                  <block wx:if="{{item.checked}}">
+                    <image class="icon_status" src="/static/images/icon_select_yes.png"></image>
+                  </block>
+                  <block wx:else>
+                    <image class="icon_status" src="/static/images/icon_select_no.png"></image>
+                  </block>
+                  <view class="text-24-gray">是否通过</view>
+                </view>
+              </label>
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+  </checkbox-group>
+
+  <block wx:if="{{isTC==1}}">
+    <view class="padding5 text-28-gray">
+      <view class="padding5 text-28-gray" style="display: flex;">
+        <text style="flex：2">活动时间：</text>
+        <input class="content" style="flex：4;width:440rpx" value="{{detail.eventTime}}" disabled></input>
+      </view>
+      <view class="padding5 text-28-gray" style="display: flex;">
+        <text style="flex：2">活动规模：</text>
+        <input class="content" style="flex：4;width:440rpx" value="{{detail.eventNumberPeople}}" disabled></input>
+      </view>
+      <view class="padding5 text-28-gray" style="display: flex;">
+        <text style="flex：2">活动地点：</text>
+        <input class="content" style="flex：4;width:440rpx" value="{{detail.eventAddress}}" disabled></input>
+      </view>
+    </view>
+  </block>
+
+  <view class="padding5 text-28-gray" style="display:flex">
+    <text style="flex:3;display:flex;align-items: center;line-height:0">
+      是否使用默认地址：
+    </text>
+    <radio-group bindchange="radioChangeDefault" style="flex:3;display:flex">
+      <label wx:for="{{radioDefaultArr}}">
+        <radio class="radio" value="{{index}}" checked="{{item.checked}}" disabled>
+            <text>{{item.value}}</text>
+        </radio>
+      </label>
+    </radio-group>
+  </view>
+
+  <view class="padding5 text-28-gray" hover-class="none" hover-stop-propagation="false">
+    <input class="content" style="width: 96%;" disabled value="{{detail.otherAddress}}" placeholder="请输入地址"></input>
+  </view>
+
+  <view class="padding5 text-28-gray">
+    <radio-group bindchange="radioChange">
+      <label wx:for="{{radioArr}}">
+        <radio class="radio" value="{{index}}" checked="{{item.checked}}" disabled> 
+            <text>{{item.value}}</text>
+        </radio>
+      </label>
+    </radio-group>
+  </view>
+
+  <block wx-if="{{ detail.applyRemark}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">分公司管理员备注</view>
+      <view class="text-28-black text_content">{{detail.applyRemark}}</view>
+    </view>
+  </block>
+  <block wx-if="{{ detail.applyRemark02}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">总公司管理员备注</view>
+      <view class="text-28-black text_content">{{detail.applyRemark02}}</view>
+    </view>
+  </block>
+  <block wx-if="{{ detail.applyRemark03}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">总公司领导备注</view>
+      <view class="text-28-black text_content">{{detail.applyRemark03}}</view>
+    </view>
+  </block>
+
+
+
+  <block wx-if="{{ detail.deliveryRemark}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">供应商</view>
+      <view class="text-28-black text_content">{{detail.deliveryRemark}} </view>
+    </view>
+  </block>
+
+  <block wx-if="{{ detail.rejectReason}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">供应商</view>
+      <view class="text-28-black text_content">{{detail.rejectReason}}</view>
+    </view>
+  </block>
+
+  <block wx-if="{{ detail.deliveryImg}}">
+    <view class="row  bor-bom-5 padding10">
+      <view class="text-28-black text_width">发货图片</view>
+      <view class="row wrap">
+        <block wx:for='{{detail.deliveryImg}}' wx:for-item='item' wx:for-index='index' wx:key='item'>
+          <image class="order_image" src="{{item}}"></image>
+        </block>
+      </view>
+    </view>
+  </block>
+
+  <block wx-if="{{ detail.feedback}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">收货反馈</view>
+      <view class="text-28-black text_content">{{detail.feedback}}</view>
+    </view>
+  </block>
+
+  <block wx-if="{{ detail.appendix}}">
+    <view class="row  bor-bom-5 padding10">
+      <view class="text-28-black text_width">反馈图片</view>
+      <view class="row wrap">
+        <block wx:for='{{detail.appendix}}' wx:for-item='item' wx:for-index='index' wx:key='item'>
+          <image class="order_image" src="{{item}}"></image>
+        </block>
+      </view>
+    </view>
+  </block>
+
+
+
+
+  <block wx:if="{{logArr.length != 0}}">
+    <view class="text-30-black blod padding10">
+      操作日志
+    </view>
+    <block wx:for='{{logArr}}' wx:for-item='item' wx:for-index='index' wx:key='item.id'>
+      <view class="text-28-gray bor-bom-5 padding10">
+        {{item.userName}} -- {{item.createTime}} -- {{item.operateName}}
+      </view>
+    </block>
+  </block>
+
+
+  <block wx:if="{{detail.refApplyNo}}">
+    <view class="text-28-black blod status padding10" bindtap="clickToAll" data-id="{{detail.refApplyNo}}"
+      style="text-align:right;">
+      查看总单
+    </view>
+  </block>
+
+  <block wx:if="{{flag}}">
+    <view class="row" style='width:690rpx'>
+      <view class="text-24-gray text_width">审批备注</view>
+      <textarea class="remark_input" value="{{applyRemark||''}}" placeholder="请输入备注" bindinput="inputToChange"
+        data-key="applyRemark"></textarea>
+    </view>
+
+    <block wx:if="{{detail.status=='SL010101'||detail.status=='SL01010102'||detail.status=='SL01010103'}}">
+      <button class="button-submit" style="width:690rpx;margin-top:30rpx;" bindtap="clickToSubmit">审核</button>
+      <button class="button-cancel" style="width:690rpx;margin-top:30rpx;" bindtap="clickToBack">退回申领</button>
+    </block>
+    <block wx:elif="{{detail.status=='SL010103'}}">
+      <button class="button-submit" style="width:690rpx;margin-top:30rpx;" bindtap="clickToResubmit">重新审核</button>
+      <button class="button-cancel" style="width:690rpx;margin-top:20rpx" bindtap="clickToBack">退回申领</button>
+    </block>
+  </block>
+</view>
+
+
+<sfmodel confirmBtnText='关闭' icon="success" visiable='{{successvisiable}}' bind:confirm="successConfirm">
+  <view slot='body' class="column column-center">
+    <view style="text-align:center;padding:20rpx 0;">
+      操作成功
+    </view>
+  </view>
+</sfmodel>

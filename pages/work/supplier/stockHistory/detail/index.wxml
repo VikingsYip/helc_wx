@@ -1,0 +1,25 @@
+<!--pages/work/supplier/stockHistory/detail/index.wxml-->
+<view class="con">
+<view class="row bor-bom-5" style="padding:3vw 0;">
+            <image src="{{data.coverImgPath}}" style="width: 20vw;height: 20vw;"></image> 
+       
+				<view style="flex:1;margin-left:3vw;">
+				<view class="text-30 bold">{{data.name||''}}</view>
+				<view class="text-24-black" style="margin:6rpx 0;">所在分类：{{data.typeName||''}}</view>
+       	<view class="text-24-black" style="margin:6rpx 0;">价格：{{data.costPrice||''}}</view>
+        <view class="text-24-black" style="margin:6rpx 0;">库存：{{data.stockNum||''}}</view>
+        </view> 
+        </view>
+        <view>
+        <view class="text-30 bold bor-bom-5 status padding10">
+           历史记录
+        </view>
+        <block wx:for='{{records}}' wx:for-item='record' wx:key='id'>
+            <view class="bor-bom-5 text-30 padding10" wx:if="{{record.content}}">
+                {{ record.content }}
+            </view>
+        </block>
+        </view>
+        
+        
+        </view>

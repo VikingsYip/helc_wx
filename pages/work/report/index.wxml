@@ -1,0 +1,9 @@
+<!--pages/work/report/index.wxml-->
+<view class="con">
+  <view style="padding:30rpx 0;">
+ <view class="title">申领单的每周分析</view>
+<canvas canvas-id="line" style="width:690rpx;height:400rpx"></canvas>
+  </view>
+  <!-- <canvas canvas-id="pie" style="width:690rpx;height:400rpx"></canvas> -->
+  
+</view>

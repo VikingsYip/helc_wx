@@ -1,0 +1,18 @@
+/* pages/work/message/message.wxss */
+
+.messages{
+  color: #333;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.text_title{
+  border-bottom: solid #00CC33 4rpx;
+}
+
+.newmessages{
+  
+
+}

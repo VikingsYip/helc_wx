@@ -1,0 +1,17 @@
+<!--pages/work/admin/dataAdmin/banner/add/index.wxml-->
+<view class="column column-center">
+  <view class="title">上传Banner</view>
+  <image class="add_image" src="/static/images/icon_add_image.png" bindtap="clickToAdd"></image>
+  <image class="banner" src="{{detail.imgPath||''}}" bindtap="clickToPreview"></image>
+</view>
+<button class="button-submit button" style="width:690rpx" bindtap="clickToSave">保存banner</button>
+
+
+
+<sfmodel confirmBtnText='关闭' icon="success" visiable='{{successShow}}' bind:confirm="successConfirm">
+  <view slot='body' class="column column-center">
+      <view style="text-align:center;padding:20rpx 0;">
+         保存成功
+      </view>
+  </view>
+</sfmodel>

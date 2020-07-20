@@ -1,0 +1,66 @@
+/* pages/tabBar/work/work.wxss */
+.index_banner{
+  height: 360rpx;
+  width: 750rpx;
+}
+
+.position{
+  position: relative;
+}
+
+.bottom_position{
+  position: absolute;
+  bottom: 0rpx;
+  left: 30rpx;
+}
+
+.date_container{
+  padding: 40rpx 30rpx;
+}
+
+.lang_size{
+  padding: 0 30rpx;
+}
+
+.lang_color_y{
+  color: white;
+  background-color: #00CC33;
+}
+
+.lang_color_n{
+  color: #333;
+  background-color: white;
+}
+
+.option_image{
+  width: 120rpx;
+  height: 120rpx;
+  background-color: #00CC33;
+  border-radius: 60rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.ads_image{
+  width: 76rpx;
+  height: 76rpx;
+  background-color: #00CC33;
+  box-sizing: border-box;
+  padding: 10rpx;
+}
+
+.no_auth{
+  width: 750rpx;
+  height: 400rpx;
+  line-height: 400rpx;
+  text-align: center;
+  color: #999;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.ads_image{
+  width: 68rpx;
+  height: 68rpx;
+  margin-right: 10rpx;
+}

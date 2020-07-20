@@ -1,0 +1,38 @@
+/* pages/register/user/index.wxss */
+.row_line{
+  width:690rpx;
+  border-bottom: solid #dcdcdc 1rpx;
+  padding: 10rpx 0;
+  margin-top: 10rpx;
+}
+
+.content{
+  flex: 1;
+}
+
+.title_width{
+  width:140rpx;
+}
+
+.picker{
+  width: 550rpx;
+  min-height: 40rpx;
+}
+
+.btn{
+  color: #666;
+  font-size: 26rpx;
+}
+
+.text_remark{
+  border: solid #dcdcdc 1rpx;
+  padding: 10rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+}
+
+image{
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 20rpx;
+}

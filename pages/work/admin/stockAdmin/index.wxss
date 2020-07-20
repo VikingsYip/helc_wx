@@ -1,0 +1,105 @@
+/* pages/work/admin/stockAdmin/index.wxss */
+.border_b{
+  border-bottom: solid #dcdcdc 1rpx;
+}
+
+.text_warn{
+  color: red;
+  border-bottom: red solid 1px;
+  font-size: 20rpx;
+}
+
+.bottom_b{
+  height: 80rpx;
+  position: absolute;
+  bottom: 30rpx;
+  left: 30rpx;
+}
+
+.button_sub{
+  background-color: #E84F4E;
+  color: white;
+  font-size: 24rpx;
+  width: 100rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+}
+
+.button_add{
+  background-color: #0791ED;
+  color: white;
+  font-size: 24rpx;
+  width: 100rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+}
+
+.text_count{
+  border: solid #dcdcdc 1rpx;
+  padding: 6rpx 30rpx;
+  margin: 0 20rpx;
+}
+
+.number{
+  border-radius: 4rpx;
+  border: #dcdcdc 1rpx solid;
+  padding: 0 10rpx;
+}
+
+.btn_back{
+  width: 300rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+  border-top: solid #dcdcdc 1rpx;
+}
+.yellow{
+  background-color: #ff9b00;
+padding: 5rpx 10rpx;
+display: inline-block;
+
+}
+
+.btn_save{
+  width: 300rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #07B907;
+  border-top: solid #dcdcdc 1rpx;
+  border-left: solid #dcdcdc 1rpx;
+}
+
+.modal_content{
+  width: 600rpx;
+  border-radius: 10rpx;
+  border: solid #dcdcdc 1rpx;
+  background-color: white;
+  top: 25%;
+  left: 75rpx;
+}
+
+.input_name{
+  width: 540rpx;
+  padding: 10rpx 10rpx;
+  border: solid #dcdcdc 1rpx;
+  border-radius: 6rpx;
+  color: #333;
+  font-size: 28rpx;
+  margin: 20rpx 0 20rpx;
+  height: 100rpx;
+}
+
+.category{
+  padding: 20rpx 6rpx;
+  text-align: center;
+  color: gray;
+}
+
+.checked{
+  background-color: white;
+  color: black;
+}

@@ -1,0 +1,45 @@
+<!--pages/work/admin/dataAdmin/index.wxml-->
+<view class="column column-center">
+  <view class="row row_line" style="background-color:#0ABA07" bindtap="clickToManager" data-index="0">
+    <image src="/static/images/icon_category.png"></image>
+    <text>类别管理</text>
+  </view>
+  <view class="row row_line" style="background-color:#0ABA07" bindtap="clickToManager" data-index="6">
+    <image src="/static/images/icon_category.png"></image>
+    <text>组织机构</text>
+  </view>
+  <view class="row row_line" style="background-color:#E54340" bindtap="clickToManager" data-index="1">
+    <image src="/static/images/icon_push.png"></image>
+    <text>宣传品管理</text>
+  </view>
+  <view class="row row_line" style="background-color:#E54340" bindtap="clickToManager" data-index="10">
+    <image src="/static/images/icon_push.png"></image>
+    <text>额度管理</text>
+  </view>
+
+  <view class="row row_line" style="background-color:#1E9EFF" bindtap="clickToManager" data-index="2">
+    <image src="/static/images/icon_ads.png"></image>
+    <text>公告管理</text>
+  </view>
+
+  <view class="row row_line" style="background-color:#576A95" bindtap="clickToManager" data-index="3">
+    <image src="/static/images/icon_banner.png"></image>
+    <text>Banner管理</text>
+  </view>
+
+  <view class="row row_line" style="background-color:#FE5721" bindtap="clickToManager" data-index="4">
+    <image src="/static/images/icon_auth.png"></image>
+    <text>授权管理</text>
+  </view>
+
+  <view class="row row_line" style="background-color:#FE5721" bindtap="clickToManager" data-index="5">
+    <image src="/static/images/icon_auth.png"></image>
+    <text>用户管理</text>
+  </view>
+
+  <view class="row row_line" style="background-color:#FE5721;margin-bottom: 16rpx;" bindtap="clickToManager" data-index="7">
+    <image src="/static/images/icon_setMeal.png"></image>
+    <text>管理员信息维护</text>
+  </view>
+
+</view>

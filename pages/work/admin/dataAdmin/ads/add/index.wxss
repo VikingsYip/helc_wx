@@ -1,0 +1,25 @@
+/* pages/work/admin/dataAdmin/ads/add/index.wxss */
+.content{
+  width: 510rpx;
+  border: solid #dcdcdc 1rpx;
+  padding: 6rpx 10rpx;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.name{
+  font-size: 28rpx;
+  color: #666;
+}
+
+.row_line{
+  width: 690rpx;
+  margin-top: 20rpx;
+  justify-content: space-between;
+}
+
+.row_sub{
+  flex-wrap: wrap;
+  width: 510rpx;
+
+}

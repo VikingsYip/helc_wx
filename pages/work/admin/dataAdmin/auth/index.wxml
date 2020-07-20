@@ -1,0 +1,69 @@
+<!--pages/work/admin/dataAdmin/auth/index.wxml-->
+<view class="column column-center">
+	<view class="search">
+		<image src="/static/images/icon_search.png"></image>
+		<input placeholder="快速搜索" confirm-type="search" bindconfirm="inputToSearch" bindinput="inputToSearchValue" value="{{searchName}}"></input>
+	</view>
+	<block wx:for='{{records}}' wx:key='id' wx:for-item='record' wx:for-index='rIndex'>
+    <view class="row user_block">
+      <image src="{{record.workingImgPath||''}}"></image>
+      <view class="column right_block">
+        <view class="text-24-black">姓名 {{record.userName||''}}({{record.organizationName||''}})</view>
+        <view class="text-24-black" style="margin:8rpx 0">工号  {{record.jobNum||''}}</view>
+        <view class="row row-between">
+          <view class="btn-green-s b_btn" style="background-color:#FE9865" bindtap="clickToDetail" data-index="{{rIndex}}">申请人信息</view>
+          <view class="btn-green-s b_btn" style="margin:0 20rpx" bindtap="clickToAuth" data-index="{{rIndex}}">角色授权</view>
+          <view class="btn-red-s b_btn" bindtap="clickToDelete" data-index="{{rIndex}}">删除</view>
+        </view>
+      </view>
+    </view>
+	</block>
+</view>
+
+<view class="cover" wx:if='{{showType == 0}}'>
+  <view class="column column-center dialog">
+    <view class="title">申请信息</view>
+    <view class="row text">
+      <view class="name text-24-black">姓名</view>
+      <view class="text-24-black" style="flex:1">{{records[cIndex].userName||''}}</view>
+    </view>
+    <view class="row text">
+      <view class="name text-24-black">工号</view>
+      <view class="text-24-black" style="flex:1">{{records[cIndex].jobNum||''}}</view>
+    </view>
+    <view class="row text">
+      <view class="name text-24-black">分公司</view>
+      <view class="text-24-black" style="flex:1">{{records[cIndex].organizationName||''}}</view>
+    </view>
+    <view class="row text">
+      <view class="name text-24-black">手机号码</view>
+      <view class="text-24-black" style="flex:1">{{records[cIndex].telephoneNum||''}}</view>
+    </view>
+    <view class="row text last">
+      <view class="name text-24-black">微信号</view>
+      <view class="text-24-black" style="flex:1">{{records[cIndex].wechatNum||''}}</view>
+    </view>
+    <view class="text text-24-gray">备注：</view>
+    <view class="text text-24-gray">{{records[cIndex].remark||''}}</view>
+    <view class="btn-green-s btn" bindtap="clickToCloseInfo">关闭</view>
+  </view>
+</view>
+
+<view class="cover" wx:if='{{showType == 1}}'>
+  <view class="column column-center dialog">
+    <view class="title">角色授权</view>
+    <view class="text text-24-gray" style="margin:50rpx 0 10rpx">请选择一个对应的角色</view>
+    <picker range="{{roleList}}" range-key="name" bindchange="pickerToChange">
+      <input class="input_picker" placeholder="请选择" disabled="{{true}}" value="{{roleList[rIndex].name||''}}"></input>
+    </picker>
+    <block wx-if="{{roleList[rIndex].code=='ROLE_SUP'}}">
+       <picker range="{{organization}}" range-key="corporateName" bindchange="organizationChange">
+           <input class="input_picker" placeholder="请选择" disabled="{{true}}" value="{{organization[organizationIndex].corporateName||''}}"></input>
+      </picker>
+    </block>
+    <view class="row bottom">
+      <view class="btn_left" bindtap="clickToBack">返回</view>
+      <view class="btn_right" bindtap="clickToSubmit">确认提交</view>
+    </view>
+  </view>
+</view>

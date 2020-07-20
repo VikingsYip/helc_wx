@@ -1,0 +1,5 @@
+{
+  "navigationBarTitleText": "入库单列表",
+  "usingComponents": {},
+  "enablePullDownRefresh": true
+}

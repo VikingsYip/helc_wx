@@ -1,0 +1,24 @@
+/* pages/work/admin/dataAdmin/banner/add/index.wxss */
+.title{
+  width: 690rpx;
+  padding: 10rpx 0;
+  border-bottom: #dcdcdc 1rpx solid;
+}
+
+.add_image{
+  width: 160rpx;
+  height: 160rpx;
+  margin: 30rpx 0 50rpx;
+}
+
+.banner{
+  width: 750rpx;
+  height: 360rpx;
+  background-color: #dcdcdc;
+}
+
+.button{
+  position: absolute;
+  bottom: 30rpx;
+  left: 30rpx;
+}

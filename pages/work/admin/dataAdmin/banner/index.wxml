@@ -1,0 +1,22 @@
+<!--pages/work/admin/dataAdmin/banner/index.wxml-->
+<scroll-view scroll-y style="height:{{scrollHeight}}px;width:750rpx">
+	<view class="column" style="width:750rpx">
+		<block wx:for='{{list}}' wx:key='id'>
+			<view class="row row-between" style="width:690rpx;margin:20rpx 30rpx 0">
+				<image src="{{item.imgPath||''}}"></image>
+				<view class="row">
+					<view class="btn-green-s" style="margin-right:20rpx" data-index="{{index}}" bindtap="clickToChange">修改</view>
+					<view class="btn-red-s" bindtap="clickToDelete" data-index="{{index}}">删除</view>
+				</view>
+			</view>
+		</block>
+		<view class="row" style="margin:20rpx">
+			<icon type="warn" size="16"></icon>
+			<view class="text-24-gray">Banner最多只能添加4张</view>
+		</view>
+	</view>
+</scroll-view>
+
+<button class="button-submit" style="width:690rpx;margin:30rpx" bindtap="clickToAdd">添加Banner</button>
+
+

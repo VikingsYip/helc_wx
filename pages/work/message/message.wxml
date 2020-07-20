@@ -1,0 +1,19 @@
+<!--pages/work/message/message.wxml-->
+<view class="column column-center">
+	<view class="text-30-black">{{detail.title||''}}</view>
+	<view class="text-28-hint">发布日期：{{detail.date||''}} </view>
+	<view class="column" style="margin:20rpx 0 0 0">
+		<view class="messages">{{detail.content||''}}</view>
+	</view>
+	<view class="column" style="width:690rpx;margin-top:50rpx">
+		<view class="row">
+			<view class="text-28-black text_title">公告附件</view>
+			<view style="flex:1"></view>
+		</view>
+		<view class="coulumn" style="margin-top:10rpx">
+			<block wx:for='{{detail.appendixs}}' wx:key='id'>
+				<view class="newmessages text-24-hint" style="margin:4rpx 0 0 0" bindtap="onHandledownloadFile" data-index="{{index}}">{{item.name}}</view>
+			</block>
+		</view>
+	</view>
+</view>

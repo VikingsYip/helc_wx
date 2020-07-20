@@ -1,0 +1,43 @@
+<!--pages/register/user/index.wxml-->
+<view class="con">
+  <view class="row row_line">
+    <view class="text-28-black title_width">姓名</view>
+    <input class="text-28-black content" placeholder="请输入姓名" value="{{userInfo.userName||''}}" bindinput="inputToChange" data-key="userName"></input>
+    <!-- <button class="btn" open-type="getUserInfo" size="mini" bindgetuserinfo="clickToGetUserInfo">获取昵称</button> -->
+  </view>
+  <view class="row row_line">
+    <view class="text-28-black title_width">所属单位</view>
+    <picker mode='multiSelector' range="{{multiArray}}" value="{{multiIndex}}" bindchange="pickerChange" class="picker" bindcolumnchange="pickerColumnChange" disabled="{{isCanEdit}}">
+      <input class="text-28-black content" disabled="true" value="{{currentOrgan.corporateName||''}}" placeholder="请选择所属单位"></input>
+    </picker>
+  </view>
+  <view class="row row_line">
+    <view class="text-28-black title_width">手机号码</view>
+    <input class="text-28-black content" type="number" value="{{userInfo.telephoneNum||''}}" bindinput="inputToChange" data-key="telephoneNum" placeholder="请输入手机号码" maxlength="11" disabled="{{isCanEdit}}"></input>
+    <button class="btn" open-type="getPhoneNumber" size="mini" bindgetphonenumber="clickToGetPhoneNumber" style="font-size:14px;" wx:if="{{edit!=1}}">获取手机号</button>
+  </view>
+  <view class="row row_line">
+    <view class="text-28-black title_width">工号</view>
+    <input class="text-28-black content" placeholder="请输入工号" value="{{userInfo.jobNum||''}}" bindinput="inputToChange" data-key="jobNum"></input>
+  </view>
+  <view class="row row_line">
+    <view class="text-28-black title_width">收货地址</view>
+    <input class="text-28-black content" value="{{userInfo.recipientAddr||''}}" bindinput="inputToChange" data-key="recipientAddr" placeholder="请输入收货地址"></input>
+  </view>
+  <view class="row row_line">
+    <view class="text-28-black title_width">微信号</view>
+    <input class="text-28-black content" value="{{userInfo.wechatNum||''}}" bindinput="inputToChange" data-key="wechatNum" disabled="{{isCanEdit}}" placeholder="请输入微信号"></input>
+  </view>
+  <view class="row row_line" wx:if="{{edit!=1}}">
+    <view class="text-28-black title_width">备注</view>
+    <textarea class="text-28-black text_remark content" value="{{userInfo.remark||''}}" bindinput="inputToChange" disabled="{{isCanEdit}}" data-key="remark" placeholder="请输入备注"></textarea>
+  </view>
+  <view class="column row_line">
+    <view class="text-28-gray" style="width:690rpx">上传工作照片</view>
+    <view class="row wrap" style="margin:10rpx 0">
+      <image src="/static/images/icon_add_image.png" bindtap="clickToUploadImage"></image>
+      <image src="{{userInfo.workingImgPath||userInfo.workingImg||''}}" bindtap="clickToReviewImage"></image>
+    </view>
+  </view>
+  <button class="button-submit" style="width:690rpx;margin-top:20rpx" bindtap="clickToSubmit">{{btnValue}}</button>
+</view>

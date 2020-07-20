@@ -1,0 +1,112 @@
+/* pages/work/admin/dataAdmin/auth/index.wxss */
+.user_block{
+  width: 690rpx;
+  height: 190rpx;
+  border-bottom: solid #dcdcdc 1rpx;
+}
+
+image{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 70rpx;
+  background-color: #dcdcdc;
+  margin-right: 20rpx;
+}
+
+.right_block{
+  width: 530rpx;
+}
+
+.b_btn{
+  flex: 1;
+  font-size: 24rpx;
+  height: 60rpx;
+}
+
+
+.cover{
+  width:100%;
+  height: 100%;
+  position: fixed;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.cover .dialog{
+  position: absolute;
+  top: 25%;
+  left: 50rpx;
+  width: 650rpx;
+  border: solid #dcdcdc 1rpx;
+  border-radius: 10rpx;
+  background-color: white;
+}
+
+.dialog .title{
+  color: red;
+  font-weight: bold;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-bottom: #dcdcdc solid 1rpx;
+  width: 590rpx;
+}
+
+.text{
+  width: 590rpx;
+  margin-top: 8rpx;
+}
+
+.name{
+  width: 160rpx;
+}
+
+.last{
+  padding-bottom: 10rpx;
+  border-bottom: #dcdcdc solid 1rpx;
+}
+
+.btn{
+  width:650rpx;
+  margin-top:60rpx;
+  border-radius:0;
+  height:80rpx;
+  line-height: 80rpx;
+}
+
+.input_picker{
+  width: 590rpx;
+  height: 70rpx;
+  border: solid #dcdcdc 1rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  padding: 0 10rpx;
+}
+
+.bottom{
+  width: 650rpx;
+  height: 80rpx;
+  border-top: solid #dcdcdc 1rpx;
+  margin-top: 80rpx;
+}
+
+.btn_left{
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #999;
+  flex:1;
+  text-align: center;
+  border-right: solid #dcdcdc 1rpx;
+}
+
+.btn_right{
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #08BA07;
+  flex:1;
+  text-align: center;
+}
+
+

@@ -1,0 +1,40 @@
+<!--pages/work/admin/dataAdmin/push/index.wxml-->
+<view class="row" style="padding: 0 30rpx 0;width:750rpx">
+	<scroll-view style="height:{{scrollHeight}}px;flex:1;background-color:#f0f0f0;border: 2px solid #f0f0f0;border-right: 0;border-left: 0;" scroll-y bindscrolltolower="scrollMoreL">
+		<view>
+      <block wx:for='{{categoryList}}' wx:for-index='lIndex' wx:key='id' wx:for-item='category'>
+				<view class="category text-28 line2 {{lIndex == categoryIndex ? 'checked' : ''}}"  bindtap="clickToChangeCategory" data-index="{{lIndex}}">
+					<!-- <view style="width:6rpx;height:24rpx;margin-right:8rpx;{{lIndex == categoryIndex ? 'background-color:red' : ''}}"></view> -->
+          {{category.name||''}}
+				</view>
+			</block>
+
+		</view>
+	</scroll-view>
+	<scroll-view style="height:{{scrollHeight}}px;flex:2;margin-left:20rpx" scroll-y bindscrolltolower="scrollMoreR">
+		<block wx:for='{{categoryList[categoryIndex].arr}}' wx:for-item='record' wx:for-index='rIndex' wx:key='id'>
+			<view class="row" style="padding:0 0 10rpx 0" bindtap="clickToDetail">
+				<image style="width:130rpx;height:180rpx;background-color:#dcdcdc;margin-right:16rpx" src="{{record.coverImgPath||''}}"></image>
+				<view class="column column-between" style="flex:1;height:180rpx;margin-right:10rpx">
+					<view class="text-28-black line1" style="font-weight:400">
+            <text wx:if="{{record.isSet==1}}" class="isSet">[套餐]</text>
+            {{record.name||''}}
+          </view>
+					<view class="text-24-gray">库存数量：{{record.stockNum||0}}</view>
+					<view class="text-24-gray">预警数量：{{record.warningNum||0}}</view>
+          <view class="row">
+          <view class="btn-green-s" bindtap="clickToChange" style="height:auto;line-height:50rpx;" data-index="{{rIndex}}">修改</view>
+          <view class="btn-red-s" style="margin-left:20rpx;height:auto;line-height:50rpx;" bindtap="clickToDelete" data-index="{{rIndex}}">删除</view>
+          </view>
+          <!-- <view style="height:40rpx"> </view> -->
+				</view>
+        <!-- <view class="column">
+          <view class="btn-green-s" bindtap="clickToChange" data-index="{{rIndex}}">修改</view>
+          <view class="btn-red-s" style="margin-top:20rpx" bindtap="clickToDelete" data-index="{{rIndex}}">删除</view>
+        </view> -->
+			</view>
+		</block>
+
+	</scroll-view>
+</view>
+<button class="button-submit" style="width:690rpx;margin:30rpx" bindtap="clickToAdd">添加宣传品</button>

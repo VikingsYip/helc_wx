@@ -1,0 +1,82 @@
+{
+  "pages": [
+    "pages/tabBar/work/work",
+    "pages/register/user/index",
+    "pages/work/orderDetail/index",
+    "pages/work/message/message",
+    "pages/work/feedback/feedback",
+    "pages/tabBar/user/user",
+    "pages/work/messageList/index",
+    "pages/work/applyList/index",
+    "pages/work/receive/index",
+    "pages/work/report/index",
+    "pages/work/admin/approval/index",
+    "pages/work/admin/organizationquota/index",
+    "pages/work/admin/organizationquota/data/index",
+    "pages/work/admin/approval/all/index",
+    "pages/work/admin/stockList/index",
+    "pages/work/admin/stockAdmin/index",
+    "pages/work/admin/stockAdmin/detail/index",
+    "pages/work/admin/dataAdmin/index",
+    "pages/work/supplier/stockOut/index",
+    "pages/work/supplier/stockIn/index",
+    "pages/work/supplier/stockIn/detail/index",
+    "pages/work/supplier/stockHistory/index",
+    "pages/work/supplier/stockHistory/detail/index",
+    "pages/work/receiveDetail/index",
+    "pages/work/admin/approval/detail/index",
+    "pages/work/admin/approval/again/index",
+    "pages/work/admin/stockList/detail/index",
+    "pages/work/admin/dataAdmin/category/index",
+    "pages/work/admin/dataAdmin/banner/index",
+    "pages/work/admin/dataAdmin/auth/index",
+    "pages/work/admin/dataAdmin/ads/index",
+    "pages/work/admin/dataAdmin/push/index",
+    "pages/work/admin/dataAdmin/push/add/index",
+    "pages/work/admin/dataAdmin/ads/add/index",
+    "pages/work/admin/dataAdmin/banner/add/index",
+    "pages/work/supplier/stockOut/detail/index",
+    "pages/work/admin/dataAdmin/organization/index",
+    "pages/work/admin/dataAdmin/setmeal/index",
+    "pages/work/admin/dataAdmin/user/index",
+    "pages/work/toApply/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "宣传品",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#808080",
+    "selectedColor": "#00CC33",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/tabBar/work/work",
+        "iconPath": "/static/images/work_home_n.png",
+        "selectedIconPath": "/static/images/work_home_y.png",
+        "text": "工作空间"
+      },
+      {
+        "pagePath": "pages/tabBar/user/user",
+        "iconPath": "/static/images/user_center_n.png",
+        "selectedIconPath": "/static/images/user_center_y.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "model": "/components/model/model",
+    "toast": "/components/toast/toast",
+    "newmodel": "/components/newmodel/newmodel",
+    "sfmodel": "/components/sfmodel/sfmodel"
+  }
+}

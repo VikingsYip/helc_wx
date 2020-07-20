@@ -1,0 +1,157 @@
+<!--pages/work/supplier/stockOut/detail/index.wxml-->
+<view class="con">
+  <view class="row row_line">
+    <view class="text-28-black text_width">标题</view>
+    <view class="text-28-black text_content">{{detail.title}}</view>
+  </view>
+  <view class="row row_line">
+    <view class="text-28-black text_width">申领人</view>
+    <view class="text-28-black text_content">{{detail.userName}}</view>
+  </view>
+  <view class="row row_line">
+    <view class="text-28-black text_width">申领备注</view>
+    <view class="text-28-black text_content">{{detail.remark}}</view>
+  </view>
+  <block wx:for='{{detail.applyDtls||[]}}' wx:for-item='item' wx:for-index='index' wx:key='item.typeId'>
+    <block wx:for='{{item.dtl||[]}}' wx:for-item='item2' wx:for-index='index2' wx:key='item2.id'>
+      <view class="row row_line">
+        <image class="title_image" src="{{item2.coverImgPath||''}}"></image>
+        <view class="column text_content">
+          <view class="text-28-black" style="font-weight:blod">{{item2.name}}</view>
+
+          <view class="text-28-black isSet" wx:if="{{detail.brochure[index].isSet==1}}">
+            套餐
+          </view>
+
+          <view class="text-24-gray" style="margin:10rpx 0">申领数量:{{item2.applyNum}}</view>
+        </view>
+      </view>
+    </block>
+  </block>
+
+  <block wx-if="{{ detail.applyRemark}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">分公司管理员备注</view>
+      <view class="text-28-black text_content">{{detail.applyRemark}}</view>
+    </view>
+  </block>
+  <block wx-if="{{ detail.applyRemark02}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">总公司管理员备注</view>
+      <view class="text-28-black text_content">{{detail.applyRemark02}}</view>
+    </view>
+  </block>
+  <block wx-if="{{ detail.applyRemark03}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">总公司领导备注</view>
+      <view class="text-28-black text_content">{{detail.applyRemark03}}</view>
+    </view>
+  </block>
+
+
+
+  <block wx-if="{{ detail.deliveryRemark}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">供应商</view>
+      <view class="text-28-black text_content">{{detail.deliveryRemark}}</view>
+    </view>
+  </block>
+
+  <block wx-if="{{ detail.rejectReason}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">供应商</view>
+      <view class="text-28-black text_content">{{detail.rejectReason}}</view>
+    </view>
+  </block>
+
+  <block wx-if="{{ detail.deliveryImg}}">
+    <view class="row  bor-bom-5 padding10">
+      <view class="text-28-black text_width">发货图片</view>
+      <view class="row wrap">
+        <block wx:for='{{detail.deliveryImg}}' wx:for-item='item' wx:for-index='index' wx:key='item'>
+          <image class="order_image" src="{{item}}"></image>
+        </block>
+      </view>
+    </view>
+  </block>
+
+
+
+  <block wx-if="{{ detail.feedback}}">
+    <view class="row bor-bom-5 padding10">
+      <view class="text-28-black text_width">收货反馈</view>
+      <view class="text-28-black text_content">{{detail.feedback}}</view>
+    </view>
+  </block>
+
+  <block wx-if="{{ detail.appendix}}">
+    <view class="row  bor-bom-5 padding10">
+      <view class="text-28-black text_width">反馈图片</view>
+      <view class="row wrap">
+        <block wx:for='{{detail.appendix}}' wx:for-item='item' wx:for-index='index' wx:key='item'>
+          <image class="order_image" src="{{item}}"></image>
+        </block>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{logArr.length != 0}}">
+    <view class="text-30-black blod padding10">
+      操作日志
+    </view>
+    <block wx:for='{{logArr}}' wx:for-item='item' wx:for-index='index' wx:key='item.id'>
+      <view class="text-28-gray bor-bom-5 padding10">
+        {{item.userName}} -- {{item.createTime}} -- {{item.operateName}}
+      </view>
+    </block>
+  </block>
+  <block wx:if="{{detail.refApplyNo}}">
+    <view class="text-28-black blod status padding10" bindtap="clickToAll" data-id="{{detail.refApplyNo}}"
+      style="text-align:right;">
+      查看总单
+    </view>
+  </block>
+
+
+  <block wx:if="{{flag}}">
+    <view class="row" style='width:690rpx'>
+      <view class="text-28-black text_width">备注</view>
+      <textarea class="remark_input" value="{{remark||''}}" placeholder="请输入备注" bindinput="inputToChange"
+        data-key="remark"></textarea>
+    </view>
+    <block wx:if="{{ state == 'SL010105' }}">
+      <view class="column row_line">
+        <view class="text-28-gray" style="width:690rpx">上传发货图片</view>
+        <view class="row wrap" style="margin:10rpx 0;flex-warp:warp;">
+          <image class="img" src="/static/images/icon_add_image.png" bindtap="clickToUploadImage"></image>
+          <view wx:for="{{imageArr}}" wx:for-index="index" wx:for-item="item">
+            <image class="img" src="{{item}}" bindtap="clickToReviewImage" data-index="{{index}}"></image>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{state}}">
+      <block wx:if="{{ state == 'SL010103' }}">
+        <button class="button-submit" style="width:690rpx;margin-top:30rpx;" bindtap="clickToDetail">确认</button>
+        <button class="button-cancel" style="width:690rpx;margin-top:30rpx;" bindtap="clickToBack">退回</button>
+      </block>
+      <block wx:elif="{{ state == 'SL010105' }}">
+        <button class="button-submit" style="width:690rpx;margin-top:30rpx;" bindtap="clickToDelivery">发货</button>
+      </block>
+      <block wx:elif="{{ state == 'SL010106' }}">
+        <button class="button-cancel" style="width:690rpx;margin-top:30rpx;" bindtap="clickToBackDelivery">撤回发货</button>
+      </block>
+
+    </block>
+  </block>
+</view>
+
+
+<sfmodel confirmBtnText='关闭' icon="success" visiable='{{successShow}}' bind:confirm="successConfirm">
+  <view slot='body' class="column column-center">
+    <view style="text-align:center;padding:20rpx 0;">
+      {{title}}
+    </view>
+  </view>
+</sfmodel>
