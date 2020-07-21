@@ -99,12 +99,17 @@ Page({
         break
       case 6:
         wx.navigateTo({
-          url: '/pages/work/admin/dataAdmin/organization/index',
+          url: '/pages/work/admin/dataAdmin/organization/index?type=0',
         })
         break
       case 7:
         wx.navigateTo({
           url: '/pages/work/admin/dataAdmin/setmeal/index',
+        })
+        break
+      case 8:
+        wx.navigateTo({
+          url: '/pages/work/admin/dataAdmin/organization/index?type=1',
         })
         break
       case 10:

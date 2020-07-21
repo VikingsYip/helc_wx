@@ -20,6 +20,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.data.current = options.type;
+    if (this.data.current ==1){
+      wx.setNavigationBarTitle({
+        title: '供应商管理'
+      })
+    }else{
+      wx.setNavigationBarTitle({
+        title: '组织机构管理'
+      })
+    }
+    
     this.requestForList()
   },
 
@@ -114,7 +125,7 @@ Page({
   requestToAdd() {
     let that = this
     let name = this.data.editName.trim()
-    POST('organization/a/add', { corporateName: name, corporateType: 1, area: "总部"}, true, (flag, data, des) => {
+    POST('organization/a/add', { corporateName: name, corporateType: that.data.current, area: "总部"}, true, (flag, data, des) => {
       if (flag) {
         that.alertSuccess()
       } else {
@@ -129,7 +140,7 @@ Page({
     let that = this
     let name = this.data.editName.trim()
     let id = this.data.records[this.data.currentIndex].id
-    POST('organization/a/edit', { id: id, corporateName: name, corporateType: 1, area:"总部" }, true, (flag, data, des) => {
+    POST('organization/a/edit', { id: id, corporateName: name, corporateType: that.data.current, area:"总部" }, true, (flag, data, des) => {
       if (!flag) {
         show(des)
         return
@@ -164,7 +175,7 @@ Page({
         that.setData({
           showSave: false,
           currentIndex: -1,
-          current: 1
+          current: that.data.current
         })
         that.requestForList()
       },
@@ -209,7 +220,7 @@ Page({
       })
     }
     let records = this.data.records
-    GET('organization/list', { corporateType: "1", name: this.data.searchValue || ''}, isShow, (flag, data, des) => {
+    GET('organization/list', { corporateType: current, name: this.data.searchValue || ''}, isShow, (flag, data, des) => {
       if (flag) {
         that.setData({
           records: records.concat(data || [])
@@ -227,11 +238,11 @@ Page({
   },
   searchConfirm() {
     this.setData({
-      current: 1
+      current: this.data.current
     })
     this.requestForList()
   },
-  scrollMore() {
-    this.requestForList(false)
-  }
+  // scrollMore() {
+  //   this.requestForList(false)
+  // }
 })

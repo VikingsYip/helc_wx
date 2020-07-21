@@ -14,6 +14,10 @@
   </view>
   <checkbox-group bindchange="checkboxChange">
     <block wx:for='{{detail.applyDtls||[]}}' wx:for-index="index" wx:for-item="item" wx:key="item.typeId">
+      <view class="text-32-black">
+        <block wx:if="{{item.isSet==1}}">套餐：{{item.typeName||''}}</block>
+        <block wx:else>{{item.typeName||''}}</block>
+      </view>
       <block wx:for='{{item.dtl||[]}}' wx:for-index="index2" wx:for-item="item2" wx:key="item2.id">
         <view class="row row_line">
           <image class="title_image" src="{{item2.coverImgPath||''}}"></image>
