@@ -94,7 +94,7 @@ Page({
 
   clickToUploadFile(){
     let that = this
-    wx.chooseMessageFile({
+    wx.chooseImage({
       count: 1,
       type: 'file',
       success: (result) => {
