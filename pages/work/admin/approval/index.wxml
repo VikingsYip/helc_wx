@@ -20,6 +20,7 @@
           </view>
 						<!-- <view class="text-28-black"> {{record.title||""}}</view> -->
 					</view>
+          <view class="text-24-black" style="margin:6rpx 0">订单号：{{record.refApplyNo||''}}</view>
 					<view class="text-24-black" style="margin:6rpx 0">申领备注：{{record.remark||''}}</view>
           <block wx-if="{{ record.applyRemark}}">
              	<view class="text-24-gray" style="margin:6rpx 0">分公司管理员备注：{{record.applyRemark||''}}</view>

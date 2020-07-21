@@ -219,8 +219,12 @@ Page({
             isTC: 1
           })
         }
+        //物流类型为空 默认普通
+        if (!data.logisticsType){
+          data.logisticsType = "1";
+        }
         var radioArr = this.data.radioArr.map((item) => {
-          if (item.value == data.logisticsType) {
+          if (item.name == data.logisticsType) {
             item.checked=true
             return item
           } else {
@@ -311,11 +315,12 @@ Page({
   },
   addNum(e) {
     var index = e.target.dataset.index;
+    var index2 = e.target.dataset.index2;
     var num = e.target.dataset.num;
     var obj = this.data.detail.brochure[index];
     // var max = (obj.stockNum < 0) ? 0 : obj.stockNum;
     var min = 0;
-    var maxapply = this.data.detail.organizationQuota[index].quotanum || 0;
+    var maxapply = this.data.detail.organizationQuota[index]?this.data.detail.organizationQuota[index].quotanum:999999;
     // var max = max > maxapply ? maxapply : max 
 
     // var tishi = "不能超过分公司可用数"
@@ -328,7 +333,7 @@ Page({
     if (num <= max) {
       // if (num <= maxapply) {
       this.setData({
-        ["detail.applyDtls[" + index + "].applyNum"]: num
+        ["detail.applyDtls[" + index + "].dtl[" + index2 + "].applyNum"]: num
       })
       // } else {
       //   this.setData({
@@ -337,7 +342,7 @@ Page({
       // }
     } else {
       this.setData({
-        ["detail.applyDtls[" + index + "].applyNum"]: max
+        ["detail.applyDtls[" + index + "].dtl[" + index2 + "].applyNum"]: max
       })
       show(tishi)
     }

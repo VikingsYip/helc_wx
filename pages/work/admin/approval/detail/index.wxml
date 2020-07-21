@@ -28,7 +28,7 @@
                   bindtap="reduceNum">-</view>
                 <input class="text-24-black numInp" type="number" data-num="{{item2.applyNum}}"
                   value="{{item2.applyNum || 0}}" bindinput="inpNum" data-index="{{index2}}"></input>
-                <view class="row row-center button_add" data-index="{{index2}}" data-num="{{item2.applyNum}}"
+                <view class="row row-center button_add" data-index="{{index}}" data-index2="{{index2}}" data-num="{{item2.applyNum}}"
                   bindtap="addNum">+</view>
               </block>
               <block wx:else>
@@ -85,7 +85,7 @@
   </view>
 
   <view class="padding5 text-28-gray" hover-class="none" hover-stop-propagation="false">
-    <input class="content" style="width: 96%;" disabled value="{{detail.otherAddress}}" placeholder="请输入地址"></input>
+    地址：<input class="content" style="width: 96%;" disabled value="{{detail.otherAddress}}" placeholder="请输入地址"></input>
   </view>
 
   <view class="padding5 text-28-gray">
