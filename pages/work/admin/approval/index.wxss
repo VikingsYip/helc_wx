@@ -10,3 +10,9 @@
 .disable{
   background-color: #9ED99C;
 }
+
+.text_center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}

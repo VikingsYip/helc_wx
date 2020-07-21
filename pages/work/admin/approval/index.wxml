@@ -1,10 +1,24 @@
 <!--pages/work/admin/approval/index.wxml-->
 <view>
 	<view class="search">
-		<image src="/static/images/icon_search.png"></image>
-		<input placeholder="快速搜索" confirm-type="search" data-key="searchValue" bindinput="inputToChange" value="{{searchValue}}" bindconfirm="searchConfirm"></input>
+    <view class="padding5 text-28-gray" style="display: flex;">
+      <image src="/static/images/icon_search.png"></image>
+      <input style="display: flex;" placeholder="快速搜索" confirm-type="search" data-key="searchValue" bindinput="inputToChange" value="{{searchValue}}" bindconfirm="searchConfirm"></input>
+    </view>
+    <view class="padding5 text-28-gray" style="display: flex;" bindtap="onHandleShowPopup">
+      <text class="text_center" >申请月：</text>
+      <input class="content" style="width:240rpx" value="{{searchTime}}" disabled></input>
+    </view>
 	</view>
 
+  <van-popup show="{{ showPopup }}" bindtap="onHandleClose" position="bottom" custom-style="height: 30%;">
+    <van-datetime-picker
+      type="year-month"
+      value="{{ searchTime }}"
+      min-date="{{ minDate }}"
+      bind:confirm="onInput"
+    />
+  </van-popup>
 
 	<block wx:for='{{timeArr}}' wx:for-index='index' wx:key='item' wx:for-item='item'>
 		<view class="text-28-black title_line" style="width:auto;margin:0 30rpx;">{{item}}</view>

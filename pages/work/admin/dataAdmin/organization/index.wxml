@@ -20,8 +20,8 @@
 
 <view class="column column-center cover" wx:if='{{showSave}}'>
 	<view class="modal_content column column-center">
-		<view class="text-32-black" style="color:red;margin:20rpx 0;font-weight:400">{{currentIndex == -1 ?"添加":"修改"}}类别信息</view>
-		<view class="text-28-black" style="width:540rpx">类别名称</view>
+		<view class="text-32-black" style="color:red;margin:20rpx 0;font-weight:400">{{currentIndex == -1 ?"添加":"修改"}}组织信息</view>
+		<view class="text-28-black" style="width:540rpx">组织名称</view>
 		<input class="input_name" bindinput="inputToChange" data-key="editName" value="{{currentIndex == -1 ? editName : records[currentIndex].corporateName}}" placeholder="请输入名称"></input>
 		<view class="row">
 			<view class="btn_back" bindtap="clickToHide">返回</view>

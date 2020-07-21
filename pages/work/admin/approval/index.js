@@ -1,6 +1,6 @@
 // pages/work/admin/approval/index.js
 const {GET} = require('../../../../utils/network.js')
-const {show,showSuccess} = require('../../../../utils/util.js')
+const { show, showSuccess, user, formatYMD} = require('../../../../utils/util.js')
 Page({
 
   /**
@@ -9,7 +9,8 @@ Page({
   data: {
     timeArr: [],
     timeObj: {},
-
+    searchTime: '',
+    minDate: new Date('2020-01').getTime(),
     current:1,
     records:[],
     // sectionList:[],
@@ -111,6 +112,22 @@ Page({
       url: '/pages/work/admin/approval/again/index?id=' + id
     })
   },
+  onHandleShowPopup() {
+    console.log(12312);
+    this.setData({
+      showPopup: true
+    })
+  },
+  onHandleClose() {
+    this.setData({
+      showPopup: false
+    })
+  },
+  onInput(event) {
+    this.setData({
+      searchTime: formatYMD(new Date(event.detail)),
+    });
+  },
   requestToApplyList(isShow = true){
     let that = this
     var current = this.data.current
@@ -124,7 +141,7 @@ Page({
       })
     }
       
-    GET('apply/a/page', { name:this.data.searchValue, current: current,size:30},isShow,(flag,data,des)=>{
+    GET('apply/a/page', { name:this.data.searchValue, time:this.data.searchTime,current: current,size:30},isShow,(flag,data,des)=>{
       wx.stopPullDownRefresh()
       if (flag){
 
