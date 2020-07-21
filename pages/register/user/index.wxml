@@ -7,13 +7,13 @@
   </view>
   <view class="row row_line">
     <view class="text-28-black title_width">所属单位</view>
-    <picker mode='multiSelector' range="{{multiArray}}" value="{{multiIndex}}" bindchange="pickerChange" class="picker" bindcolumnchange="pickerColumnChange" disabled="{{isCanEdit}}">
+    <picker mode='multiSelector' range="{{multiArray}}" value="{{multiIndex}}" bindchange="pickerChange" class="picker" bindcolumnchange="pickerColumnChange" disabled="{{!isCanEdit}}">
       <input class="text-28-black content" disabled="true" value="{{currentOrgan.corporateName||''}}" placeholder="请选择所属单位"></input>
     </picker>
   </view>
   <view class="row row_line">
     <view class="text-28-black title_width">手机号码</view>
-    <input class="text-28-black content" type="number" value="{{userInfo.telephoneNum||''}}" bindinput="inputToChange" data-key="telephoneNum" placeholder="请输入手机号码" maxlength="11" disabled="{{isCanEdit}}"></input>
+    <input class="text-28-black content" type="number" value="{{userInfo.telephoneNum||''}}" bindinput="inputToChange" data-key="telephoneNum" placeholder="请输入手机号码" maxlength="11" ></input>
     <button class="btn" open-type="getPhoneNumber" size="mini" bindgetphonenumber="clickToGetPhoneNumber" style="font-size:14px;" wx:if="{{edit!=1}}">获取手机号</button>
   </view>
   <view class="row row_line">
