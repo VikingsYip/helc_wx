@@ -25,7 +25,9 @@
             <view class="text-28-black" style="font-weight:blod">
               {{item2.name||''}}
             </view>
-            <view class="text-24-gray" style="margin:10rpx 0">库存{{item2.stockNum||0}}</view>
+            <view class="text-24-gray" style="margin:10rpx 0">库存{{item2.stockNum||0}}
+            <text style="color:red">总待审批数：{{item2.allApplyingNum}}</text>
+            </view>
             <view class="row">
               <block wx:if="{{flag==3}}">
                 <view class="row row-center button_sub" data-num="{{item2.applyNum}}" data-index="{{index2}}"
