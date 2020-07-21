@@ -333,7 +333,7 @@ Page({
         user.save(data)
         setToken(data.token)
         app.globalData.userInfo = data;
-        data.roleId = "ROLE_ADMIN";
+        //data.roleId = "ROLE_ADMIN";
         switch (data.roleId){
           case 'ROLE_NO':
             that.setData({

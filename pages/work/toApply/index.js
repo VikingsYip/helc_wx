@@ -83,6 +83,7 @@ Page({
     })
   },
   onInputScale(event) {
+    console.log(event);
     this.setData({
       eventNumberPeople:event.detail.value.text
     })
@@ -565,8 +566,10 @@ Page({
         POSTJSON('apply/u/edit', canshu , true, (flag, data, des) => {
           console.log(flag, data, des)
           if (flag) {
+
             that.setData({
               applyListVisiable: false,
+              
               successVisiable: true
             })
           } else {
@@ -581,6 +584,37 @@ Page({
             that.setData({
               applyListVisiable: false,
               successVisiable: true
+            })
+            wx.requestSubscribeMessage({
+              tmplIds: ["kAAZjXhdEYb0aBCz_yalZ6nk2Qf07SGh8rZc5DdIDmU"],
+              success: (res) => {
+                if (res["kAAZjXhdEYb0aBCz_yalZ6nk2Qf07SGh8rZc5DdIDmU"] == "reject") {
+                  wx.showModal({
+                    complete: (res) => { },
+                    confirmText: '关闭',
+                    content: '您取消了消息订阅，后续可以在个人中心中手动开启',
+                    showCancel: false,
+                    success: (result) => {
+                      wx.navigateBack({})
+                    },
+                    title: '提醒',
+                  })
+                } else {
+                  wx.showModal({
+                    complete: (res) => { },
+                    confirmText: '关闭',
+                    content: '订阅成功',
+                    showCancel: false,
+                    success: (result) => {
+                      wx.navigateBack({})
+                    },
+                    title: '提醒',
+                  })
+                }
+              },
+              fail(err) {
+
+              }
             })
           } else {
             show(des)
@@ -623,8 +657,7 @@ Page({
     var obj = this.data.categoryList[this.data.categoryIndex].arr[index];
 
     var min = 0;
-    var maxapply = obj.organizationQuota[0].quotanum || 0;
-    console.log(maxapply);
+    var maxapply = obj.organizationQuota?0:obj.organizationQuota[0].quotanum || 0;
     
     var max = (maxapply < 0) ? 0 : maxapply
     var tishi = "不能超过最大额度"

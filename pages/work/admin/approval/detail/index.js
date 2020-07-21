@@ -309,7 +309,7 @@ Page({
     var obj = this.data.detail.brochure[index];
     num = (num - 50 < 0) ? 0 : num - 50;
     this.setData({
-      ["detail.applyDtls[" + index + "].applyNum"]: num
+      ["detail.applyDtls[" + index + "].dtl[" + index2 + "].applyNum"]: num
     })
 
   },
