@@ -15,7 +15,8 @@ Page({
     gysList:["供应商1","供应商2"],
     gysdetailList: ["asd123","asd666"],
     lbList:["类别1","类别2"],
-    lbdetailList:["lb001","lb666"]
+    lbdetailList:["lb001","lb666"],
+    stockNumShow:false
   },
   requestToCategory() {
     let that = this
@@ -62,6 +63,9 @@ Page({
       //新增
       wx.setNavigationBarTitle({
         title: '添加宣传品',
+      })
+      this.setData({
+        stockNumShow: true
       })
     }else{
       // obj = JSON.parse(decodeURIComponent(obj))

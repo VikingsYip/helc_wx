@@ -10,6 +10,7 @@ Page({
     categoryList:[],
     categoryIndex:0,
     categoryCurrent:1,
+    isTC:1
   },
 
   /**
@@ -32,7 +33,7 @@ Page({
     wx.getSystemInfo({
       complete: (res) => {
         that.setData({
-          scrollHeight:res.windowHeight - (res.windowWidth/750) * (80 + 90)
+          scrollHeight:res.windowHeight - (res.windowWidth/750) * (80 + 90) -30
         })
         that.requestToCategory()
       },
@@ -79,6 +80,29 @@ Page({
    */
   onShareAppMessage: function () {
     
+  },
+
+  isTCHandle(e) {
+    var categoryIndex = 0
+    var flag = true;
+    var id = "";
+    this.data.categoryList.map((obj, index) => {
+      if (flag && obj.isSet == e.target.dataset.key) {
+        categoryIndex = index
+        flag = false
+        if (obj.isFirst) {
+          id = obj.id
+        }
+      }
+    })
+
+    this.setData({
+      categoryIndex: categoryIndex,
+      isTC: e.target.dataset.key
+    })
+    if (id) {
+      this.requestToPopsById()
+    }
   },
 
   clickToAdd(e){

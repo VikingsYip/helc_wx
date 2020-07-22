@@ -37,7 +37,7 @@
     <view class="name">库存预警</view>
     <input class="content" type="number" value="{{detail.warningNum}}" bindinput="inputToChange" data-key="detail.warningNum"></input>
   </view>
-  <view class="row row_line">
+  <view class="row row_line" wx:if="{{stockNumShow}}">
     <view class="name">库存数量</view>
     <input class="content" type="number" value="{{detail.stockNum}}" bindinput="inputToChange" data-key="detail.stockNum"></input>
   </view>

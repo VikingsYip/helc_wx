@@ -1,12 +1,24 @@
 <!--pages/work/admin/dataAdmin/push/index.wxml-->
+<view id="isTC" class="row text-30"
+  style="padding:20rpx;text-align:center;background: #f0f0f0;margin: 20rpx 20rpx 0 20rpx;">
+  <!-- <view style="flex:1;"></view> -->
+  <view style="flex:2;">
+    <view class="row">
+      <view style="flex:1;{{isTC==0 ? 'color:red': ''}};" bindtap="isTCHandle" data-key="0">单品</view>
+      <view style="flex:1;{{isTC==1 ? 'color:red': ''}};" bindtap="isTCHandle" data-key="1">套餐</view>
+    </view>
+  </view>
+</view>
 <view class="row" style="padding: 0 30rpx 0;width:750rpx">
 	<scroll-view style="height:{{scrollHeight}}px;flex:1;background-color:#f0f0f0;border: 2px solid #f0f0f0;border-right: 0;border-left: 0;" scroll-y bindscrolltolower="scrollMoreL">
 		<view>
       <block wx:for='{{categoryList}}' wx:for-index='lIndex' wx:key='id' wx:for-item='category'>
-				<view class="category text-28 line2 {{lIndex == categoryIndex ? 'checked' : ''}}"  bindtap="clickToChangeCategory" data-index="{{lIndex}}">
-					<!-- <view style="width:6rpx;height:24rpx;margin-right:8rpx;{{lIndex == categoryIndex ? 'background-color:red' : ''}}"></view> -->
-          {{category.name||''}}
-				</view>
+        <block wx:if="{{category.isSet==isTC}}">
+          <view class="category text-28 line2 {{lIndex == categoryIndex ? 'checked' : ''}}"  bindtap="clickToChangeCategory" data-index="{{lIndex}}">
+            <!-- <view style="width:6rpx;height:24rpx;margin-right:8rpx;{{lIndex == categoryIndex ? 'background-color:red' : ''}}"></view> -->
+            {{category.name||''}}
+          </view>
+        </block>  
 			</block>
 
 		</view>
