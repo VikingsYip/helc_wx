@@ -117,6 +117,11 @@ Page({
           url: '/pages/work/admin/organizationquota/index',
         })
         break
+      case 11:
+        wx.navigateTo({
+          url: '/pages/work/admin/dataAdmin/event/index',
+        })
+        break
     }
   }
 })

@@ -35,6 +35,7 @@
     "pages/work/admin/dataAdmin/push/add/index",
     "pages/work/admin/dataAdmin/ads/add/index",
     "pages/work/admin/dataAdmin/banner/add/index",
+    "pages/work/admin/dataAdmin/event/index",
     "pages/work/supplier/stockOut/detail/index",
     "pages/work/admin/dataAdmin/organization/index",
     "pages/work/admin/dataAdmin/setmeal/index",

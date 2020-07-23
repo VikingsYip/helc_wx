@@ -16,6 +16,10 @@
     <image src="/static/images/icon_push.png"></image>
     <text>宣传品管理</text>
   </view>
+  <view class="row row_line" style="background-color:#E54340" bindtap="clickToManager" data-index="11">
+    <image src="/static/images/icon_push.png"></image>
+    <text>活动管理</text>
+  </view>
   <view class="row row_line" style="background-color:#E54340" bindtap="clickToManager" data-index="10">
     <image src="/static/images/icon_push.png"></image>
     <text>分公司年度额度管理</text>

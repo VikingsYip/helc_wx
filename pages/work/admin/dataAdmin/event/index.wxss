@@ -1,0 +1,81 @@
+/* pages/work/admin/dataAdmin/category/index.wxss */
+.row_line{
+  width: 690rpx;
+  margin-top: 30rpx;
+}
+
+.row_line .name{
+  color: #333;
+  font-size: 28rpx;
+  border-radius: 6rpx;
+  border: solid #dcdcdc 1rpx;
+  padding: 6rpx 10rpx;
+  margin-right: 16rpx;
+  flex: 1;
+}
+
+.row_line .btn_change{
+  line-height: 60rpx;
+  height: 60rpx;
+  text-align: center;
+  color: white;
+  font-size: 28rpx;
+  font-weight: 300;
+  border-radius: 10rpx;
+  background-color: #08BA07;
+  width: 130rpx;
+}
+
+.row_line .btn_delete{
+  line-height: 60rpx;
+  height: 60rpx;
+  text-align: center;
+  color: white;
+  font-size: 28rpx;
+  font-weight: 300;
+  border-radius: 10rpx;
+  width: 130rpx;
+  background-color: #E84F4E;
+  margin-left: 16rpx;
+}
+
+.modal_content{
+  width: 600rpx;
+  border-radius: 10rpx;
+  border: solid #dcdcdc 1rpx;
+  background-color: white;
+  top: 25%;
+  left: 75rpx;
+}
+
+.input_name{
+  width: 540rpx;
+  padding: 6rpx 10rpx;
+  border: solid #dcdcdc 1rpx;
+  border-radius: 6rpx;
+  color: #333;
+  font-size: 28rpx;
+  margin: 20rpx 0 20rpx;
+}
+
+.btn_back{
+  width: 300rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+  border-top: solid #dcdcdc 1rpx;
+}
+
+.btn_save{
+  width: 300rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #07B907;
+  border-top: solid #dcdcdc 1rpx;
+  border-left: solid #dcdcdc 1rpx;
+}
+

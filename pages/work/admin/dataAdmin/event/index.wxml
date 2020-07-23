@@ -1,0 +1,30 @@
+<!--pages/work/admin/dataAdmin/category/index.wxml-->
+<view class="column column-center">
+	<scroll-view scroll-y='{{true}}' style="height:{{scrollHeight}}px" >
+		<view class="column column-center">
+			<block wx:for='{{records}}' wx:key='id' wx:for-item='record' wx:for-index='recordIndex'>
+				<view class="row row_line">
+					<view class="name">{{record.name}}</view>
+					<view class="btn-green-s" bindtap="clickToChange" data-index="{{recordIndex}}">修改</view>
+					<view style="width:5px;"></view>
+					<view class="btn-red-s" bindtap="clickToDelete" data-index="{{recordIndex}}">删除</view>
+				</view>
+			</block>
+		</view>
+	</scroll-view>
+	<button class="button-submit" style="width:690rpx;margin:5rpx 0" bindtap="clickToAdd">添加活动</button>
+</view>
+
+<view class="column column-center cover" wx:if='{{showSave}}'>
+	<view class="modal_content column column-center">
+		<view class="text-32-black" style="color:red;margin:20rpx 0;font-weight:400">{{currentIndex == -1 ?"添加":"修改"}}信息
+		</view>
+		<view class="text-28-black" style="width:540rpx">活动名称</view>
+		<input class="input_name" bindinput="inputToChange" data-key="editName"
+			value="{{currentIndex == -1 ? editName : records[currentIndex].name}}" placeholder="请输入姓名"></input>
+		<view class="row">
+			<view class="btn_back" bindtap="clickToHide">返回</view>
+			<view class="btn_save" bindtap="clickToSave">保存</view>
+		</view>
+	</view>
+</view>
