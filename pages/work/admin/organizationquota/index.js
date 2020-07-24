@@ -11,8 +11,9 @@ Page({
   },
   clickToChange(e){
     var id = e.currentTarget.dataset.id;
+    var name = e.currentTarget.dataset.name;
     wx.navigateTo({
-      url: '/pages/work/admin/organizationquota/data/index?id='+id,
+      url: '/pages/work/admin/organizationquota/data/index?id=' + id + "&orgName=" + name,
     })
   },
   requestToOrganList() {

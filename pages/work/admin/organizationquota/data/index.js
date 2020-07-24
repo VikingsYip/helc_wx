@@ -28,9 +28,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.setData({
-        userInfo: user.getUser()
-      })
+    wx.setNavigationBarTitle({
+      title: options.orgName + "额度",
+    })
+    this.setData({
+      userInfo: user.getUser()
+    })
     this.requestToCategory()
   },
   inpNum(e) {

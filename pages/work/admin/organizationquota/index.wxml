@@ -6,7 +6,7 @@
             {{item.corporateName}}
         </view>
         <view class="row" style="margin-left:20rpx">
-          <view class="btn-green-s" bindtap="clickToChange" data-id="{{item.id}}">修改</view>
+          <view class="btn-green-s" bindtap="clickToChange" data-id="{{item.id}}" data-name="{{item.corporateName}}">修改</view>
         </view>
       </view>
    </block>
