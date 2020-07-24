@@ -1,0 +1,30 @@
+/* pages/work/feedback/feedbackList/index.wxss */
+.block{
+  margin-top: 10rpx;
+  border-bottom: solid #dcdcdc 5rpx;
+  padding-bottom: 10rpx;
+}
+
+.viewed{
+  background-color: #11EE11;
+}
+
+.no_view{
+  background-color: #F46C6C;
+}
+
+.viewing{
+  background-color: #AFEEEE;
+}
+
+.view{
+  color: white;
+  font-size: 22rpx;
+  line-height: 30rpx;
+  width: 90rpx;
+  height: 36rpx;
+  border-radius: 15rpx;
+  text-align: center;
+  margin: 10rpx;
+}
+

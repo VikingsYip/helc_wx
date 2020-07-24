@@ -122,6 +122,11 @@ Page({
           url: '/pages/work/admin/dataAdmin/event/index',
         })
         break
+      case 12:
+        wx.navigateTo({
+          url: '/pages/work/feedback/feedbackList/index',
+        })
+        break
     }
   }
 })

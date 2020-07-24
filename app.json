@@ -5,6 +5,7 @@
     "pages/work/orderDetail/index",
     "pages/work/message/message",
     "pages/work/feedback/feedback",
+    "pages/work/feedback/feedbackList/index",
     "pages/tabBar/user/user",
     "pages/work/messageList/index",
     "pages/work/applyList/index",

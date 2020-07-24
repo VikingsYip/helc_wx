@@ -30,6 +30,11 @@
     <text>公告管理</text>
   </view>
 
+  <view class="row row_line" style="background-color:#1E9EFF" bindtap="clickToManager" data-index="12">
+    <image src="/static/images/icon_ads.png"></image>
+    <text>用户意见</text>
+  </view>
+
   <view class="row row_line" style="background-color:#576A95" bindtap="clickToManager" data-index="3">
     <image src="/static/images/icon_banner.png"></image>
     <text>Banner管理</text>

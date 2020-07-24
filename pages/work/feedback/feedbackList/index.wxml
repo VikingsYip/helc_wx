@@ -1,0 +1,15 @@
+<!--pages/work/feedback/feedbackList/index.wxml-->
+<view class="column" style="padding:30rpx">
+  <block wx:for='{{records}}' wx:key='id'>
+    <view class="block" bindtap="clickToMessageDetail" data-id="{{item.id}}">
+      <view class="row text-34" style="padding-top:1vw;">{{item.content}}
+      <view wx:if='{{(item.status||0)==2}}' class="viewed view">处理中</view>
+        <view wx:if='{{(item.status||0)==1}}' class="viewing view">处理中</view>
+        <view wx:if='{{(item.status||0)==0}}' class="no_view view">未处理</view>
+      </view>
+      <view class="row text-28" style="padding-top:1vw;">提出时间：{{item.createTime}}
+      </view>
+    </view>
+  </block>
+</view>
+
