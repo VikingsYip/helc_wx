@@ -13,16 +13,27 @@ Page({
     applyListVisiable:false,
     userInfo:{},
     categoryList: [],
+    showList:[],
     categoryIndex: 0,
     categoryCurrent:1,
     nowObj:{},
-    nowIndex:0
+    nowId:{},
+    nowIndex:0,
+    isTC:0,
+    organizationid:"",
+    nowOrgQuotaObj:{}
   },
   scrollMoreL() {
     this.requestToCategory(false)
   },
   scrollMoreR() {
     this.requestToPopsById(true, false)
+  },
+  isTCHandle(e) {
+    this.setData({
+      isTC: e.target.dataset.key
+    })
+    this.pushIntoShowList();
   },
   /**
    * 生命周期函数--监听页面加载
@@ -32,22 +43,22 @@ Page({
       title: options.orgName + "额度",
     })
     this.setData({
-      userInfo: user.getUser()
+      userInfo: user.getUser(),
+      organizationid: options.id
     })
     this.requestToCategory()
   },
   inpNum(e) {
-    var obj = this.data.nowObj;
     var min = 0;
     var num = Number(e.detail.value.toString().trim());
     if ((/^\d{1,}$/.test(num))) {
       this.setData({
-        ["nowObj.organizationQuota[0].quotanum"]: e.detail.value
+        ["nowOrgQuotaObj.quotaNum"]: e.detail.value
       })
     } else {
       show("输入正确格式")
       this.setData({
-        ["nowObj.organizationQuota[0].quotanum"]: 0
+        ["nowOrgQuotaObj.quotaNum"]: 0
       })
     }
   },
@@ -59,7 +70,7 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
           that.setData({
-            scrollHeight: res.windowHeight - 20
+            scrollHeight: res.windowHeight - 80
           })
       }
     })
@@ -86,11 +97,27 @@ Page({
           categoryList: categoryList,
           categoryCurrent: Number(categoryCurrent) + 1,
         })
-        that.requestToPopsById()
+        //that.requestToPopsById()
+        console.log(categoryList);
+        that.pushIntoShowList();
       } else {
         show(des)
       }
     })
+  },
+  //动态显示单品&套餐
+  pushIntoShowList(){
+    let dataList = this.data.categoryList;
+    let showList = [];
+    for(let item in dataList){
+      if (dataList[item].isSet == this.data.isTC){
+        showList.push(dataList[item]);
+      }
+    }
+    this.setData({
+      showList
+    })
+    console.log(this.data.showList)
   },
   /**请求宣传品列表 */
   requestToPopsById(more,isShow = true) {
@@ -137,22 +164,27 @@ Page({
 
   },
   clickShow(e){
-    var index = e.currentTarget.dataset.index;
-    var obj = this.data.categoryList[this.data.categoryIndex].arr[index];
-     this.setData({
-       nowIndex:index,
-       nowObj: JSON.parse(JSON.stringify(obj)),
-       applyListVisiable: true
-     })
+    let that = this
+    let typeId = e.currentTarget.dataset.id
+    POST('organizationquota/queryByTypeAndOrg', { organizationid: this.data.organizationid, brochuretypeid: typeId }, false, (flag, data, des) => {
+      if (flag) {
+        
+        that.setData({
+          nowOrgQuotaObj: data ? data : { quotaNum: 0, organizationid: this.data.organizationid, brochuretypeid: typeId},
+          applyListVisiable: true
+        })
+      } else {
+        show(des)
+      }
+    })
   },
   applyConfirm(isShow = true){
     var that = this;
-    var organizationQuota = this.data.nowObj.organizationQuota[0];
-    POST('organizationquota/a/edit', { quotaNum: organizationQuota.quotanum, id: organizationQuota.id  }, isShow, (flag, data, des) => {
+    var nowOrgQuotaObj = that.data.nowOrgQuotaObj;
+    POSTJSON('organizationquota/a/edit', nowOrgQuotaObj, isShow, (flag, data, des) => {
       console.log(flag, data, des)
       if (flag) {
          that.setData({
-           ["categoryList[" + that.data.categoryIndex + "].arr[" + that.data.nowIndex + "].organizationQuota[0].quotanum"]: organizationQuota.quotanum,
            successVisiable: true
          })
       }else{

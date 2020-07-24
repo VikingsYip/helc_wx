@@ -1,5 +1,5 @@
 const {getToken} = require('../utils/util.js')
-const baseUrl = 'http://192.168.0.12:8083/'
+const baseUrl = 'http://localhost:8083/'
 //const baseUrl = 'https://hitachirdc.gzunicorn.com/'
 const baseRequest = (method = 'POST', url = '', params = {}, isJson = false,isShow = false, complete) => {
   if (isShow) {

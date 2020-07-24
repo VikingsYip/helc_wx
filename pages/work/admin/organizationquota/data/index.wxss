@@ -88,7 +88,42 @@ label{
   color:red;
 }
 
-.btn-red-s{
-  height: 50rpx;
-  line-height: 50rpx;
+.row_line{
+  width: 690rpx;
+  margin-top: 30rpx;
+}
+
+.row_line .name{
+  color: #333;
+  font-size: 28rpx;
+  border-radius: 6rpx;
+  border: solid #dcdcdc 1rpx;
+  padding: 6rpx 10rpx;
+  margin-right: 16rpx;
+  flex: 1;
+}
+
+.row_line .btn_change{
+  line-height: 60rpx;
+  height: 60rpx;
+  text-align: center;
+  color: white;
+  font-size: 28rpx;
+  font-weight: 300;
+  border-radius: 10rpx;
+  background-color: #08BA07;
+  width: 130rpx;
+}
+
+.row_line .btn_delete{
+  line-height: 60rpx;
+  height: 60rpx;
+  text-align: center;
+  color: white;
+  font-size: 28rpx;
+  font-weight: 300;
+  border-radius: 10rpx;
+  width: 130rpx;
+  background-color: #E84F4E;
+  margin-left: 16rpx;
 }
