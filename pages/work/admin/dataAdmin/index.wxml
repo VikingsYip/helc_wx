@@ -1,9 +1,5 @@
 <!--pages/work/admin/dataAdmin/index.wxml-->
 <view class="column column-center">
-  <view class="row row_line" style="background-color:#0ABA07" bindtap="clickToManager" data-index="0">
-    <image src="/static/images/icon_category.png"></image>
-    <text>类别管理</text>
-  </view>
   <view class="row row_line" style="background-color:#0ABA07" bindtap="clickToManager" data-index="6">
     <image src="/static/images/icon_category.png"></image>
     <text>组织机构管理</text>
@@ -15,6 +11,10 @@
   <view class="row row_line" style="background-color:#E54340" bindtap="clickToManager" data-index="1">
     <image src="/static/images/icon_push.png"></image>
     <text>宣传品管理</text>
+  </view>
+    <view class="row row_line" style="background-color:#E54340" bindtap="clickToManager" data-index="0">
+    <image src="/static/images/icon_push.png"></image>
+    <text>套餐管理</text>
   </view>
   <view class="row row_line" style="background-color:#E54340" bindtap="clickToManager" data-index="11">
     <image src="/static/images/icon_push.png"></image>

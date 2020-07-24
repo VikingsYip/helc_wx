@@ -10,7 +10,7 @@ Page({
     categoryList:[],
     categoryIndex:0,
     categoryCurrent:1,
-    isTC:1
+    isTC:0
   },
 
   /**
