@@ -13,7 +13,21 @@ Page({
     currentIndex:-1,
     editName:'',
     searchValue:'',
-    editName: ""
+    editName: "",
+    showScale:false,
+    eventList:[],
+    eventCode:undefined,
+    eventName:undefined,
+    isSet:1,
+    radioDefaultArr: [{
+      name: 1,
+      checked: true,
+      value: "是",
+    }, {
+      name: 0,
+      checked: false,
+      value: "否",
+    }],
   },
 
   /**
@@ -35,6 +49,17 @@ Page({
         that.setData({
           scrollHeight:scrollHeight
         })
+      }
+    })
+    //活动类型
+    GET("dropdown/pcode", { pcode: 'HDGM' }, true, (flag, data, des) => {
+      if (flag) {
+        let columns = JSON.parse(JSON.stringify(data).replace(/name/g, "text"));
+        this.setData({
+          eventList: columns
+        })
+      } else {
+        show(des)
       }
     })
   },
@@ -81,10 +106,47 @@ Page({
 
   },
 
+  onHandleShowScale() {
+    this.setData({
+      showScale: true
+    })
+  },
+
+  onChange(event) {
+    this.setData({
+      eventCode: event.detail.value.code,
+      eventName: event.detail.value.text
+    })
+
+  },
+
+  onHandleClose() {
+    this.setData({
+      showScale: false
+    })
+  },
+
+  radioChangeDefault(e) {
+    let index = e.detail.value
+    if(index == "0"){
+      this.setData({
+        isSet: 1
+      })
+    }else{
+      this.setData({
+        isSet: 0
+      })
+    }
+    
+    console.log(this.data.isSet);
+  },
+
   clickToAdd(e){
     this.setData({
       showSave:true,
-      currentIndex:-1
+      currentIndex:-1,
+      eventCode: "",
+      eventName: ""
     })
   },
 
@@ -92,7 +154,9 @@ Page({
     this.setData({
       editName: "",
       showSave:false,
-      currentIndex:-1
+      currentIndex:-1,
+      eventCode:"",
+      eventName:""
     })
   },
 
@@ -114,9 +178,9 @@ Page({
   requestToAdd(){
     let that = this
     let name = this.data.editName.trim()
-    POST('brochureType/a/add',{name:name},true,(flag,data,des)=>{
+    POST('brochureType/a/add', { name: name, eventCode: this.data.eventCode,isSet:this.data.isSet},true,(flag,data,des)=>{
       if (flag){
-        that.alertSuccess()
+        that.alertSuccess("保存成功")
       }else{
         show(des)
       }
@@ -129,12 +193,13 @@ Page({
     let that = this
     let name = this.data.editName.trim()
     let id = this.data.records[this.data.currentIndex].id
-    POST('brochureType/a/edit',{id:id,name:name},true,(flag,data,des)=>{
+    console.log(this.data.isSet);
+    POST('brochureType/a/edit', { id: id, name: name, eventCode: this.data.eventCode, isSet: this.data.isSet},true,(flag,data,des)=>{
       if (!flag){
         show(des)
         return
       }
-      that.alertSuccess()
+      that.alertSuccess("保存成功")
     })
   },
   /**
@@ -144,19 +209,21 @@ Page({
     let id = this.data.records[this.data.currentIndex].id
     let that = this
     POST('brochureType/a/delete',{id:id},true,(flag,data,des)=>{
+      console.log(flag);
+      console.log(data);
       if (!flag){
         show(des)
       }else{
-        showSuccess("删除成功")
+        that.alertSuccess("删除成功")
         that.requestForList()
       }
     })
   },
 
-  alertSuccess(){
+  alertSuccess(msg){
     let that = this
     wx.showToast({
-      title: '保存成功',
+      title: msg,
       duration: 1500,
       icon: 'success',
       mask: true,
@@ -176,9 +243,34 @@ Page({
     let name = this.data.records[index].name
     this.setData({
       editName: name,
-      showSave:true,
-      currentIndex:index
+      showSave: true,
+      currentIndex: index,
+      eventCode:"",
+      eventName:"",
     })
+    let eventList = this.data.eventList
+    for (let item in eventList){
+      if (eventList[item].code == this.data.records[index].eventCode){
+        this.setData({
+          eventCode: eventList[item].code,
+          eventName: eventList[item].text,
+        })
+      }
+    }
+
+    let radioDefaultArr = this.data.radioDefaultArr.map((i) => {
+      if (this.data.records[index].isSet == i.name) {
+          i.checked = true
+          return i
+      } else {
+          i.checked = false
+          return i
+      }
+    })
+    this.setData({
+      radioDefaultArr
+    })
+
   },
 
   clickToDelete(e){

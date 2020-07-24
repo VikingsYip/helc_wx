@@ -23,10 +23,27 @@
 	<view class="modal_content column column-center">
 		<view class="text-32-black" style="color:red;margin:20rpx 0;font-weight:400">{{currentIndex == -1 ?"添加":"修改"}}类别信息</view>
 		<view class="text-28-black" style="width:540rpx">类别名称</view>
-		<input class="input_name" bindinput="inputToChange" data-key="editName" value="{{currentIndex == -1 ? editName : records[currentIndex].name}}" placeholder="请输入名称"></input>
+		<input class="input_name" bindinput="inputToChange" data-key="editName" value="{{currentIndex == -1 ? editName : records[currentIndex].name}}" placeholder="请输入名称"></input> 
+    <view class="text-28-black" style="width:540rpx">活动类型</view>
+    <view bindtap="onHandleShowScale"><input class="input_name" value="{{eventName}}" disabled="true"></input></view>
+    <view class="text-28-black" style="flex:3;width:540rpx">是否套餐
+      <radio-group bindchange="radioChangeDefault" style="margin:5rpx;flex:3;display:flex">
+        <label wx:for="{{radioDefaultArr}}">
+          <radio class="radio" value="{{index}}" checked="{{item.checked}}">
+              <text>{{item.value}}</text>
+          </radio>
+        </label>
+      </radio-group>
+    </view>
 		<view class="row">
 			<view class="btn_back" bindtap="clickToHide">返回</view>
 			<view class="btn_save" bindtap="clickToSave">保存</view>
 		</view>
 	</view>
+
+  <van-popup show="{{ showScale }}" bindtap="onHandleClose" position="bottom" custom-style="height: 30%;">
+    <van-picker columns="{{ eventList }}" bind:change="onChange" show-toolbar title="活动规模" bind:confirm="onInputScale" />
+  </van-popup>
 </view>
+
+
