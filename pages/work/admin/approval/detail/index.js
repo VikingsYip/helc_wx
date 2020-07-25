@@ -305,6 +305,7 @@ Page({
 
   reduceNum(e) {
     var index = e.target.dataset.index;
+    var index2 = e.target.dataset.index2;
     var num = e.target.dataset.num;
     var obj = this.data.detail.brochure[index];
     num = (num - 50 < 0) ? 0 : num - 50;

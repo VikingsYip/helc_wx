@@ -30,10 +30,10 @@
             </view>
             <view class="row">
               <block wx:if="{{flag==3}}">
-                <view class="row row-center button_sub" data-num="{{item2.applyNum}}" data-index="{{index2}}"
+                <view class="row row-center button_sub" data-num="{{item2.applyNum}}" data-index="{{index}}"data-index2="{{index2}}"
                   bindtap="reduceNum">-</view>
                 <input class="text-24-black numInp" type="number" data-num="{{item2.applyNum}}"
-                  value="{{item2.applyNum || 0}}" bindinput="inpNum" data-index="{{index2}}"></input>
+                  value="{{item2.applyNum || 0}}" bindinput="inpNum" data-index="{{index}}" data-index2="{{index2}}"></input>
                 <view class="row row-center button_add" data-index="{{index}}" data-index2="{{index2}}" data-num="{{item2.applyNum}}"
                   bindtap="addNum">+</view>
               </block>

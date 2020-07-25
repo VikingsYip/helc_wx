@@ -168,7 +168,6 @@ Page({
     let typeId = e.currentTarget.dataset.id
     POST('organizationquota/queryByTypeAndOrg', { organizationid: this.data.organizationid, brochuretypeid: typeId }, false, (flag, data, des) => {
       if (flag) {
-        
         that.setData({
           nowOrgQuotaObj: data ? data : { quotaNum: 0, organizationid: this.data.organizationid, brochuretypeid: typeId},
           applyListVisiable: true
