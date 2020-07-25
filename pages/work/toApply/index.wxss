@@ -49,7 +49,7 @@
 }
 
 .numInp{
-margin: 0 20rpx;
+margin: 0 10rpx;
 width: 120rpx;
 text-align: center;
 border: solid #dcdcdc 1rpx;

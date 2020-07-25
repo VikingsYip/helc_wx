@@ -31,10 +31,10 @@
             class="category text-28 line2 {{lIndex == categoryIndex ? 'checked' : ''}} {{category.hasAgain ? 'red' : ''}}"
             bindtap="clickToChangeCategory" data-index="{{lIndex}}">
             <block wx:if="{{category.isSet==0}}">
-              单品
+              {{category.name}}
             </block>
             <block wx:if="{{category.isSet==1}}">
-              套餐{{lIndex+1}}
+              {{category.name}}
             </block>
             <!-- {{category.name||''}} -->
           </view>
@@ -47,7 +47,8 @@
 
     <block wx:if="{{isTC==1}}">
       <view class="row" catchtap="catchtap" style="justify-content: center;margin:20rpx 0;">
-        <text style="margin-right:10rpx;">申请数量</text>
+        <text style="margin-right:10rpx;font-size:10px;width:40%">
+        数量(额度:{{categoryList[categoryIndex].quotaNum}})</text>
         <view class="row row-center button_sub" data-num="{{categoryList[categoryIndex].num}}"
           data-index="{{categoryIndex}}" catchtap="reduceCategoryList">-</view>
         <input class="text-24-black numInp" type="number" value="{{categoryList[categoryIndex].num || 0}}"
@@ -66,13 +67,13 @@
         <block wx:if="{{record.isSet==1}}">
           <view class="row" style="padding:0 0 10rpx 0" data-index="{{rIndex}}">
             <image style="width:130rpx;height:180rpx;background-color:#dcdcdc;margin-right:16rpx"
-              src="{{record.coverImgPath}}" bindtap="clickToDetail"></image>
+              src="{{record.coverImgPath}}"></image>
             <view class="column column-between" style="flex:1;height:180rpx">
               <view class="text-28-black line1 {{record.hasAgain ? 'red' : ''}}">
                 <!-- <text class="isSet">[套餐]</text> -->
                 {{record.name || ''}}
               </view>
-              <view class="text-24-hint">{{record.latestVersion || ""}}</view>
+              <view class="text-24-hint">单价：{{record.costPrice || ""}}</view>
               <view class="text-24-gray">申领数量</view>
               <view class="text-24-black">
                 {{record.detailcount}} * {{categoryList[categoryIndex].num}}
@@ -86,7 +87,7 @@
         <block wx:if="{{record.isSet!=1 && record.isSet!=2}}">
           <view class="row" style="padding:0 0 10rpx 0" data-index="{{rIndex}}">
             <image style="width:130rpx;height:180rpx;background-color:#dcdcdc;margin-right:16rpx"
-              src="{{record.coverImgPath}}" bindtap="clickToDetail"></image>
+              src="{{record.coverImgPath}}" bindtap="clickToDetail" data-index="{{rIndex}}"></image>
             <view class="column column-between" style="flex:1;height:180rpx">
               <view class="text-28-black line1 {{record.hasAgain ? 'red' : ''}}">
                 {{record.name || ''}}
@@ -122,7 +123,7 @@
     <view style="text-align:left;">
       <view class="text-24-gray">最大申领数量:{{detail.maxApplyNum}}</view>
       <view class="text-24-gray">单价:{{detail.costPrice}}</view>
-      <view class="text-24-gray">组织机构{{detail.verifySupplierName}}</view>
+      <view class="text-24-gray">供应商:{{detail.verifySupplierName}}</view>
       <view class="text-24-gray">分公司可用数：{{detail.stockNum}}</view>
     </view>
     <block wx:if="{{detail.isSet==1 && detail.data && detail.data.length!=0}}">

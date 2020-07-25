@@ -83,7 +83,6 @@ Page({
     })
   },
   onInputScale(event) {
-    console.log(event);
     this.setData({
       eventNumberPeople:event.detail.value.text
     })
@@ -351,6 +350,8 @@ Page({
   },
   clickToChangeCategory(e) {
     let index = e.currentTarget.dataset.index
+    console.log(index);
+    console.log(this.data.categoryList);
     this.setData({
       categoryIndex: index
     })
@@ -417,7 +418,6 @@ Page({
     var applyList = [];
     var applyObj = {}
     var arr = this.data.categoryList;
-    console.log(arr);
     
     arr.map(x=>{
       x.arr.map(y=>{
@@ -557,14 +557,10 @@ Page({
       } else {
         show("请输入地址")
         return;
-      }
-
-      console.log(canshu);
-      
+      }      
 
       if(this.data.againId){
         POSTJSON('apply/u/edit', canshu , true, (flag, data, des) => {
-          console.log(flag, data, des)
           if (flag) {
 
             that.setData({
@@ -579,7 +575,6 @@ Page({
         return false;
       }else{
         POSTJSON('apply/u/add', canshu , true, (flag, data, des) => {
-          console.log(flag, data, des)
           if (flag) {
             that.setData({
               applyListVisiable: false,
@@ -657,7 +652,7 @@ Page({
     var obj = this.data.categoryList[this.data.categoryIndex].arr[index];
 
     var min = 0;
-    var maxapply = obj.organizationQuota?0:obj.organizationQuota[0].quotanum || 0;
+    var maxapply = obj.maxApplyNum || 0;
     
     var max = (maxapply < 0) ? 0 : maxapply
     var tishi = "不能超过最大额度"
@@ -743,11 +738,20 @@ Page({
    },
   addCategoryList(e) {
     var index = e.currentTarget.dataset.index;
-    console.log(index)
     var min = 0;
     var num = Number(e.currentTarget.dataset.num);
     num = num + 5
-    var list = this.data.categoryList[index].arr
+    var obj = this.data.categoryList[index]
+    var list = obj.arr
+    var max = (obj.quotaNum < 0) ? 0 : obj.quotaNum
+    console.log(this.data.categoryList[index])
+    if(num>max){
+      this.setData({
+        ["categoryList[" + this.data.categoryIndex + "].arr[" + index + "].num"]: max
+      })
+      show("不能超过最大额度")
+      return
+    }
     list.forEach(function (obj) {
       if (obj.isSet == 1) {
         obj.num = num
