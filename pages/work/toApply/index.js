@@ -523,17 +523,17 @@ Page({
       }
 
       if (this.data.isTC==1) {
-        var eventNumberPeople = this.data.eventNumberPeople
-        if (eventNumberPeople) {
-          this.data.columns.map((item) => {
-            if (item.text == this.data.eventNumberPeople) {
-              canshu.eventNumberPeople = item.code;
-            }
-          })
-        } else {
-          show("请输入活动规模")
-          return;
-        }
+        // var eventNumberPeople = this.data.eventNumberPeople
+        // if (eventNumberPeople) {
+        //   this.data.columns.map((item) => {
+        //     if (item.text == this.data.eventNumberPeople) {
+        //       canshu.eventNumberPeople = item.code;
+        //     }
+        //   })
+        // } else {
+        //   show("请输入活动规模")
+        //   return;
+        // }
         var eventTime = this.data.eventTime
         if (eventTime) {
           canshu.eventTime=this.data.eventTime
