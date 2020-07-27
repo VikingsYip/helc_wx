@@ -28,3 +28,10 @@
   margin: 10rpx;
 }
 
+.bottom_b{
+  height: 80rpx;
+  position: absolute;
+  bottom: 30rpx;
+  left: 30rpx;
+}
+

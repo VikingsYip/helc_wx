@@ -1,5 +1,6 @@
 <!--pages/work/feedback/feedbackList/index.wxml-->
 <view class="column" style="padding:30rpx">
+  <scroll-view scroll-y style="height:{{scrollHeight}}px;flex:2;margin-left:20rpx;" bindscrolltolower="scrollMoreR2">
   <block wx:for='{{records}}' wx:key='id'>
     <view class="block" bindtap="clickToMessageDetail" data-id="{{item.id}}">
       <view class="row text-34" style="padding-top:1vw;">{{item.content}}
@@ -10,6 +11,10 @@
       <view class="row text-28" style="padding-top:1vw;">提出时间：{{item.createTime}}
       </view>
     </view>
+  </block>
+  </scroll-view>
+  <block>
+    <button id="bottom" class="button-submit bottom_b" style="width:690rpx" bindtap="clickToAdd">提出建议</button>
   </block>
 </view>
 

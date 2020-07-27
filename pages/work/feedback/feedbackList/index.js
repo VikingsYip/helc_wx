@@ -23,7 +23,19 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    let that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        var query = wx.createSelectorQuery()
+        // query.select("#isTC").boundingClientRect()
+        query.exec(function (res1) {
+          that.setData({
+            //计算scroll需要的高度
+            scrollHeight: res1[1].top - res1[0].bottom - (res.screenWidth/750) * 60,
+          })
+        })
+      }
+    })
   },
 
   /**

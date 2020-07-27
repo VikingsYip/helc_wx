@@ -249,7 +249,7 @@ Page({
       case 5:
       case 17:
         wx.navigateTo({
-          url: '/pages/work/feedback/feedback'
+          url: '/pages/work/feedback/feedbackList/index'
         })
         break
       case 6:

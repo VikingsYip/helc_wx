@@ -508,7 +508,6 @@ Page({
       var applyDtls = []
       this.data.applyList.map(obj=>{
         applyDtls.push({
-          
           brochureId: obj.id,
           applyNum: (obj.isSet == 1) ? obj.num * obj.detailcount : obj.num
         })
