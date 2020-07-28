@@ -1,30 +1,39 @@
 <!--pages/work/feedback/feedback.wxml-->
-<view style="padding:30rpx">
-  <view class="text-28-orange-b">欢迎您提出宝贵的意见和建议</view>
-  <view class="text-24-black" style="padding-top:8rpx">姓名：{{userInfo.userName}}</view>
-  <view class="text-24-black" style="padding-top:8rpx">工号：{{userInfo.jobNum}}</view>
-  <view class="text-24-black" style="padding-top:8rpx">单位：{{userInfo.organizationName}}</view>
-  <textarea class="des" value="{{value}}" placeholder="请输入" bindinput="valueInput"></textarea>
-  <view class="column row_line">
-    <view class="text-28-gray" style="width:690rpx">上传工作照片</view>
-    <view class="row wrap" style="margin:10rpx 0;flex-warp:warp;">
-      <image class="img" src="/static/images/icon_add_image.png" bindtap="clickToUploadImage"></image>
-      <view wx:for="{{imageArr}}" wx:for-index="index" wx:for-item="item">
-         <image class="img" src="{{item}}" bindtap="clickToReviewImage" data-index="{{index}}"></image>
+<view style="padding:30rpx;height:{{scrollHeight}}px;">
+  <view wx:if="{{isAdd}}">
+    <view class="text-28-orange-b">欢迎您提出宝贵的意见和建议</view>
+  </view>
+  <view wx:if="{{!isAdd&&!userInfo.roleId=='ROLE_ADMIN'}}">
+    <view class="text-28-orange-b">感谢您提出宝贵的意见和建议</view>
+  </view>
+  <view class="text-30-black" style="padding-top:8rpx">姓名：{{userInfo.userName}}</view>
+  <view class="text-30-black" style="padding-top:8rpx">工号：{{userInfo.jobNum}}</view>
+  <view class="text-30-black" style="padding-top:8rpx">单位：{{userInfo.organizationName}}</view>
+  <view wx:if="{{isAdd}}" style="padding-top:10rpx">
+    <textarea class="des" value="{{value}}" placeholder="请输入" bindinput="valueInput"></textarea>
+    <view class="column row_line">
+      <view class="text-30-gray" style="width:690rpx">上传工作照片</view>
+      <view class="row wrap" style="margin:10rpx 0;flex-warp:warp;">
+        <image class="img" src="/static/images/icon_add_image.png" bindtap="clickToUploadImage"></image>
+        <view wx:for="{{imageArr}}" wx:for-index="index" wx:for-item="item">
+          <image class="img" src="{{item}}" bindtap="clickToReviewImage" data-index="{{index}}"></image>
+        </view>
       </view>
     </view>
+    <block>
+      <button id="bottom" class="button-submit bottom_b" style="width:690rpx" bindtap="tijiao">提交</button>
+    </block>
   </view>
-  <button class="button-submit" style="width:690rpx" bindtap="tijiao">提交</button>
+  <view wx:else style="margin-top:10rpx">
+    <view class="text-30-black" style="padding-top:8rpx">提出的建议：{{record.content}}</view>
+    <view wx:for="{{record.imageArr}}" wx:for-index="index" wx:for-item="item" style="margin-top:8rpx">
+      <image class="img" src="{{item}}" bindtap="clickToReviewImage" data-index="{{index}}"></image>
+    </view>
+    <view wx:if="{{record.status=='0'&&userInfo.roleId=='ROLE_ADMIN'}}">
+      <button id="bottom" class="button-submit bottom_b" style="width:690rpx" bindtap="receive">接收</button>
+    </view>
+  </view>
 </view>
 
 
-<sfmodel confirmBtnText='关闭' icon="success" visiable='{{detailShow}}' bind:confirm="handleConfirm">
-  <view slot='body' class="column column-center">
-      <view style="text-align:center;padding:20rpx 0;">
-         操作成功
-      </view>
-      <view class="text-28-gray" style="text-align:center;">
-        你的宝贵意见我们已经收到，谢谢您。
-      </view>
-  </view>
-</sfmodel>
+

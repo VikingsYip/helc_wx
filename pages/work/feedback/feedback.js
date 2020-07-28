@@ -13,7 +13,10 @@ Page({
     detailShow:false,
     userInfo:{},
     value:"",
-    imageArr:[]
+    imageArr:[],
+    currentId:undefined,
+    isAdd:true,
+    record:{}
   },
   handleConfirm(){
      wx.navigateBack()
@@ -22,7 +25,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(options.id){
+      this.setData({
+        currentId:options.id,
+        isAdd:false
+      })
+      this.requestToDetail(options.id)
+    }
   },
 
   /**
@@ -43,6 +52,20 @@ Page({
         }
       })
     }
+    console.log(this.data.userInfo)
+    let that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        var query = wx.createSelectorQuery()
+        // query.select("#isTC").boundingClientRect()
+        query.exec(function (res1) {
+          that.setData({
+            //计算scroll需要的高度
+            scrollHeight: res1[1].top - res1[0].bottom - (res.screenWidth/750) * 60,
+          })
+        })
+      }
+    })
   },
 
   /**
@@ -105,6 +128,7 @@ Page({
     let that = this
     UPLOAD(path, { parentType: 'user' }, true, (flag, data, des) => {
       if (flag) {
+        console.log(data)
         let p = data[0].fullPath
         var imageArr = that.data.imageArr;
         imageArr.push(p)
@@ -114,6 +138,20 @@ Page({
         showSuccess("上传成功")
       } else {
         show(des)
+      }
+    })
+  },
+  requestToDetail(id){
+    let that = this
+    GET("opinion/id", {id:id}, true , (flag, data, des) =>{
+      if (flag) {
+        if(data.appendix) {
+          let imageArr = data.appendix.split(";")
+          data.imageArr = imageArr;
+        }
+        this.setData({
+          record:data
+        })
       }
     })
   },
@@ -136,9 +174,33 @@ Page({
       content: content,
       appendix: this.data.imageArr.join(",")
     }, true, (flag, data, des) => {
-      that.setData({
-        detailShow:true
-      }) 
+      wx.showModal({
+        complete: (res) => { },
+        confirmText: '关闭',
+        content: '感谢您提出的意见和建议',
+        showCancel: false,
+        success: (result) => {
+          wx.navigateBack({})
+        },
+        title: '提醒',
+      })
+    })
+  },
+  receive(){
+    let that = this;
+    GET('opinion/receive',{id:this.data.currentId},true, (flag, data, des) => {
+      if(flag){
+        wx.showModal({
+          complete: (res) => { },
+          confirmText: '关闭',
+          content: '操作成功',
+          showCancel: false,
+          success: (result) => {
+            wx.navigateBack({})
+          },
+          title: '提醒',
+        })
+      }
     })
   }
 })

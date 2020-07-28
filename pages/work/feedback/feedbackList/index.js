@@ -42,7 +42,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.requestToList(true)
   },
 
   /**
@@ -86,7 +86,7 @@ Page({
   clickToMessageDetail(e) {
     let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/work/message/message?id=' + id,
+      url: '/pages/work/feedback/feedback?id=' + id,
     })
   },
 
@@ -106,6 +106,12 @@ Page({
       } else {
         show(des)
       }
+    })
+  },
+
+  clickToAdd() {
+    wx.navigateTo({
+      url: '/pages/work/feedback/feedback'
     })
   }
 })
