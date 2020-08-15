@@ -30,7 +30,7 @@
 	<view style="position:fixed;bottom:30rpx;width:100%;">
 		<view class="column column-center">
 			<view class="text-28-hint" style="padding:30rpx 0 10rpx 0">--管理员联系方式--</view>
-			<view class="text-24-hint">广告科 {{records[0].name}} {{records[0].code}}</view>
+			<view class="text-24-hint">广告科 {{records.userName}} {{records.telephoneNum}}</view>
 		</view>
 		<view class="con">
 			<view class="row" style="padding:0 30rpx;">

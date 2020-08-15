@@ -26,7 +26,7 @@ Page({
     if (options.edit == 1){
        this.setData({
          edit: options.edit,
-         isCanEdit: userInfo.roleId == 'ROLE_NO' || userInfo.roleId == 'ROLE_USER' || userInfo.roleId == 'ROLE_USER'?false:true,
+         isCanEdit: userInfo.roleId == 'ROLE_NO' ?false:true,
          userInfo: userInfo,
          btnValue: "更新",
          ["currentOrgan.corporateName"]: userInfo.organizationName

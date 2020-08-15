@@ -415,7 +415,7 @@ Page({
 
   requestToOrganList(){
     let that = this;
-    GET('dropdown/pcode', { pcode:"ADMIN_PHONE"},true,(flag,data,des)=>{
+    GET('user/adminUser', {} ,true,(flag,data,des)=>{
       if (flag) {
         console.log(data);
       
