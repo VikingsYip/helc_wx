@@ -1,6 +1,6 @@
 // pages/work/admin/dataAdmin/banner/index.js
 const {POSTJSON,POST,GET} = require('../../../../../utils/network.js')
-const {show,showSuccess,validate,imgReady} = require('../../../../../utils/util.js')
+const {show,showSuccess,validate} = require('../../../../../utils/util.js')
 Page({
 
   /**
