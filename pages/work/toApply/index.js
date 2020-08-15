@@ -496,7 +496,7 @@ Page({
     radioArr.map((obj) => {
       if (obj.checked) {
         check = obj.name
-        logisticsType=obj.value
+        logisticsType=obj.name
       }
     })
     radioDefaultArr.map((obj) => {

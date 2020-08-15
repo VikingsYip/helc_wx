@@ -1,6 +1,6 @@
 // pages/work/admin/dataAdmin/banner/index.js
 const {POSTJSON,POST,GET} = require('../../../../../utils/network.js')
-const {show,showSuccess,validate} = require('../../../../../utils/util.js')
+const {show,showSuccess,validate,imgReady} = require('../../../../../utils/util.js')
 Page({
 
   /**
@@ -127,9 +127,21 @@ Page({
     GET('banner/list',{},true,(flag,data,des)=>{
       wx.stopPullDownRefresh()
       if (flag){
-        that.setData({
-          list:data||[]
-        })
+        if(data){
+          for(let item in data){
+            wx.getImageInfo({
+			      	src: data[item].imgPath,
+			      	success: function (res) {
+                data[item].imgWidth = res.width
+                data[item].imgHeight = res.height
+                that.setData({
+                  list:data||[]
+                })  
+              }
+            })
+          }
+        }
+        
       }else{
         show(des)
       }

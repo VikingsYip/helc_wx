@@ -9,6 +9,9 @@
 					<view class="btn-red-s" bindtap="clickToDelete" data-index="{{index}}">删除</view>
 				</view>
 			</view>
+			<view class="row" style="margin-left:20rpx;margin-top:5rpx;">
+				<view class="text-24-gray">     尺寸：{{item.imgWidth}}*{{item.imgHeight}}</view>
+			</view>
 		</block>
 		<view class="row" style="margin:20rpx">
 			<icon type="warn" size="16"></icon>
