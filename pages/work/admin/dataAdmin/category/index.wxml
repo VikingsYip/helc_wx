@@ -21,8 +21,8 @@
 
 <view class="column column-center cover" wx:if='{{showSave}}'>
 	<view class="modal_content column column-center">
-		<view class="text-32-black" style="color:red;margin:20rpx 0;font-weight:400">{{currentIndex == -1 ?"添加":"修改"}}类别信息</view>
-		<view class="text-28-black" style="width:540rpx">类别名称</view>
+		<view class="text-32-black" style="color:red;margin:20rpx 0;font-weight:400">{{currentIndex == -1 ?"添加":"修改"}}套餐信息</view>
+		<view class="text-28-black" style="width:540rpx">套餐名称</view>
 		<input class="input_name" bindinput="inputToChange" data-key="editName" value="{{currentIndex == -1 ? editName : records[currentIndex].name}}" placeholder="请输入名称"></input> 
     <view class="text-28-black" style="width:540rpx">活动类型</view>
     <view bindtap="onHandleShowScale"><input class="input_name" value="{{eventName}}" disabled="true"></input></view>
