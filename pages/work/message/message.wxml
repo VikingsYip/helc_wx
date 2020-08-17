@@ -11,8 +11,13 @@
 			<view style="flex:1"></view>
 		</view>
 		<view class="coulumn" style="margin-top:10rpx">
-			<block wx:for='{{detail.appendixs}}' wx:key='id'>
-				<view class="newmessages text-24-hint" style="margin:4rpx 0 0 0" bindtap="onHandledownloadFile" data-index="{{index}}">{{item.name}}</view>
+			<block wx:for='{{detail.appendixs}}' wx:key='id' wx:for-item='append'>
+				<view class="row row_line">
+					<view class="text-24-gray">
+						<image class="icon-png" src="{{append.url}}" style="width: 240px;height: 100px;"></image>
+					</view>
+					<view style="flex:1"></view>
+				</view>
 			</block>
 		</view>
 	</view>

@@ -21,7 +21,9 @@
 	</view>
 	<block wx:for='{{detail.appendixs || []}}' wx:key='id' wx:for-item='append' wx:for-index='aIndex'>
 		<view class="row row_line">
-			<view class="text-24-gray">{{append.name||''}}</view>
+			<view class="text-24-gray">
+				<image class="icon-png" src="{{append.url}}" style="width: 200px;height: 100px;"></image>
+			</view>
 			<view class="btn-red-s" style="margin-left:30rpx" data-index="{{aIndex}}" bindtap="clickToDelete">删除</view>
 			<view style="flex:1"></view>
 		</view>

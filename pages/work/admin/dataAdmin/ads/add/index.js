@@ -182,10 +182,12 @@ Page({
     UPLOAD(file.path, { parentType: 'notice', fileName: file.name }, true, (flag, data, des) => {
       console.log(data)
       if (flag){
-        list = list.concat([{name:file.name,url:data[0].filePath}])
+        list = list.concat([{name:data[0].fileName,url:data[0].fullPath}])
+        let appendixs = "detail.appendixs"
         that.setData({
-          ['detail.appendixs']:list
+          [appendixs]:list
         })
+        console.log(that.data.detail)
       }else{
         show(des)
       }
