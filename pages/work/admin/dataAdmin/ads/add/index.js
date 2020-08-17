@@ -98,7 +98,6 @@ Page({
       count: 1,
       type: 'file',
       success: (result) => {
-        console.log(result)
         let file = result.tempFiles[0]
         that.requestToUploadFile(file)
       },
@@ -180,14 +179,12 @@ Page({
     let that = this
     let list = this.data.detail.appendixs||[]
     UPLOAD(file.path, { parentType: 'notice', fileName: file.name }, true, (flag, data, des) => {
-      console.log(data)
       if (flag){
         list = list.concat([{name:data[0].fileName,url:data[0].fullPath}])
         let appendixs = "detail.appendixs"
         that.setData({
           [appendixs]:list
         })
-        console.log(that.data.detail)
       }else{
         show(des)
       }
