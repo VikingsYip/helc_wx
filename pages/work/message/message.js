@@ -87,8 +87,8 @@ Page({
     GET('notice/id', {
       id: this.data.noticeId
     }, true, (flag, data, des) => {
-      if (flag) {
-        data.date = formatTime(new Date(data.createTime || ''))
+      if (flag) {       
+        data.date = data.createTime
         that.setData({
           detail: data
         })
