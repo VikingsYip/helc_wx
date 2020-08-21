@@ -128,11 +128,12 @@ Page({
   onLoad: function (options) {
       var DATE = formatYMD(new Date()); 
       this.setData({
+        isTC:options.isSet||0,
         userInfo: user.getUser(),
         againId: options.againId,
         currentTime:DATE
       })
-    if (this.data.againId){
+      if (this.data.againId){
         this.getDetail()
       }else{
         this.requestToCategory()
@@ -254,7 +255,7 @@ Page({
               }
             })
           }
-          if (flag && obj.isSet==0){
+          if (flag && obj.isSet==that.data.isTC){
             categoryIndex = index
             flag = false
           }

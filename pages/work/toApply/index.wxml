@@ -16,8 +16,8 @@
   <!-- <view style="flex:1;"></view> -->
   <view style="flex:2;">
     <view class="row">
-      <view style="flex:1;{{isTC==0 ? 'color:red': ''}};" bindtap="isTCHandle" data-key="0">单品</view>
-      <view style="flex:1;{{isTC==1 ? 'color:red': ''}};" bindtap="isTCHandle" data-key="1">套餐</view>
+      <view wx:if="{{isTC==0}}"style="flex:1;{{isTC==0 ? 'color:red': ''}};" bindtap="isTCHandle" data-key="0">单品</view>
+      <view wx:if="{{isTC==1}}"style="flex:1;{{isTC==1 ? 'color:red': ''}};" bindtap="isTCHandle" data-key="1">套餐</view>
     </view>
   </view>
 </view>
@@ -90,7 +90,7 @@
               src="{{record.coverImgPath}}" bindtap="clickToDetail" data-index="{{rIndex}}"></image>
             <view class="column column-between" style="flex:1;height:180rpx">
               <view class="text-28-black line1 {{record.hasAgain ? 'red' : ''}}">
-                {{record.name || ''}}
+                {{record.name || ''}} 额度：{{record.maxApplyNum || ''}}
               </view>
               <view class="text-24-hint">{{record.latestVersion || ""}}</view>
               <view class="text-24-gray">申领数量</view>

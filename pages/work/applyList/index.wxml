@@ -45,7 +45,7 @@
 						<view class="text-24-gray" style="margin:6rpx 0">收货反馈：{{item2.feedback||''}}</view>
 					</block>
 
-					<view class="text-24-black status">状态：{{item2.statusName}}</view>
+					<view class="text-24-black status">{{item2.statusName}}</view>
 				</view>
 				<view>
 

@@ -225,8 +225,22 @@ Page({
     let index = Number(e.currentTarget.dataset.index)
     switch (index){
       case 1:
-        wx.navigateTo({
-          url: '/pages/work/toApply/index',
+        wx.showActionSheet({
+          itemList: ['单品', '套餐'],
+          success: function(res) {
+            if(res.tapIndex == 0){
+              wx.navigateTo({
+                url: '/pages/work/toApply/index?isSet=0',
+              })
+            }
+            if(res.tapIndex == 1){
+              wx.navigateTo({
+                url: '/pages/work/toApply/index?isSet=1',
+              })
+            }
+          },
+          fail: function(res) {
+          }
         })
         break
       case 2:
