@@ -43,7 +43,7 @@ Page({
     }
     if(this.data.isTC == 0){
       wx.setNavigationBarTitle({
-        title: '单品管理',
+        title: '单品类别管理',
       })
     }else{
       wx.setNavigationBarTitle({
