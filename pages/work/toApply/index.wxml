@@ -58,7 +58,11 @@
       </view>
     </block>
     <block wx:else>
-      <view style="margin:20rpx 0;"></view>
+    <view class="row" catchtap="catchtap" style="margin:20rpx 0;">
+        <text style="margin-right:10rpx;font-size:12px;width:50%">
+        年度额度:{{categoryList[categoryIndex].quotaNum}}</text>
+       
+      </view>
     </block>
 
     <block wx:for='{{categoryList[categoryIndex].arr}}' wx:for-item='record' wx:for-index='rIndex' wx:key='id'>
@@ -89,8 +93,8 @@
             <image style="width:130rpx;height:180rpx;background-color:#dcdcdc;margin-right:16rpx"
               src="{{record.coverImgPath}}" bindtap="clickToDetail" data-index="{{rIndex}}"></image>
             <view class="column column-between" style="flex:1;height:180rpx">
-              <view class="text-28-black line1 {{record.hasAgain ? 'red' : ''}}">
-                {{record.name || ''}} 额度：{{record.maxApplyNum || ''}}
+              <view class="text-24-black line1 {{record.hasAgain ? 'red' : ''}}">
+                {{record.name || ''}} 单次额度：{{record.maxApplyNum || ''}}
               </view>
               <view class="text-24-hint">{{record.latestVersion || ""}}</view>
               <view class="text-24-gray">申领数量</view>
