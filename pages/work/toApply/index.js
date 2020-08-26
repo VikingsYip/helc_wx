@@ -744,7 +744,7 @@ Page({
     var obj = this.data.categoryList[index]
     var list = obj.arr
     var max = (obj.quotaNum < 0) ? 0 : obj.quotaNum
-    console.log(this.data.categoryList[index])
+    var that = this
     if(num>max){
       this.setData({
         ["categoryList[" + this.data.categoryIndex + "].arr[" + index + "].num"]: max
@@ -754,6 +754,15 @@ Page({
     }
     list.forEach(function (obj) {
       if (obj.isSet == 1) {
+        console.log(num)
+        if(num>obj.maxApplyNum){
+          show("不能超过"+obj.name+"单次申领额度")
+          num = num - 5
+          that.setData({
+            ["categoryList[" + that.data.categoryIndex + "].arr[" + index + "].num"]: num
+          })
+          return
+        }
         obj.num = num
         obj.setmeal=index
       }

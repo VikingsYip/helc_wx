@@ -41,10 +41,10 @@
     <view class="name">库存数量</view>
     <input class="content" type="number" value="{{detail.stockNum}}" bindinput="inputToChange" data-key="detail.stockNum"></input>
   </view>
-  <!-- <view class="row row_line">
-    <view class="name">最大申领数量</view>
+  <view class="row row_line">
+    <view class="name">单次最大申领数</view>
     <input class="content" type="number" value="{{detail.maxApplyNum||''}}" bindinput="inputToChange" data-key="detail.maxApplyNum"></input>
-  </view> -->
+  </view>
   <view class="row row_line">
     <view class="name">最新版本号</view>
     <input class="content" value="{{detail.latestVersion}}" bindinput="inputToChange" data-key="detail.latestVersion"></input>

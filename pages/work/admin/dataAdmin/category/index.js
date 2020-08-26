@@ -19,6 +19,7 @@ Page({
     eventCode:undefined,
     eventName:undefined,
     isSet:1,
+    isTC:0,//接受页面传递参数
     radioDefaultArr: [{
       name: 1,
       checked: true,
@@ -34,6 +35,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    if(options.isTC){
+      this.setData({
+        isTC:options.isTC
+      })
+    }
+    if(this.data.isTC == 0){
+      wx.setNavigationBarTitle({
+        title: '单品管理',
+      })
+    }else{
+      wx.setNavigationBarTitle({
+        title: '套餐管理',
+      })
+    }
     this.requestForList()
   },
 
@@ -302,7 +318,7 @@ Page({
       })
     }
     let list = this.data.records
-    GET('brochureType/page', { current: current, name: this.data.searchValue || '', size: 30},isShow,(flag,data,des)=>{
+    GET('brochureType/page', { current: current, name: this.data.searchValue || '', size: 50},isShow,(flag,data,des)=>{
       if (flag){
         that.setData({
           current: Number(current) + 1,
