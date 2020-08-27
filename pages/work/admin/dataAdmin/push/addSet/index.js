@@ -1,5 +1,5 @@
 
-const {show,showSuccess} = require('../../../../../../utils/util.js')
+const {show,showSuccess,user} = require('../../../../../../utils/util.js')
 const {GET,POST,POSTJSON} = require('../../../../../../utils/network.js')
 Page({
 
@@ -9,7 +9,9 @@ Page({
   data: {
     record:[],
     typeId:undefined,
-    recordDetail:[]
+    recordDetail:[],
+    brochureDetailList:[],
+    userInfo:{}
   },
 
   /**
@@ -18,7 +20,8 @@ Page({
   onLoad: function (options) {
     if(options.type){
       this.setData({
-        typeId:options.type
+        typeId:options.type,
+        userInfo: user.getUser(),
       })
     }
     if(options.typeName){
@@ -35,9 +38,6 @@ Page({
   },
   scrollMoreL(){
     this.requestToCategory(false)
-  },
-  scrollMoreR(){
-    this.requestToPopsById(true,false)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -111,6 +111,7 @@ Page({
     GET('brochure/page', { current: 1, size: 999 }, isShow,(flag,data,des)=>{
       if(flag){
         data.records.map( obj=>{
+          obj.detailCount = 0
           if(that.isSelect(obj.id)){
             obj.selected = 1
           }else{
@@ -120,24 +121,69 @@ Page({
         that.setData({
           record:data.records
         })
+        that.getTCDetail();
       }else{
         show(des)
       }
     })
   },
 
-  /**请求详情列表 */
-  requestToDetailPage(isShow = false){
+  // /**请求详情列表 */
+  // requestToDetailPage(isShow = false){
+  //   let that = this
+  //   GET('brochure/page', { current: 1, size: 999 }, isShow,(flag,data,des)=>{
+  //     if(flag){
+  //       that.setData({
+  //         record:data.records
+  //       })
+  //     }else{
+  //       show(des)
+  //     }
+  //   })
+  // },
+
+  getTCDetail(){
     let that = this
-    GET('brochure/page', { current: 1, size: 999 }, isShow,(flag,data,des)=>{
-      if(flag){
-        that.setData({
-          record:data.records
+    GET('brochure/detailpage', { type: this.data.typeId, userid: this.data.userInfo.id }, true, (flag, data, des) => {
+      if (flag) {
+        let list = [];
+        let newRecord = that.data.record
+        newRecord.map(obj=>{
+          for(let item of data.records){
+            if(item.brochureid == obj.id){
+              obj.detailCount = item.detailcount
+            }
+          }
         })
-      }else{
+        this.setData({
+          record:newRecord
+        })  
+      } else {
         show(des)
       }
     })
+  },
+
+  saveDetailCount(e){
+    let that = this
+    let index = e.currentTarget.dataset.index
+    let num = e.detail.value
+    this.setData({
+      ["record[" + index + "].detailCount"]: num
+    })
+    let req = {}
+    req.typeId = this.data.typeId
+    req.brochureId = this.data.record[index].id
+    req.detailcount = this.data.record[index].detailcount
+    if(this.isSelect(req.brochureId)){
+      POSTJSON('brochureDetail/a/edit', req, true,(flag,data,des)=>{
+        if(flag){
+          return;
+        }else{
+          show(des)
+        }
+      })
+    }
   },
 
   clickToChangeCategory(e){

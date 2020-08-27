@@ -101,7 +101,7 @@
                 <view class="row row-center button_sub" data-num="{{record.num}}" data-index="{{rIndex}}"
                   catchtap="reduceNum">-</view>
                 <input class="text-24-black numInp" type="number" value="{{record.num}}" bindinput="inpNum"
-                  data-index="{{rIndex}}" data-maxapply="{{record.maxApplyNum}}"></input>
+                  data-index="{{rIndex}}" data-maxapply="{{record.maxApplyNum}}"></input>input
                 <view class="row row-center button_add" data-maxapply="{{record.maxApplyNum}}" data-num="{{record.num}}"
                   data-index="{{rIndex}}" catchtap="addNum">+</view>
               </view>

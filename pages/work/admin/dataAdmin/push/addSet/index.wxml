@@ -18,8 +18,7 @@
             <!-- <text wx:if="{{record.isSet==1}}" class="isSet">[套餐]</text> -->
             {{record.name||''}}
           </view>
-					<view class="text-24-gray">供应商名称：{{record.verifySupplierName||''}}</view>
-					<view class="text-24-gray">库存数量：{{record.stockNum||0}}</view>
+					<view class="text-24-gray">申领数量：<input type="number" bindblur="saveDetailCount" data-index="{{rIndex}}" data-num="{{record.detailCount}}" value="{{record.detailCount}}"></input></view>
           <view class="row">
           <view class="btn-green-s" wx:if="{{record.selected==1}}"style="height:auto;line-height:50rpx;" >已选</view>
           </view>
