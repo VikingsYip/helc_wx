@@ -24,6 +24,9 @@
 		</view>
 	</scroll-view>
 	<scroll-view style="height:{{scrollHeight}}px;flex:2;margin-left:20rpx" scroll-y bindscrolltolower="scrollMoreR">
+    <view class="column column-between" style="flex:1;height:40px;margin-right:10rpx" wx:if="{{isTC==1}}">
+      <button class="button-submit" bindtap="clickToAddSet">添加单品</button>
+    </view>
 		<block wx:for='{{categoryList[categoryIndex].arr}}' wx:for-item='record' wx:for-index='rIndex' wx:key='id'>
 			<view class="row" style="padding:0 0 10rpx 0" bindtap="clickToDetail">
 				<image style="width:130rpx;height:180rpx;background-color:#dcdcdc;margin-right:16rpx" src="{{record.coverImgPath||''}}"></image>

@@ -5,7 +5,7 @@
     <view class="name">宣传品名称</view>
     <input class="content" value="{{detail.name||''}}" bindinput="inputToChange" data-key="detail.name"></input>
   </view>
-  <view class="row row_line">
+  <view class="row row_line" wx:if="{{detail.isSet == 0}}">
     <view class="name">所属类别</view>
     <picker range="{{lbList}}" data-key="detail.typeName" bindchange="bindPickerChange">
       <input class="content" placeholder="请选择" disabled="{{true}}" value="{{detail.typeName||''}}"></input>

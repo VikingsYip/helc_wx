@@ -44,7 +44,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.requestToPopsById()
   },
 
   /**
@@ -108,6 +108,16 @@ Page({
   clickToAdd(e){
     wx.navigateTo({
       url: '/pages/work/admin/dataAdmin/push/add/index',
+    })
+  },
+
+  clickToAddSet(e){
+    let index = this.data.categoryIndex
+    let typeId = this.data.categoryList[index].id
+    let typeName = this.data.categoryList[index].name
+    let brochureIn = JSON.stringify(this.data.categoryList[index].arr)
+    wx.navigateTo({
+      url: '/pages/work/admin/dataAdmin/push/addSet/index?type='+typeId+"&typeName="+typeName+"&brochureIn="+brochureIn,
     })
   },
 

@@ -41,7 +41,8 @@
     "pages/work/admin/dataAdmin/organization/index",
     "pages/work/admin/dataAdmin/setmeal/index",
     "pages/work/admin/dataAdmin/user/index",
-    "pages/work/toApply/index"
+    "pages/work/toApply/index",
+    "pages/work/admin/dataAdmin/push/addSet/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

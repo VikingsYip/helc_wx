@@ -25,8 +25,11 @@ Page({
         var lbList = []
         var lbdetailList = []
         data.records.map(obj => {
-          lbList.push(obj.name)
-          lbdetailList.push(obj.id)
+          //只有单品能选类别
+          if(obj.isSet==0){
+            lbList.push(obj.name)
+            lbdetailList.push(obj.id)
+          }
         })
         that.setData({
           lbList,
