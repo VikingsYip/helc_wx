@@ -11,14 +11,14 @@
 <view class="row" style="padding: 0 30rpx 0;width:750rpx">
 	<scroll-view style="height:{{scrollHeight}}px;flex:2;margin-left:10rpx;margin-top:10rpx" scroll-y>
 		<block wx:for='{{record}}' wx:for-item='record' wx:for-index='rIndex' wx:key='id'>
-			<view class="row" style="padding:0 0 10rpx 0" bindtap="clickToChangeCategory" data-index="{{rIndex}}">
+			<view class="row" style="padding:0 0 10rpx 0"  data-index="{{rIndex}}">
 				<image style="width:130rpx;height:180rpx;background-color:#dcdcdc;margin-right:16rpx" src="{{record.coverImgPath||''}}"></image>
 				<view class="column column-between" style="flex:1;height:180rpx;margin-right:10rpx">
 					<view class="text-28-black line1" style="font-weight:400">
             <!-- <text wx:if="{{record.isSet==1}}" class="isSet">[套餐]</text> -->
             {{record.name||''}}
           </view>
-					<view class="text-24-gray">申领数量：<input type="number" bindblur="saveDetailCount" data-index="{{rIndex}}" data-num="{{record.detailCount}}" value="{{record.detailCount}}"></input></view>
+					<view class="text-24-gray">申领数量：<input type="number" style="border:0.5px solid #378888" bindblur="saveDetailCount" data-index="{{rIndex}}" data-num="{{record.detailCount}}" value="{{record.detailCount}}"></input></view>
           <view class="row">
           <view class="btn-green-s" wx:if="{{record.selected==1}}"style="height:auto;line-height:50rpx;" >已选</view>
           </view>

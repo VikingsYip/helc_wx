@@ -96,15 +96,6 @@ Page({
     
   },
 
-  
-
-  clickToAdd(e){
-    wx.navigateTo({
-      url: '/pages/work/admin/dataAdmin/push/add/index',
-    })
-  },
-
-
   /**请求类别列表 */
   requestToCategory(isShow = true){
     let that = this
@@ -168,22 +159,30 @@ Page({
     let that = this
     let index = e.currentTarget.dataset.index
     let num = e.detail.value
-    this.setData({
-      ["record[" + index + "].detailCount"]: num
-    })
     let req = {}
     req.typeId = this.data.typeId
     req.brochureId = this.data.record[index].id
-    req.detailcount = this.data.record[index].detailcount
-    if(this.isSelect(req.brochureId)){
-      POSTJSON('brochureDetail/a/edit', req, true,(flag,data,des)=>{
-        if(flag){
-          return;
-        }else{
-          show(des)
-        }
+    req.detailcount = this.data.record[index].detailCount
+    if(num){
+      this.setData({
+        ["record[" + index + "].detailCount"]: num,
+        ["record[" + index + "].selected"]: 1
+      })
+    }else{
+      this.setData({
+        ["record[" + index + "].detailCount"]: 0,
+        ["record[" + index + "].selected"]: 0
       })
     }
+    // if(this.isSelect(req.brochureId)&&num){
+    //   POSTJSON('brochureDetail/a/edit', req, true,(flag,data,des)=>{
+    //     if(flag){
+    //       return;
+    //     }else{
+    //       show(des)
+    //     }
+    //   })
+    // }
   },
 
   clickToChangeCategory(e){
@@ -198,11 +197,13 @@ Page({
   clickToAdd(){
     let that = this
     let brochureList = []
+    console.log(this.data.record)
     for(let item of this.data.record){
       if(item.selected==1){
         let broItem = {}
         broItem.name = item.name
         broItem.id = item.id
+        broItem.detailcount = item.detailCount?item.detailCount:0
         brochureList.push(broItem)
       }
     }
@@ -215,7 +216,7 @@ Page({
           showCancel: false,
           success: (result) => {
             wx.navigateTo({
-              url: '/pages/work/admin/dataAdmin/push/index',
+              url: '/pages/work/admin/dataAdmin/push/index?sds=1',
             })
           },
           title: '提醒',
