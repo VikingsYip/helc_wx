@@ -47,10 +47,13 @@
 				<view class="text-24-black status">状态：{{item2.statusName}}</view>
 			</view>
       <view>
-           <block wx:if="{{item2.status=='SL010103'}}">
+			  <block wx:if="{{item2.status=='SL01010303'}}">
+        	<view class="btn-green-s" bindtap="confirmOrder" data-id="{{item2.id}}">确认订单</view>
+        </block>
+        <block wx:if="{{item2.status=='SL010103'}}">
         	<view class="btn-green-s" bindtap="clickToDetail" data-id="{{item2.id}}">审核</view>
         </block>
-        <block wx:elif="{{item2.status=='SL010105'}}">
+        <block wx:elif="{{item2.status=='SL010105'||item2.status=='SL01010501'}}">
         	<view class="btn-green-s" bindtap="clickToDetail" data-id="{{item2.id}}">发货</view>
         </block>
          <block wx:elif="{{item2.status=='SL010106'}}">

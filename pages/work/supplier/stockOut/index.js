@@ -27,7 +27,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
@@ -137,6 +136,32 @@ Page({
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '/pages/work/supplier/stockOut/detail/index?id=' + id +"&flag=1",
+    })
+  },
+  confirmOrder(e) {
+    var that = this;
+    var id = e.currentTarget.dataset.id;
+    wx.showModal({
+      title: '提示',
+      content: '确定？',
+      success: function (sm) {
+        console.log(sm);
+        if (sm.confirm) {
+          POST("apply/p/confirmOrder", { id: id}, true, (flag, data, des) => {
+            if (flag) {
+              that.setData({
+                list: [],
+                pageNo: 1,
+              })
+              that.getList();
+            } else {
+              show(des)
+            }
+          })
+          // 用户点击了确定 可以调用删除方法了
+        } else if (sm.cancel) {
+        }
+      }
     })
   },
   inputToChange(e) {
