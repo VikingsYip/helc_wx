@@ -1,6 +1,6 @@
 const {getToken} = require('../utils/util.js')
-const baseUrl = 'http://localhost:8083/'
-//const baseUrl = 'https://hitachirdc.gzunicorn.com/'
+//const baseUrl = 'http://localhost:8083/'
+const baseUrl = 'https://hitachirdc.gzunicorn.com/'
 const baseRequest = (method = 'POST', url = '', params = {}, isJson = false,isShow = false, complete) => {
   if (isShow) {
     wx.showLoading({

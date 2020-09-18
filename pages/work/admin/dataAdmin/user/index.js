@@ -17,18 +17,30 @@ Page({
     roleList:[],
     rIndex:-1,
     organization: [],
-    organizationIndex:-1
+    organizationIndex:-1,
+    multiOrganList:[],
+    multiIndex:[0,0],
+    multiArray:[],
+    currentOrgan:{},
+    organId:-1
   },
   organizationChange(e){
+    // this.setData({
+    //   organizationIndex: e.detail.value
+    // })
+    var organizationIndex =  e.detail.value;
+    var orgId = this.data.organization[organizationIndex].id
     this.setData({
-      organizationIndex: e.detail.value
+      organId: orgId,
+      organizationIndex: organizationIndex
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getOrganization()
+    this.getOrganization()//获取供应商组织机构
+    this.requestToOrganList()//获取非供应商组织机构
     this.requestToList()
     this.requestToRoleList()
   },
@@ -44,6 +56,61 @@ Page({
       }
     })
   },
+  /*************zzh******** */
+  /**
+   * 获取组织机构
+   */
+  requestToOrganList(){
+    let that = this
+    GET('organization/list', { corporateType:0},true,(flag,data,des)=>{
+      let names = new Set()
+      let list = []
+      let subNames = []
+      if (flag){
+        data.forEach((value)=>{
+          names.add(value.area||'')
+          let current = list.find((v)=>{
+            return v.area&&v.area==value.area
+          })
+          if (current) {
+            current.list = current.list.concat([value])
+            current.subNames = current.subNames.concat([value.corporateName||''])
+          }else{
+            list.push({area:value.area,list:[value],subNames:[value.corporateName||'']})
+          }
+        })
+        that.setData({
+          multiOrganList:list,
+          multiArray:[list.map((v)=>v.area),list[0].subNames]
+        })
+      }else{
+        show(des)
+      }
+    })
+  },
+  pickerColumnChange(e){
+    console.log(e);
+    let column = e.detail.column
+    let index = e.detail.value
+    let list = this.data.multiOrganList
+    if (column == 0) {
+      this.setData({
+        multiArray:[list.map((v)=>v.area),list[index].subNames],
+        multiIndex:[index,0]
+      })
+    }
+  },
+  pickerChange(e){
+    let section = e.detail.value[0]
+    let row = e.detail.value[1]
+    let organ = this.data.multiOrganList[section].list[row]
+    this.setData({
+      currentOrgan:organ,
+      organId:organ.id
+    })
+    console.log(this.data.currentOrgan)
+  },
+  /*************zzh********* */
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -202,7 +269,8 @@ Page({
     this.setData({
       showType:-1,
       rIndex: -1,
-      organizationIndex: -1
+      organizationIndex: -1,
+      organId:-1
     })
   },
 
@@ -213,15 +281,26 @@ Page({
     var canshu = {
       userId: userId, roleId: roleId
     }
-    if (roleId == 'ROLE_SUP'){
-      var organizationIndex = this.data.organizationIndex
-      if (organizationIndex == -1){
+    if (roleId == 'ROLE_SUP'  || roleId=='ROLE_DOWN_ADMIN' || roleId=='ROLE_USER'){
+      var orgId = this.data.organId
+      console.log(orgId)
+      if(orgId == -1){
         show("选择组织机构")
         return
       }else{
-        var orgId = this.data.organization[organizationIndex].id
         canshu.orgId = orgId
+        this.setData({
+          organId: -1
+        })
       }
+      // var organizationIndex = this.data.organizationIndex
+      // if (organizationIndex == -1){
+      //   show("选择组织机构")
+      //   return
+      // }else{
+      //   var orgId = this.data.organization[organizationIndex].id
+      //   canshu.orgId = orgId
+      // }
 
     }
     POST('permissions/a/edit/userRole', canshu,true,(flag,data,des)=>{

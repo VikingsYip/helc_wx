@@ -24,7 +24,7 @@
 		<view class="text-32-black" style="color:red;margin:20rpx 0;font-weight:400">{{currentIndex == -1 ?"添加":"修改"}}信息</view>
 		<view class="text-28-black" style="width:540rpx">类型名称</view>
 		<input class="input_name" bindinput="inputToChange" data-key="editName" value="{{currentIndex == -1 ? editName : records[currentIndex].name}}" placeholder="请输入名称"></input> 
-    <view class="text-28-black" style="width:540rpx" wx:if='{{isTC!=0}}'>活动类型</view>
+   <!-- <view class="text-28-black" style="width:540rpx" wx:if='{{isTC!=0}}'>活动类型</view>
     <view bindtap="onHandleShowScale"><input class="input_name" value="{{eventName}}" disabled="true" wx:if='{{isTC!=0}}'></input></view>
     <view class="text-28-black" style="flex:3;width:540rpx">是否套餐
       <radio-group bindchange="radioChangeDefault" style="margin:5rpx;flex:3;display:flex">
@@ -34,7 +34,7 @@
           </radio>
         </label>
       </radio-group>
-    </view>
+    </view>-->
 		<view class="row">
 			<view class="btn_back" bindtap="clickToHide">返回</view>
 			<view class="btn_save" bindtap="clickToSave">保存</view>

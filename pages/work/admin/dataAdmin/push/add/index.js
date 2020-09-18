@@ -137,7 +137,7 @@ Page({
     if (!obj.verifySupplierName) { show("供应商审核不能为空"); return; }
     if (!obj.costPrice) { show("成本价格不能为空"); return; }
     if (!obj.warningNum) { show("库存预警不能为空"); return; }
-    if (!obj.stockNum) { show("库存数量不能为空"); return; }
+    //if (!obj.stockNum) { show("库存数量不能为空"); return; }
     if (!obj.latestVersion) { show("最新版本号不能为空"); return; }
     if (!obj.coverImgPath) { show("封面不能为空"); return; }
     

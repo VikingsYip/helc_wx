@@ -69,6 +69,11 @@
            <input class="input_picker" placeholder="请选择" disabled="{{true}}" value="{{organization[organizationIndex].corporateName||''}}"></input>
       </picker>
     </block>
+    <block wx-if="{{roleList[rIndex].code=='ROLE_DOWN_ADMIN' || roleList[rIndex].code=='ROLE_USER'}}">
+      <picker mode='multiSelector' range="{{multiArray}}" value="{{multiIndex}}" bindchange="pickerChange" class="picker"             bindcolumnchange="pickerColumnChange">
+        <input class="input_picker" disabled="true" value="{{currentOrgan.corporateName||''}}" placeholder="请选择所属单位"></input>
+      </picker>
+  </block>
     <view class="row bottom">
       <view class="btn_left" bindtap="clickToBack">返回</view>
       <view class="btn_right" bindtap="clickToSubmit">确认提交</view>

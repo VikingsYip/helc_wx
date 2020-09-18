@@ -1,165 +1,171 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useIsolateContext": true,
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.10.4",
-	"appid": "wx008faef29b14afe3",
-	"projectname": "helc_wx",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/work/toApply/index",
-					"pathName": "pages/work/toApply/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/work/applyList/index",
-					"pathName": "pages/work/applyList/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "pages/work/receiveDetail/index",
-					"pathName": "pages/work/receiveDetail/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 3,
-					"name": "pages/work/admin/approval/all/index",
-					"pathName": "pages/work/admin/approval/all/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/work/applyList/index",
-					"pathName": "pages/work/applyList/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/work/admin/dataAdmin/ads/index",
-					"pathName": "pages/work/admin/dataAdmin/ads/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/work/messageList/index",
-					"pathName": "pages/work/messageList/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/work/receive/index",
-					"pathName": "pages/work/receive/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/work/admin/dataAdmin/setmeal/index",
-					"pathName": "pages/work/admin/dataAdmin/setmeal/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/work/admin/dataAdmin/setmeal/index",
-					"pathName": "pages/work/admin/dataAdmin/setmeal/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/work/admin/approval/index",
-					"pathName": "pages/work/admin/approval/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/work/supplier/stockOut/index",
-					"pathName": "pages/work/supplier/stockOut/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/work/admin/approval/detail/index",
-					"pathName": "pages/work/admin/approval/detail/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/work/admin/approval/index",
-					"pathName": "pages/work/admin/approval/index",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": []
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.10.4",
+  "appid": "wx008faef29b14afe3",
+  "projectname": "helc_wx",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": [
+        {
+          "id": -1,
+          "name": "pages/work/toApply/index",
+          "pathName": "pages/work/toApply/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/work/applyList/index",
+          "pathName": "pages/work/applyList/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 2,
+          "name": "pages/work/receiveDetail/index",
+          "pathName": "pages/work/receiveDetail/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 3,
+          "name": "pages/work/admin/approval/all/index",
+          "pathName": "pages/work/admin/approval/all/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/work/applyList/index",
+          "pathName": "pages/work/applyList/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/work/admin/dataAdmin/ads/index",
+          "pathName": "pages/work/admin/dataAdmin/ads/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/work/messageList/index",
+          "pathName": "pages/work/messageList/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/work/receive/index",
+          "pathName": "pages/work/receive/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/work/admin/dataAdmin/setmeal/index",
+          "pathName": "pages/work/admin/dataAdmin/setmeal/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/work/admin/dataAdmin/setmeal/index",
+          "pathName": "pages/work/admin/dataAdmin/setmeal/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/work/admin/approval/index",
+          "pathName": "pages/work/admin/approval/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/work/supplier/stockOut/index",
+          "pathName": "pages/work/supplier/stockOut/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/work/admin/approval/detail/index",
+          "pathName": "pages/work/admin/approval/detail/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/work/admin/approval/index",
+          "pathName": "pages/work/admin/approval/index",
+          "scene": null
+        }
+      ]
+    }
+  }
 }
