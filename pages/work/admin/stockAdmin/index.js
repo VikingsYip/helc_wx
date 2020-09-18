@@ -107,7 +107,7 @@ Page({
       })
     }
     var categoryList = this.data.categoryList
-    GET('brochureType/page', { current: categoryCurrent, name: '', size: 30 }, isShow, (flag, data, des) => {
+    GET('brochureType/page', { isSet: 0, current: categoryCurrent, name: '', size: 30 }, isShow, (flag, data, des) => {
       if (flag) {
         data.records.map(obj => {
             obj.pageNo = 1,

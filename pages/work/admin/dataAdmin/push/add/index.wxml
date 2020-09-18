@@ -5,7 +5,7 @@
     <view class="name">宣传品名称</view>
     <input class="content" value="{{detail.name||''}}" bindinput="inputToChange" data-key="detail.name"></input>
   </view>
-  <view class="row row_line" wx:if="{{detail.isSet == 0}}">
+  <view class="row row_line"> <!--wx:if="{{detail.isSet == 0}}"-->
     <view class="name">所属类别</view>
     <picker range="{{lbList}}" data-key="detail.typeName" bindchange="bindPickerChange">
       <input class="content" placeholder="请选择" disabled="{{true}}" value="{{detail.typeName||''}}"></input>
@@ -23,12 +23,12 @@
       <input class="content" placeholder="请选择" disabled="{{true}}" value="{{detail.verifySupplierName}}"></input>
     </picker>
   </view>
- <view class="row row_line">
+ <!--view class="row row_line">
     <view class="name">是否套餐</view>
     <picker range="{{isTCList}}" data-key="detail.isSet" bindchange="bindPickerChange">
       <input class="content" placeholder="请选择" disabled="{{true}}" value="{{isTCList[detail.isSet] || '否'}}"></input>
     </picker>
-  </view>
+  </view-->
   <view class="row row_line">
     <view class="name">成本价格</view>
     <input class="content" type="digit" value="{{detail.costPrice}}" bindinput="inputToChange" data-key="detail.costPrice"></input>
@@ -37,10 +37,10 @@
     <view class="name">库存预警</view>
     <input class="content" type="number" value="{{detail.warningNum}}" bindinput="inputToChange" data-key="detail.warningNum"></input>
   </view>
-  <view class="row row_line" wx:if="{{stockNumShow}}">
+  <!--view class="row row_line" wx:if="{{stockNumShow}}">
     <view class="name">库存数量</view>
     <input class="content" type="number" value="{{detail.stockNum}}" bindinput="inputToChange" data-key="detail.stockNum"></input>
-  </view>
+  </view-->
   <view class="row row_line">
     <view class="name">单次最大申领数</view>
     <input class="content" type="number" value="{{detail.maxApplyNum||''}}" bindinput="inputToChange" data-key="detail.maxApplyNum"></input>
