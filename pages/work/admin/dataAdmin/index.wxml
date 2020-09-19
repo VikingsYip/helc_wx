@@ -44,6 +44,11 @@
     <image src="/static/images/icon_auth.png"></image>
     <text>用户管理</text>
   </view>
+
+  <view class="row row_line" style="background-color:#FE5721" bindtap="clickToManager" data-index="4">
+    <image src="/static/images/icon_auth.png"></image>
+    <text>授权管理</text>
+  </view>
 <!-- 
   <view class="row row_line" style="background-color:#FE5721;margin-bottom: 16rpx;" bindtap="clickToManager" data-index="7">
     <image src="/static/images/icon_setMeal.png"></image>
