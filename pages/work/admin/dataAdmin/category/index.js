@@ -19,7 +19,7 @@ Page({
     eventCode:undefined,
     eventName:undefined,
     isSet:1,
-    isTC:0,//接受页面传递参数
+    isTC:0,//接受页面传递参数   
     radioDefaultArr: [{
       name: 1,
       checked: true,
@@ -194,7 +194,7 @@ Page({
   requestToAdd(){
     let that = this
     let name = this.data.editName.trim()
-    POST('brochureType/a/add', { name: name, eventCode: this.data.eventCode,isSet:this.data.isSet},true,(flag,data,des)=>{
+    POST('brochureType/a/add', { name: name, eventCode: this.data.eventCode,isSet:this.data.isTC},true,(flag,data,des)=>{
       if (flag){
         that.alertSuccess("保存成功")
       }else{
