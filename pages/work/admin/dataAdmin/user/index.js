@@ -22,6 +22,20 @@ Page({
     multiIndex:[0,0],
     multiArray:[],
     currentOrgan:{},
+    radioDefaultArr:[{
+      name:"0",
+      checked:false,
+      value:"只显示单品",      
+    }, {
+      name:"1",
+      checked: false,
+      value: "只显示套餐",
+    },{
+      name:"2",
+      checked: true,
+      value: "单品和套餐都显示",
+    }  
+  ],
     organId:-1
   },
   organizationChange(e){
@@ -303,6 +317,19 @@ Page({
       // }
 
     }
+    if (roleId=='ROLE_UP_ADMIN' || roleId=='ROLE_DOWN_ADMIN' || roleId=='ROLE_USER'){
+      var dataset = this.data.radioDefaultArr;
+      var ch = 0;
+      for(var i=0;i<dataset.length;i++){
+        if (dataset[i].checked == true){
+           ch = i;
+          break;
+        }
+      }
+      console.log(ch);
+      canshu.dataset = ch;
+    }
+
     POST('permissions/a/edit/userRole', canshu,true,(flag,data,des)=>{
       if (flag){
         that.setData({

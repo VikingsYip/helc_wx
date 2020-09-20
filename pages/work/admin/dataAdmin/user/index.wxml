@@ -72,8 +72,21 @@
     <block wx-if="{{roleList[rIndex].code=='ROLE_DOWN_ADMIN' || roleList[rIndex].code=='ROLE_USER'}}">
       <picker mode='multiSelector' range="{{multiArray}}" value="{{multiIndex}}" bindchange="pickerChange" class="picker"             bindcolumnchange="pickerColumnChange">
         <input class="input_picker" disabled="true" value="{{currentOrgan.corporateName||''}}" placeholder="请选择所属单位"></input>
-      </picker>
-  </block>
+      </picker>            
+    </block>
+    <block wx-if="{{roleList[rIndex].code=='ROLE_DOWN_ADMIN'  || roleList[rIndex].code=='ROLE_UP_ADMIN' || roleList[rIndex].code=='ROLE_USER'}}">
+         <view class="title">数据角色</view>
+    <view class="text text-24-gray" style="margin:50rpx 0 10rpx">
+    <radio-group>
+      <label wx:for="{{radioDefaultArr}}">
+        <radio class="radio" value="{{index}}" checked="{{item.checked}}">
+            <text>{{item.value}}</text>
+        </radio>
+      </label>
+    </radio-group>
+  </view>
+    </block>
+
     <view class="row bottom">
       <view class="btn_left" bindtap="clickToBack">返回</view>
       <view class="btn_right" bindtap="clickToSubmit">确认提交</view>
