@@ -43,7 +43,7 @@ Page({
   onLoad: function (options) {
     let id = options.id || ''
     var userInfo = app.globalData.userInfo
-    
+    console.log(this.data.userInfo)
     if(validate.isNotEmpty(id)){
       this.setData({
         userInfo,
@@ -203,6 +203,7 @@ Page({
   },
   requestToDetail(){
     let that = this
+    //console.log(this.data.orderId)
     GET('apply/id',{id:this.data.orderId},true,(flag,data,des)=>{
       if(flag){
         data.applyDtls.map(obj=>{
@@ -351,6 +352,7 @@ Page({
   inpNum(e) {
     var index = e.currentTarget.dataset.index;
     var obj = this.data.detail.brochure[index];
+    console.log(obj);
     var max = (obj.stockNum < 0) ? 0 : obj.stockNum;
     var min = 0;
     var maxapply = this.data.detail.organizationQuota[index].quotanum || 0;

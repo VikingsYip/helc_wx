@@ -77,7 +77,7 @@
     <block wx-if="{{roleList[rIndex].code=='ROLE_DOWN_ADMIN'  || roleList[rIndex].code=='ROLE_UP_ADMIN' || roleList[rIndex].code=='ROLE_USER'}}">
          <view class="title">数据角色</view>
     <view class="text text-24-gray" style="margin:50rpx 0 10rpx">
-    <radio-group>
+    <radio-group bindchange="radioChangeDefault" >
       <label wx:for="{{radioDefaultArr}}">
         <radio class="radio" value="{{index}}" checked="{{item.checked}}">
             <text>{{item.value}}</text>

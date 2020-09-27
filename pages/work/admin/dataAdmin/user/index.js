@@ -38,6 +38,23 @@ Page({
   ],
     organId:-1
   },
+  radioChangeDefault(e) {
+    
+    var index = e.detail.value
+    var radioDefaultArr = this.data.radioDefaultArr;
+    radioDefaultArr.map((obj, idx) => {
+      console.log(index);
+      console.log(idx);
+       if(index == idx){
+         obj.checked = true
+       }else{
+         obj.checked = false
+       }
+    })
+    this.setData({
+      radioDefaultArr: radioDefaultArr
+    })
+  },
   organizationChange(e){
     // this.setData({
     //   organizationIndex: e.detail.value
@@ -198,6 +215,7 @@ Page({
 
   clickToDetail(e){
     let index = e.currentTarget.dataset.index
+   
     this.setData({
       cIndex:index,
       showType:0
@@ -205,6 +223,8 @@ Page({
   },
 
   clickToAuth(e){
+    this.requestToList()
+    this.requestToRoleList()
     let index = e.currentTarget.dataset.index
     this.setData({
       cIndex:index,
@@ -217,8 +237,20 @@ Page({
         idx = index
       }
     })
+    var datasetId = this.data.records[index].dataset
+    console.log(datasetId);
+    var radioDefaultArr = this.data.radioDefaultArr.map((i) => {
+       if (i.name==datasetId) {
+          i.checked = true
+          return i
+        }else{
+          i.checked = false
+          return i
+        }
+    })
     this.setData({
-      rIndex: idx
+      rIndex: idx,
+      radioDefaultArr
     })
   },
   clickToDelete(e){
@@ -292,6 +324,7 @@ Page({
     let that = this
     let userId = this.data.records[this.data.cIndex].id
     let roleId = this.data.roleList[this.data.rIndex].code
+    //let datas= this.data.dataset[this.data.cIndex]
     var canshu = {
       userId: userId, roleId: roleId
     }
@@ -320,6 +353,7 @@ Page({
     if (roleId=='ROLE_UP_ADMIN' || roleId=='ROLE_DOWN_ADMIN' || roleId=='ROLE_USER'){
       var dataset = this.data.radioDefaultArr;
       var ch = 0;
+      //console.log(dataset);
       for(var i=0;i<dataset.length;i++){
         if (dataset[i].checked == true){
            ch = i;

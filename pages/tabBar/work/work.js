@@ -222,9 +222,19 @@ Page({
   },
   //首页各点击事件
   optionClick(e){
+    //console.log(app.globalData.userInfo)
     let index = Number(e.currentTarget.dataset.index)
     switch (index){
       case 1:
+        if (app.globalData.userInfo.dataset == 0){
+          wx.navigateTo({
+            url: '/pages/work/toApply/index?isSet=0',
+          })
+        }else if (app.globalData.userInfo.dataset == 1){
+          wx.navigateTo({
+            url: '/pages/work/toApply/index?isSet=1',
+          })
+        }else{
         wx.showActionSheet({
           itemList: ['单品', '套餐'],
           success: function(res) {
@@ -242,6 +252,7 @@ Page({
           fail: function(res) {
           }
         })
+      }
         break
       case 2:
         wx.navigateTo({
@@ -344,6 +355,7 @@ Page({
     let that = this
     POST('user/login',{code:getWxCode()},true,(flag,data,des)=>{
       if (flag && data.roleId) {
+        //console.log (data)
         user.save(data)
         setToken(data.token)
         app.globalData.userInfo = data;

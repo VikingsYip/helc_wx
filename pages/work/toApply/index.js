@@ -220,6 +220,7 @@ Page({
   requestToCategory(isShow = true) {
     let that = this
     var categoryCurrent = this.data.categoryCurrent
+  
     if (categoryCurrent == 1){
       this.setData({
         categoryList: [],
@@ -227,6 +228,7 @@ Page({
       })
     }
     var categoryList = this.data.categoryList
+    
     GET('brochureType/page', { current: categoryCurrent, name: '', size: 1000 }, isShow, (flag, data, des) => {
       if (flag) {
         var againArr = []
@@ -260,7 +262,11 @@ Page({
             flag = false
           }
             obj.arr = arr
+            if (obj.name != '安全乘梯' && obj.isSet==that.data.isTC)
             categoryList.push(obj)
+            
+            //console.log(obj.isSet)
+        //console.log(categoryCurrent)
         })
 
         that.setData({
@@ -278,7 +284,8 @@ Page({
   /**请求宣传品列表 */
   requestToPopsById(more,isShow = true) {
     let that = this
-    var index = this.data.categoryIndex
+    //console.log(this.data)
+    var index = this.data.categoryIndex  
     var id = this.data.categoryList[index].id
     var pageNo = this.data.categoryList[index].pageNo
     var isFirst = this.data.categoryList[index].isFirst

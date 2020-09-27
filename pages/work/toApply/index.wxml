@@ -11,6 +11,11 @@
   <view class="text-24-black">{{userInfo.organizationName}}</view>
 </view>
 
+<view class="row border_b" style="margin:0rpx 30rpx;padding:10rpx 0">
+  <view class="text-24-black" style="margin:0 50rpx">剩余额度</view>
+  <view class="text-24-black">{{categoryList[categoryIndex].quotaNum}}</view>
+</view>
+
 <view id="isTC" class="row text-30"
   style="padding:20rpx;text-align:center;background: #f0f0f0;margin: 20rpx 20rpx 0 20rpx;">
   <!-- <view style="flex:1;"></view> -->
@@ -30,7 +35,7 @@
           <view
             class="category text-28 line2 {{lIndex == categoryIndex ? 'checked' : ''}} {{category.hasAgain ? 'red' : ''}}"
             bindtap="clickToChangeCategory" data-index="{{lIndex}}">
-            <block wx:if="{{category.isSet==0}}">
+            <block wx:if="{{category.isSet==0 && category.name!='安全乘梯'}}">
               {{category.name}}
             </block>
             <block wx:if="{{category.isSet==1}}">
@@ -58,10 +63,10 @@
       </view>
     </block>
     <block wx:else>
-    <view class="row" catchtap="catchtap" style="margin:8rpx 0;">
+    <!--<view class="row" catchtap="catchtap" style="margin:8rpx 0;">
         <text style="margin-right:10rpx;font-size:12px;width:50%">
         年度额度:{{categoryList[categoryIndex].quotaNum}}</text>
-      </view>
+      </view>-->
     </block>
 
     <block wx:for='{{categoryList[categoryIndex].arr}}' wx:for-item='record' wx:for-index='rIndex' wx:key='id'>

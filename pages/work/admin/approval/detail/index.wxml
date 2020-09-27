@@ -24,10 +24,12 @@
           <view>
             <view class="text-28-black" style="font-weight:blod">
               {{item2.name||''}}
+            </view>           
+            <view wx:if="{{userInfo.roleId=='ROLE_ADMIN'}}" class="text-24-gray" style="margin:10rpx 0">库存数{{item2.stockNum||0}}
+            <text>已经审核：{{item2.alreadyExamineNum||0}} </text>
+            <text style="margin:10rpx 5">待审核数：{{item2.examineNum||0}}</text>
             </view>
-            <view class="text-24-gray" style="margin:10rpx 0">库存{{item2.stockNum||0}}
-            <text style="color:red">总待审批数：{{item2.allApplyingNum}}</text>
-            </view>
+            
             <view class="row">
               <block wx:if="{{flag==3}}">
                 <view class="row row-center button_sub" data-num="{{item2.applyNum}}" data-index="{{index}}"data-index2="{{index2}}"

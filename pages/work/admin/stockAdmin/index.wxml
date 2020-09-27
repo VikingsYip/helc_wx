@@ -39,14 +39,14 @@
 					
           <view class="text-28-black line1">{{record.name || ''}}</view>
 					<view class="text-24-hint line1">{{record.latestVersion || ""}}</view>
-          <view class="text-24-hint">库存数量：{{record.stockNum || ''}}</view>
+          <view class="text-24-hint">库存数量：{{record.stockNum || '0'}}</view>
 					<view class="text-24-hint {{record.red ? 'textRed' : ''}}">预警数量: {{record.warningNum || ""}}</view>
        <block wx-if="{{record.wayNum != 0}}">
           <block wx-if="{{record.wayNum > 0}}">
        <view class="text-28 yellow">入库: {{record.warningNum}}</view>
        </block> 
        <block wx-if="{{record.wayNum < 0}}">
-       <view class="text-28 yellow">调配: {{record.warningNum}}</view>
+       <view class="text-28 yellow">充补: {{record.wayNum}}</view>
        </block> 
        </block>   
 			</view>
