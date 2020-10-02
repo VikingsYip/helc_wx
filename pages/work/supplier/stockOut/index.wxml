@@ -56,9 +56,9 @@
         <block wx:elif="{{item2.status=='SL010105'||item2.status=='SL01010501'}}">
         	<view class="btn-green-s" bindtap="clickToDetail" data-id="{{item2.id}}">发货</view>
         </block>
-         <block wx:elif="{{item2.status=='SL010106'}}">
+         <!--block wx:elif="{{item2.status=='SL010106'}}">
         	<view class="btn-green-s" bindtap="clickToDetail" data-id="{{item2.id}}">撤回发货</view>
-        </block>
+        </block-->
       </view>
       </view>
 		</block>
