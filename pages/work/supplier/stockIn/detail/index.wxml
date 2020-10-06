@@ -37,6 +37,7 @@
     <button class="button-cancel" style="width:690rpx;margin-top:30rpx;" bindtap="clickToBack">撤回</button>
   </block>
   <block wx:if='{{detail.status == "RKZT02"}}'>
+		<textarea class="textarea" value="{{finishRemark}}" bindinput="inputToChange" data-key="finishRemark"></textarea>
     <button class="button-submit" style="width:690rpx;margin-top:30rpx;" bindtap="clickToFinish">完工</button>
   </block>
 </view>

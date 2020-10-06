@@ -130,10 +130,10 @@
     </view>
     <block wx:for='{{logArr}}' wx:for-item='item' wx:for-index='index' wx:key='item.id'>
       <view class="text-28-gray padding10">
-        {{item.organizationName}}  {{item.userName}}
+        {{item.organizationName}}  {{item.userName}} 
       </view>
       <view class="text-28-gray bor-bom-5 padding10">
-        备注：{{item.remark}}
+        {{item.operateName}}  {{item.createTime}}
       </view>
     </block>
     <block wx:if="{{flag && state == 'SL010101'}}">

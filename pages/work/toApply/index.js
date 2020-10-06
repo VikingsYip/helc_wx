@@ -27,6 +27,8 @@ Page({
     allNum: 0,
     applyObj:{},
     againDetail: {},
+    singleQuota: 0,
+    setmealQuota: 0,
     currentTime:'',
     radioArr:[{
       name:"1",
@@ -126,6 +128,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      //console.log(user);
       var DATE = formatYMD(new Date()); 
       this.setData({
         isTC:options.isSet||0,
@@ -133,11 +136,27 @@ Page({
         againId: options.againId,
         currentTime:DATE
       })
+      this.getOrgQuota();
       if (this.data.againId){
         this.getDetail()
       }else{
         this.requestToCategory()
     }
+  },
+  getOrgQuota() {
+    var that = this;
+    //console.log(this.data.userInfo.organization);
+    var id = this.data.userInfo.organization;
+    GET("organization/getById", { id: id }, true, (flag, data, des) => {
+      if (flag) {
+        that.setData({
+          setmealQuota: data.setmealQuota,
+          singleQuota: data.singleQuota
+        })
+      } else {
+        show(des)
+      }
+    })
   },
   getDetail() {
     var that = this;
@@ -251,6 +270,7 @@ Page({
                 againArr.push(obj2.id)
                 obj.hasAgain = true
                 obj2.hasAgain = true
+                //1004 modify by vikings，额度修改，单品和套餐的额度
                 obj2.organizationQuota = that.data.againDetail.organizationQuota[index2]
                 obj2.num = that.data.againDetail.applyDtls[index2].applyNum
                 arr.push(obj2)
@@ -512,6 +532,8 @@ Page({
         checkDefault = obj.name
       }
     })
+    
+    console.log('vikings');
     if(check){
       var applyDtls = []
       this.data.applyList.map(obj=>{
@@ -581,6 +603,7 @@ Page({
         })
         return false;
       }else{
+        console.log(canshu);
         POSTJSON('apply/u/add', canshu , true, (flag, data, des) => {
           if (flag) {
             that.setData({
